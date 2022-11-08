@@ -7,82 +7,87 @@ import resource2 from "../../images/resource2.png";
 const ResourcesPart = () => {
   const theme = useTheme();
   return (
-    <Box bgcolor={theme.primary.bgResource} p={4}>
-      <Typography
-        sx={{
-          color: theme.primary.text,
-          fontSize: { md: "28px", xs: "20px" },
-          fontWeight: "800",
-          textAlign: "center",
-        }}
-      >
-        Resources for getting started
-      </Typography>
-      <Box
-        mt={2}
-        sx={{
-          display: "flex",
-          overflowX: "scroll",
-          scrollBehavior: "smooth",
-          "&::-webkit-scrollbar": {
-            width: "0px"
-          },
-          "&::-webkit-scrollbar-track": {
-            background: "transparent"
-          },
-          "&::-webkit-scrollbar-thumb": {
-            background: "transparent"
-          }
-        }}
-      >
-        {[1, 2, 3, 4].map((num, i) => {
-          return (
-            <Box
-              key={i}
-              ml={1.5}
-              sx={{
-                background: theme.primary.bg,
-                borderRadius: "16px",
-                p: 2,
-                width: "300px",
-              }}
-            >
-              <img src={resource1} alt="" style={{ width: "270px" }} />
-              <Typography
-                mt={1}
-                sx={{
-                  fontWeight: "700",
-                  color: theme.primary.text,
-                  fontSize: "16px",
-                }}
-              >
-                I should have received NFTs
-              </Typography>
-              <Typography
-                sx={{
-                  color: "#5d5d5b",
-                  fontSize: "14px",
-                }}
-              >
-                Unfortunately, it can happen by accident If you’re confident you
-                qualify for but didn’t receive
-              </Typography>
+    <Box bgcolor={theme.primary.bg} p={4} pb={10}>
+      <Container maxWidth="lg">
+        <Typography
+          sx={{
+            color: theme.primary.text,
+            fontSize: { md: "28px", xs: "20px" },
+            fontWeight: "800",
+            textAlign: "left",
+          }}
+        >
+          Resources for getting started
+        </Typography>
+        <Box
+          mt={2}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            overflowX: "scroll",
+            scrollBehavior: "smooth",
+            "&::-webkit-scrollbar": {
+              width: "0px",
+            },
+            "&::-webkit-scrollbar-track": {
+              background: "transparent",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: "transparent",
+            },
+          }}
+        >
+          {[1, 2, 3].map((num, i) => {
+            return (
+              <Box
+                key={i}
+                // ml={1.5}
 
-              <Typography
-                mt={1}
                 sx={{
-                  fontWeight: "700",
-                  color: theme.primary.text,
-                  fontSize: "14px",
+                  background:
+                    "linear-gradient(180deg, #0DF17F 0%, rgba(0, 204, 254, 0) 100%)",
+                  borderRadius: "16px",
+                  p: 2,
+                  width: "300px",
                 }}
               >
-                <MdOutlineArrowForwardIos style={{ verticalAlign: "-2px" }} />
-                See more details
-              </Typography>
-            </Box>
-          );
-        })}
-      </Box>
+                <img src={resource1} alt="" style={{ width: "270px" }} />
+                <Typography
+                  mt={1}
+                  sx={{
+                    fontWeight: "700",
+                    color: theme.primary.text,
+                    fontSize: "16px",
+                  }}
+                >
+                  I think I minted duplicate NFTs
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "gray",
+                    fontSize: "14px",
+                  }}
+                >
+                  What’s better than an NFT? 2 NFTs! But you don't always want
+                  to mint 2 NFTs of the same artwork.
+                </Typography>
+
+                <Typography
+                  mt={1}
+                  sx={{
+                    fontWeight: "700",
+                    color: theme.primary.text,
+                    fontSize: "14px",
+                  }}
+                >
+                  <MdOutlineArrowForwardIos style={{ verticalAlign: "-2px" }} />
+                  See more details
+                </Typography>
+              </Box>
+            );
+          })}
+        </Box>
+      </Container>
     </Box>
   );
 };

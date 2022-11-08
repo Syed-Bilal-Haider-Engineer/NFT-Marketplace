@@ -11,7 +11,7 @@ import Author3 from "../../images/Author3.png";
 import Author4 from "../../images/Author4.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
-import Ethereum from "../../images/Ethereum.png";
+import eth1 from "../../images/eth1.png";
 import NoteableCard from "./NoteableCard";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ export default function NoteableDrops() {
       "19",
       "03 Aug 2022",
       `${Author2}`,
-      `${Ethereum}`
+      `${eth1}`
     ),
     createData(
       `${nft3}`,
@@ -72,7 +72,7 @@ export default function NoteableDrops() {
           style={{
             color: theme.primary.text,
           }}
-          textAlign="center"
+          textAlign="left"
           width="100%"
         >
           Selected notable drops

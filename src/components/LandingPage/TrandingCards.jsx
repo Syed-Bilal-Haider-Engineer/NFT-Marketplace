@@ -16,7 +16,7 @@ export default function TrandingCards({
     <Box
       height="100%"
       textAlign="center"
-      border="1px solid #e0e0e0"
+      border="1px solid #2C3739"
       pb={1}
       borderRadius="10px"
       position="relative"

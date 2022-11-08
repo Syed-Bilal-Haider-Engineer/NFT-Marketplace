@@ -58,7 +58,7 @@ function App() {
       bgHeader: "#000000",
       bg: "#172225",
       bgGray: "#979797",
-      bgButton: "#191B1F",
+      bgButton: "#2C3739",
       bgButtonTwo: "#0DF17F",
       btnBothDark: "#0DF17F",
       sideBarNonActive: "rgba(255, 255, 255, 0.5)",
@@ -107,8 +107,8 @@ function App() {
                 <TrandingNft />
                 <TopCollecions />
                 <NoteableDrops />
-                <ResourcesPart />
                 <PopularNft />
+                <ResourcesPart />
               </>
             }
           />

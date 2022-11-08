@@ -133,14 +133,14 @@ function PopularNft() {
   const theme = useTheme();
 
   return (
-    <Box pt={5} bgcolor={theme.primary.bg}>
+    <Box py={10} bgcolor={theme.primary.bg}>
       <Container>
         <Typography
           sx={{
             color: theme.primary.text,
             fontSize: { md: "28px", xs: "20px" },
             fontWeight: "800",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           Browse popular NFTs
@@ -153,7 +153,7 @@ function PopularNft() {
             sx={{
               "& .MuiTabs-indicator": {
                 // display: "none",
-                background: theme.primary.text,
+                background: theme.primary.bgButtonTwo,
               },
             }}
           >

@@ -16,7 +16,7 @@ export default function PopularNftCard({
     <Box
       height="100%"
       textAlign="center"
-      border="1px solid #e0e0e0"
+      border="1px solid #2C3739"
       pb={1}
       borderRadius="10px"
       position="relative"
@@ -52,11 +52,11 @@ export default function PopularNftCard({
         {description}
       </Typography>
       <Box
-        color={theme.primary.text}
+        color={theme.primary.subtext}
         fontSize="12px"
         display="flex"
         alignItems="center"
-        bgcolor={theme.primary.bg}
+        bgcolor={theme.primary.bgButtonTwo}
         p={1}
         sx={{
           width: "fit-content",
@@ -70,7 +70,7 @@ export default function PopularNftCard({
         <FavoriteBorderIcon
           style={{
             fontSize: "16px",
-            color: theme.primary.text,
+            color: theme.primary.subtext,
             marginRight: "6px",
           }}
         />

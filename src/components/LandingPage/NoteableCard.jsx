@@ -16,7 +16,7 @@ export default function NoteableCard({
   const theme = useTheme();
   return (
     <Box
-      border="1px solid #e0e0e0"
+      border="1px solid #2C3739"
       height="100%"
       p={2}
       display="flex"
@@ -56,7 +56,7 @@ export default function NoteableCard({
           <FavoriteBorderIcon
             style={{
               fontSize: "20px",
-              color: theme.primary.text,
+              color: theme.primary.bgButtonTwo,
               marginRight: "6px",
             }}
           />{" "}

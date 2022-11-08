@@ -4,10 +4,15 @@ import {
   Grid,
   Menu,
   MenuItem,
+  Typography,
   useMediaQuery,
 } from "@mui/material";
 import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+// import { styled } from "@mui/material";
 import { styled } from "@mui/styles";
 import ArtS1 from "../../images/ArtS1.png";
 import ArtS2 from "../../images/ArtS2.png";
@@ -25,43 +30,55 @@ import CollectionsCard from "./CollectionsCard";
 import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 
-const StyledMenu = styled((props) => (
-  <Menu
-    elevation={0}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "right",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "right",
-    }}
-    {...props}
-  />
-))(({ theme }) => ({
-  "& .MuiPaper-root": {
-    minWidth: 180,
-    backgroundColor: "#ffffff",
-    borderRadius: "10px",
-    color: "#000000",
-    marginLeft: "17px",
-    boxShadow:
-      "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
-    "& .MuiMenu-list": {
-      padding: "10px 0",
-    },
-    "& .MuiMenuItem-root": {
-      "& .MuiSvgIcon-root": {
-        fontSize: 18,
-        color: "#ffffff",
-        marginRight: "10px",
-      },
-      "&:active": {
-        backgroundColor: "gray",
-      },
-    },
+const AntTab = styled((props) => <Tab disableRipple {...props} />)(() => ({
+  textTransform: "none",
+  color: "#fff",
+  border: "1px solid #fff",
+  borderRadius: "23px",
+  height: "36px",
+  width: "94px",
+  // fontSize: "14px",
+  // fontFamily: "Light Bold",
+  // borderRadius: "7px",
+  // color: "#000",
+  "&.Mui-selected": {
+    background: "#0DF17F",
+    color: "#000",
+    border: "1px solid transparent",
   },
 }));
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 
 export default function TopCollecions() {
   function createData(img, logo, nftName, price, apr) {
@@ -138,19 +155,24 @@ export default function TopCollecions() {
   const [filterByDays, setfilterByDays] = useState("last 7 days");
   const [anchorEl1, setAnchorEl1] = useState(null);
   const open1 = Boolean(anchorEl1);
-  const handleClick1 = (event) => {
-    setAnchorEl1(event.currentTarget);
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
-  const handleClose1 = () => {
-    setAnchorEl1(null);
-  };
+  // const handleClick1 = (event) => {
+  //   setAnchorEl1(event.currentTarget);
+  // };
+  // const handleClose1 = () => {
+  //   setAnchorEl1(null);
+  // };
   return (
     <Box pt={10} bgcolor={theme.primary.bg}>
       <Container maxWidth="lg">
-        <Box display="flex" flexDirection="column" alignItems="center">
+        <Box display="flex" flexDirection="column">
           <Box
             display="flex"
-            alignItems="center"
+            justifyContent="space-between"
             flexDirection={matches ? "column" : "row"}
           >
             <Box
@@ -161,109 +183,85 @@ export default function TopCollecions() {
               style={{
                 color: theme.primary.text,
               }}
-              textAlign="center"
+              textAlign="left"
               width="100%"
             >
-              Top sellings collections
+              Top collections
             </Box>
 
             <Box mb={5} display="flex" alignItems="center">
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                style={{
-                  fontSize: matches ? "20px" : "28px",
-                  fontWeight: 800,
-                  letterSpacing: "0.2px",
-                  color: "#7A52F4",
-                  textDecoration: "none",
-                  border: "none",
-                  padding: "0px 8px",
-                  background: "transparent",
-                  position: "relative",
-                  zIndex: "1",
-                  width: matches ? "100%" : "240px",
-                  cursor: "pointer",
-                }}
-                onClick={handleClick1}
-              >
-                <Box display="flex" alignItems="center">
-                  <Box
-                    mt="-3px"
-                    fontSize={matches ? "20px" : "28px"}
-                    color="#7A52F4"
-                    fontWeight={800}
-                  >
-                    {filterByDays}
-                  </Box>
-                  <Box ml={1} mb="-12px">
-                    <KeyboardArrowDownIcon
-                      style={{ fontSize: "30px", fontWeight: "700" }}
-                    />
-                  </Box>
-                </Box>
+              <Box sx={{ width: "100%" }}>
+                {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}> */}
+                <Tabs
+                  sx={{
+                    "& .MuiTabs-indicator": {
+                      display: "none",
+                      // backgroundColor: "#4473FA",
+                    },
+                    height: "36px",
+                    backgroundColor: "transparent",
+                    boxShadow: "none",
+                    // border: "1px solid #fff",
+                    borderRadius: "25px",
+                  }}
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="basic tabs example"
+                >
+                  <AntTab
+                    sx={{ width: "94px", marginRight: "20px" }}
+                    label="1 day"
+                    {...a11yProps(0)}
+                  />
+                  <AntTab
+                    sx={{ width: "94px", marginRight: "20px" }}
+                    label="7 days"
+                    {...a11yProps(1)}
+                  />
+                  <AntTab
+                    sx={{ width: "94px" }}
+                    label="30 days"
+                    {...a11yProps(2)}
+                  />
+                </Tabs>
               </Box>
-
-              <StyledMenu
-                id="demo-customized-menu"
-                MenuListProps={{
-                  "aria-labelledby": "demo-customized-button",
-                }}
-                anchorEl={anchorEl1}
-                open={open1}
-                onClose={handleClose1}
-              >
-                <MenuItem
-                  onClick={() => {
-                    setfilterByDays("last 7 days");
-                    handleClose1();
-                  }}
-                  disableRipple
-                >
-                  last 7 days
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setfilterByDays("last 30 days");
-                    handleClose1();
-                  }}
-                  disableRipple
-                >
-                  last 30 days
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setfilterByDays("last 180 day");
-                    handleClose1();
-                  }}
-                  disableRipple
-                >
-                  last 180 day
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setfilterByDays("last 360 days");
-                    handleClose1();
-                  }}
-                  disableRipple
-                >
-                  last 360 days
-                </MenuItem>
-              </StyledMenu>
             </Box>
           </Box>
           <Grid container spacing={3}>
             {collectionArray.length > 0 ? (
               collectionArray.map(({ img, logo, nftName, price, apr }, i) => (
-                <CollectionsCard
-                  img={img}
-                  logo={logo}
-                  nftName={nftName}
-                  price={price}
-                  apr={apr}
-                  index={i}
-                />
+                <Grid mt={-5} item xs={12} sm={6} md={4}>
+                  <TabPanel value={value} index={0}>
+                    <CollectionsCard
+                      img={img}
+                      logo={logo}
+                      nftName={nftName}
+                      price={price}
+                      apr={apr}
+                      index={i}
+                    />
+                  </TabPanel>
+                  <TabPanel value={value} index={1}>
+                    <CollectionsCard
+                      img={img}
+                      logo={logo}
+                      nftName={nftName}
+                      price={price}
+                      apr={apr}
+                      index={i}
+                    />
+                  </TabPanel>
+                  <TabPanel value={value} index={2}>
+                    <CollectionsCard
+                      img={img}
+                      logo={logo}
+                      nftName={nftName}
+                      price={price}
+                      apr={apr}
+                      index={i}
+                    />
+                  </TabPanel>
+                </Grid>
               ))
             ) : (
               <Grid item xs={12}>

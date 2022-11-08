@@ -1,4 +1,11 @@
-import { Grid, Button, TextField, useMediaQuery, Divider } from "@mui/material";
+import {
+  Grid,
+  Button,
+  TextField,
+  useMediaQuery,
+  Divider,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { Container } from "@mui/material";
 
@@ -6,9 +13,12 @@ import facebook from "../images/fb.png";
 import slack from "../images/slack.png";
 import twitter from "../images/tw.png";
 import pinterest from "../images/pin.png";
-import linkedin from "../images/ln.png";
+import linkedin from "../images/In.png";
 import { useTheme } from "@emotion/react";
-
+import Icon from "../images/Icon.png";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import PublicIcon from "@mui/icons-material/Public";
+import SettingsIcon from "@mui/icons-material/Settings";
 const Marketplace = [
   "Explore",
   "Help center",
@@ -25,12 +35,6 @@ const Links = [
   "Activity",
 ];
 const picAddress = [facebook, slack, twitter, pinterest, linkedin];
-const rightsSection = [
-  "© BlockRunner, Inc. All rights reserved.",
-  "Community guidelines",
-  "Terms",
-  "Privacy policy",
-];
 
 export default () => {
   const theme = useTheme();
@@ -43,7 +47,7 @@ export default () => {
         height: "100%",
       }}
     >
-      <Container>
+      <Container maxWidth="lg">
         <Box pt={8} pb={5}>
           <Grid container spacing={5}>
             <Grid item xs={12} md={matches ? 5 : 6}>
@@ -61,20 +65,20 @@ export default () => {
                       color: theme.primary.text,
                     },
                     "& .MuiInput-underline:after": {
-                      borderBottomColor: "#222528",
+                      borderBottomColor: "#0DF17F",
                       borderRadius: "25px",
                     },
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": {
-                        borderColor: "#222528",
+                        borderColor: "#0DF17F",
                         borderRadius: "25px",
                       },
                       "&:hover fieldset": {
-                        borderColor: "#222528",
+                        borderColor: "#0DF17F",
                         borderRadius: "25px",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#222528",
+                        borderColor: "#0DF17F",
                       },
                     },
                     input: {
@@ -92,24 +96,16 @@ export default () => {
                   id="standard-name"
                   // value={amount}
                   // onChange={(e) => setamount(e.target.value)}
-                  placeholder={"Your email"}
+                  placeholder={"Enter Your e-mail"}
                   InputProps={{
                     endAdornment: (
-                      <Button
-                        sx={{
-                          color: "#000",
-                          backgroundColor: "#fff",
-                          textTransform: "unset",
-                          height: "40px",
-                          borderRadius: "25px",
-                          fontSize: { xs: "11px", md: "13px" },
-                          "&:hover": {
-                            backgroundColor: "#fff",
-                          },
-                        }}
+                      <Box
+                        display="flex"
+                        alignItems="center"
+                        sx={{ cursor: "pointer" }}
                       >
-                        I'm in
-                      </Button>
+                        <img src={Icon} width="20px" alt="" />
+                      </Box>
                     ),
                   }}
                 />
@@ -129,6 +125,7 @@ export default () => {
                 sx={{
                   display: "flex",
                   justifyContent: matches ? "" : "center",
+                  alignItems: "center",
                 }}
               >
                 {picAddress.map((item, i) => {
@@ -160,7 +157,7 @@ export default () => {
                       sx={{
                         fontSize: "14px",
                         fontWeight: "700",
-                        color: theme.primary.text,
+                        color: theme.primary.bgGray,
                       }}
                     >
                       {item}
@@ -183,7 +180,7 @@ export default () => {
                       sx={{
                         fontSize: "14px",
                         fontWeight: "700",
-                        color: theme.primary.text,
+                        color: theme.primary.bgGray,
                       }}
                     >
                       {item}
@@ -205,35 +202,87 @@ export default () => {
                 fontSize="14px"
                 fontWeight="400"
                 display={matches ? "flex" : "none"}
-                color={theme.primary.text}
+                color={theme.primary.bgGray}
                 mt={1}
               >
                 The world’s first marketplace for collectibles and non-fungible
                 tokens NFTs where anything is possible and all are welcome
               </Box>
+              <Button
+                endIcon={<ArrowDropDownIcon />}
+                sx={{
+                  marginTop: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "158px",
+                  heigth: "46px",
+                  border: "1px solid gray",
+                  borderRadius: "23px",
+                  color: "#fff",
+                }}
+              >
+                {" "}
+                Currency-USD
+              </Button>
             </Grid>
           </Grid>
         </Box>
-        <Divider sx={{ backgroundColor: "#2b2e31" }} />
-        <Box py={3}>
-          <Box
-            display="flex"
-            justifyContent="center"
-            flexWrap="wrap"
-            alignItems="center"
-            fontSize={{ xs: "11px", md: "13px" }}
-            color="#6d6f71"
-          >
-            {rightsSection.map((text, i) => {
-              return (
-                <Box pr={4} pt={1}>
-                  {text}
-                </Box>
-              );
-            })}
+      </Container>
+      <Divider sx={{ backgroundColor: "#2b2e31" }} />
+      <Box p={3}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          flexWrap="wrap"
+          alignItems="center"
+          fontSize={{ xs: "11px", md: "13px" }}
+          color="#fff"
+        >
+          <Box display="flex">
+            <Typography
+              sx={{ marginRight: "20px", fontSize: matches ? "" : "10px" }}
+            >
+              Privacy policy
+            </Typography>
+            <Typography
+              sx={{ marginRight: "20px", fontSize: matches ? "" : "10px" }}
+            >
+              Lincense
+            </Typography>
+            <Typography
+              sx={{ marginRight: "20px", fontSize: matches ? "" : "10px" }}
+            >
+              API
+            </Typography>
+            <Typography
+              sx={{
+                marginRight: "20px",
+                color: "gray",
+                fontSize: matches ? "" : "10px",
+              }}
+            >
+              @ 2021 all rights reserved
+            </Typography>
+          </Box>
+          <Box display="flex">
+            <Box display="flex" alignItems="center">
+              English <PublicIcon sx={{ marginLeft: "10px" }} />
+            </Box>
+            <Box
+              p={0.5}
+              marginLeft="10px"
+              border="1px solid gray "
+              borderRadius="50%"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <SettingsIcon />
+            </Box>
           </Box>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 };
