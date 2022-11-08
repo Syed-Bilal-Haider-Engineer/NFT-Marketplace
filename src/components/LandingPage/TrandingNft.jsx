@@ -17,6 +17,7 @@ import img from "../../images/img.png";
 import img1 from "../../images/img1.png";
 import img2 from "../../images/img2.png";
 import img3 from "../../images/img3.png";
+import sh10 from "../../images/sh10.png";
 
 function TrandingNft() {
   const cardData = [
@@ -63,7 +64,18 @@ function TrandingNft() {
   const matches2 = useMediaQuery("(min-width : 600px)");
 
   return (
-    <Box py={5} bgcolor={theme.primary.bg}>
+    <Box position={"relative"} py={5} bgcolor={theme.primary.bg}>
+      <img
+        src={sh10}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "40%",
+          bottom: "-35%",
+          left: "0px",
+          // zIndex: -1,
+        }}
+      />
       <Container>
         <Typography
           sx={{

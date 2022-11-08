@@ -12,6 +12,7 @@ import Author4 from "../../images/Author4.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
 import eth11 from "../../images/eth11.png";
+import sh11 from "../../images/sh11.png";
 import NoteableCard from "./NoteableCard";
 import { Link } from "react-router-dom";
 
@@ -62,7 +63,18 @@ export default function NoteableDrops() {
   ];
 
   return (
-    <Box pt={5} bgcolor={theme.primary.bg}>
+    <Box position="relative" pt={5} bgcolor={theme.primary.bg}>
+      <img
+        src={sh11}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "40%",
+          bottom: "20%",
+          right: "0px",
+          // zIndex: -1,
+        }}
+      />
       <Container>
         <Box
           mb={5}

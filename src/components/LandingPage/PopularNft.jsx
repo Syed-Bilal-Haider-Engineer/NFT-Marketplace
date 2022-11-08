@@ -17,6 +17,7 @@ import popIcon4 from "../../images/popIcon4.png";
 import Art1 from "../../images/Art1.png";
 import Art2 from "../../images/Art2.png";
 import Art3 from "../../images/Art3.png";
+import sh12 from "../../images/sh12.png";
 import tranding4 from "../../images/tranding4.png";
 import img from "../../images/img.png";
 import img1 from "../../images/img1.png";
@@ -133,7 +134,18 @@ function PopularNft() {
   const theme = useTheme();
 
   return (
-    <Box py={10} bgcolor={theme.primary.bg}>
+    <Box position="relative" py={10} bgcolor={theme.primary.bg}>
+      <img
+        src={sh12}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "70%",
+          bottom: "-25%",
+          right: "17%",
+          // zIndex: -1,
+        }}
+      />
       <Container>
         <Typography
           sx={{
