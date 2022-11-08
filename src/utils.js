@@ -5,7 +5,7 @@ import { Web3Provider } from "@ethersproject/providers";
 import { createContext } from "react";
 import { useState } from "react";
 import WalletLink from "walletlink";
-import binanceWallet from "./images/binance.png";
+// import binanceWallet from "./images/binance1.png";
 import { providers } from "ethers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
@@ -43,28 +43,28 @@ const providerOptions = {
       return provider;
     },
   },
-  "custom-binancechainwallet": {
-    display: {
-      logo: binanceWallet,
-      name: "Binance Chain Wallet",
-      description: "Connect to your Binance Chain Wallet",
-    },
-    package: true,
-    connector: async () => {
-      let provider = null;
-      if (typeof window.BinanceChain !== "undefined") {
-        provider = window.BinanceChain;
-        try {
-          await provider.request({ method: "eth_requestAccounts" });
-        } catch (error) {
-          throw new Error("User Rejected");
-        }
-      } else {
-        throw new Error("No Binance Chain Wallet found");
-      }
-      return provider;
-    },
-  },
+  // "custom-binancechainwallet": {
+  //   display: {
+  //     logo: binanceWallet,
+  //     name: "Binance Chain Wallet",
+  //     description: "Connect to your Binance Chain Wallet",
+  //   },
+  //   package: true,
+  //   connector: async () => {
+  //     let provider = null;
+  //     if (typeof window.BinanceChain !== "undefined") {
+  //       provider = window.BinanceChain;
+  //       try {
+  //         await provider.request({ method: "eth_requestAccounts" });
+  //       } catch (error) {
+  //         throw new Error("User Rejected");
+  //       }
+  //     } else {
+  //       throw new Error("No Binance Chain Wallet found");
+  //     }
+  //     return provider;
+  //   },
+  // },
 };
 const web3Modal = new Web3Modal({
   network: "mainnet", // optional

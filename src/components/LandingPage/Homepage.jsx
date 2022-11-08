@@ -155,6 +155,7 @@ export default function Eleven({ setOpen }) {
             </Grid>
             <Grid item xs={12} md={6}>
               <Box
+                pb={5}
                 sx={{
                   marginTop: { md: "60px", xs: "50px" },
                   position: "relative",

@@ -35,7 +35,7 @@ export default function TrandingCards({
         {name}
       </Typography>
       <Typography
-        color="#7A52F4"
+        color="#0DF17F"
         fontSize={{ xs: "13px", md: "14px" }}
         fontWeight="700"
       >
@@ -51,11 +51,11 @@ export default function TrandingCards({
         {description}
       </Typography>
       <Box
-        color={theme.primary.text}
+        color={theme.primary.subtext}
         fontSize="12px"
         display="flex"
         alignItems="center"
-        bgcolor={theme.primary.bg}
+        bgcolor={theme.primary.bgButtonTwo}
         p={1}
         sx={{
           width: "fit-content",
@@ -69,7 +69,7 @@ export default function TrandingCards({
         <FavoriteBorderIcon
           style={{
             fontSize: "16px",
-            color: theme.primary.text,
+            color: theme.primary.subtext,
             marginRight: "6px",
           }}
         />

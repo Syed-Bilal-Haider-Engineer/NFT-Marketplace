@@ -23,6 +23,7 @@ import SignUp from "./components/SignPages/SignUp";
 import MarketPlace from "./components/MarketPlace/MarketPlace";
 import Collections from "./components/Collections/Collections";
 import UserProfile from "./components/UserProfile/UserProfile";
+import MarqueeComp from "./components/LandingPage/MarqueeComp";
 
 function App() {
   const [switchNetwork, setswitchNetwork] = useState(false);
@@ -58,11 +59,11 @@ function App() {
       bg: "#172225",
       bgGray: "#979797",
       bgButton: "#191B1F",
-      bgButtonTwo: "#6242C3",
-      btnBothDark: "#6242C3",
+      bgButtonTwo: "#0DF17F",
+      btnBothDark: "#0DF17F",
       sideBarNonActive: "rgba(255, 255, 255, 0.5)",
       text: "#ffffff",
-      subtext: "#ffffff",
+      subtext: "#000",
       heading: "#fafafa",
       textPurple: "#fff",
       section: "#1a1e21",
@@ -101,11 +102,11 @@ function App() {
             path="/"
             element={
               <>
-                {/* <MainLandingPage /> */}
                 <Homepage />
-                <NoteableDrops />
-                <TopCollecions />
+                <MarqueeComp />
                 <TrandingNft />
+                <TopCollecions />
+                <NoteableDrops />
                 <ResourcesPart />
                 <PopularNft />
               </>
