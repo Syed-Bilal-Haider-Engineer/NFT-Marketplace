@@ -46,6 +46,8 @@ export default () => {
       sx={{
         height: "100%",
       }}
+      position="relative"
+      zIndex={1}
     >
       <Container maxWidth="lg">
         <Box pt={8} pb={5}>
