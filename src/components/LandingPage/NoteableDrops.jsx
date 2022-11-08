@@ -11,7 +11,7 @@ import Author3 from "../../images/Author3.png";
 import Author4 from "../../images/Author4.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
-import eth1 from "../../images/eth1.png";
+import eth11 from "../../images/eth11.png";
 import NoteableCard from "./NoteableCard";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ export default function NoteableDrops() {
       "19",
       "03 Aug 2022",
       `${Author2}`,
-      `${eth1}`
+      `${eth11}`
     ),
     createData(
       `${nft3}`,

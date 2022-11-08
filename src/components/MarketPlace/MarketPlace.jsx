@@ -16,7 +16,9 @@ import img2 from "../../images/img2.png";
 import img3 from "../../images/img3.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
-import Ethereum from "../../images/Ethereum.png";
+import Ethereum from "../../images/eth1.png";
+import sh1 from "../../images/sh1.png";
+import sh2 from "../../images/sh2.png";
 import MarketPlaceCard from "./MarketPlaceCard";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -26,9 +28,13 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     textTransform: "none",
     fontWeight: "700",
     fontSize: "14px",
-    color: "#5D5D5B",
+    color: "#ffffff",
+    border: "1px solid rgba(255, 255, 255, 0.5)",
+    borderRadius: "30px",
+    marginRight: "10px",
     "&.Mui-selected": {
-      color: theme.primary.text,
+      color: theme.primary.subtext,
+      background: "#0DF17F",
     },
   })
 );
@@ -138,24 +144,45 @@ function MarketPlace() {
   const theme = useTheme();
 
   return (
-    <Box py={5} bgcolor={theme.primary.bg}>
+    <Box py={5} bgcolor={theme.primary.bg} position="relative">
+      <img
+        src={sh1}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "40%",
+          top: "0px",
+          left: "0px",
+          // zIndex: -1,
+        }}
+      />
+      <img
+        src={sh2}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "60%",
+          bottom: "0px",
+          right: "0px",
+        }}
+      />
       <Container>
         <Typography
           sx={{
             color: theme.primary.text,
             fontSize: { md: "28px", xs: "20px" },
             fontWeight: "800",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           Explore NFTs
         </Typography>
 
+        {/* <img style={{ marginRight: "5px" }} width="12px" src={sh1} alt="" />{" "} */}
         <Box
-          mt={5}
           display="flex"
           alignItems="center"
-          justifyContent="center"
+          justifyContent="flex-start"
           pt={3}
         >
           <Tabs
@@ -163,8 +190,7 @@ function MarketPlace() {
             onChange={handleChange}
             sx={{
               "& .MuiTabs-indicator": {
-                // display: "none",
-                background: theme.primary.text,
+                background: "transparent",
               },
             }}
           >
