@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  font-family: "Inter";
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.lady_moving {
+  animation: mover 3s infinite;
+}
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@media screen and (max-width: 544px) {
+  .MuiDialog-paperScrollPaper {
+    width: 100%;
+  }
+}
+
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: #7a52f4 !important;
+  color: white !important;
+}
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+  color: #797979 !important;
+}
+
+/* .css-uj4o2e-MuiButtonBase-root-MuiTab-root {
+  min-height: 42px !important;
+  min-width: 75px !important;
+} */
