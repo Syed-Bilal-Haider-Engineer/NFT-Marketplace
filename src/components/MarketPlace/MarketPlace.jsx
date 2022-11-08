@@ -16,7 +16,7 @@ import img2 from "../../images/img2.png";
 import img3 from "../../images/img3.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
-import Ethereum from "../../images/eth1.png";
+import Ethereum from "../../images/eth11.png";
 import sh1 from "../../images/sh1.png";
 import sh2 from "../../images/sh2.png";
 import MarketPlaceCard from "./MarketPlaceCard";
