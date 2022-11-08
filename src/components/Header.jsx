@@ -1,21 +1,12 @@
 import React, { useContext } from "react";
-import {
-  Container,
-  styled,
-  InputBase,
-  FormControl,
-  Select,
-  Menu,
-  MenuItem,
-} from "@mui/material";
+import { Container, styled, Menu, MenuItem, Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
 import { AppContext } from "../utils";
 import { useTheme } from "@emotion/react";
 import logo from "../images/Logo.png";
-// import logoSmall from "../images/logo-small.svg";
-import moon from "../images/moon.svg";
-import sun from "../images/sun.svg";
+import popIcon4 from "../images/popIcon41.png";
+import wallet from "../images/wallet.png";
 import Hidden from "@mui/material/Hidden";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
@@ -26,8 +17,7 @@ import { makeStyles } from "@mui/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import clsx from "clsx";
 import { Paper } from "@mui/material";
-import { Link } from "react-router-dom";
-import Brightness3Icon from "@mui/icons-material/Brightness3";
+import { Link, useLocation } from "react-router-dom";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
@@ -108,6 +98,7 @@ export default function Header() {
 
   const { account, connect, disconnect } = useContext(AppContext);
   const classes = useStyles();
+  const loc = useLocation();
   const [state, setState] = React.useState({
     left: false,
   });
@@ -222,13 +213,7 @@ export default function Header() {
       alignItems="center"
     >
       <Container maxWidth="xl">
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          pl={matches ? 0 : 5}
-          pr={matches ? 0 : 5}
-        >
+        <Box display="flex" alignItems="center" justifyContent="space-between">
           <Box
             style={{
               textDecoration: "none",
@@ -237,8 +222,23 @@ export default function Header() {
               fontSize: "20px",
             }}
           >
-            <Link to="/">
-              <img width={matches ? "50px" : "50px"} src={logo} alt="" />
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "#ffffff",
+                fontWeight: "700",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <img
+                width="25px"
+                src={logo}
+                alt=""
+                style={{ marginRight: "10px" }}
+              />{" "}
+              NFTALY
             </Link>
           </Box>
           <Box
@@ -259,109 +259,119 @@ export default function Header() {
                 >
                   <Box
                     mr={6}
-                    fontSize="16px"
-                    fontWeight="700"
-                    style={{
+                    p={0.15}
+                    sx={{
                       textDecoration: "none",
                       cursor: "pointer",
                       color: theme.primary.text,
+                      borderRadius: "5px",
+                      border: "1px transparent",
+                      backgroundImage:
+                        loc.pathname === "/marketplace"
+                          ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
+                          : null,
+                      backgroundOrigin: "border-box",
+                      backgroundClip: "content-box, border-box",
                     }}
                   >
-                    Explore
+                    <Typography
+                      style={{
+                        padding: "7px 10px",
+                        fontSize: "15px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Explore
+                    </Typography>
                   </Box>
                 </Link>
                 <Link to="/stats" smooth style={{ textDecoration: "none" }}>
                   <Box
                     mr={6}
-                    fontSize="16px"
-                    zIndex="1"
-                    fontWeight="700"
-                    style={{
+                    p={0.15}
+                    sx={{
                       textDecoration: "none",
                       cursor: "pointer",
                       color: theme.primary.text,
+                      borderRadius: "5px",
+                      border: "1px transparent",
+                      backgroundImage:
+                        loc.pathname === "/stats"
+                          ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
+                          : null,
+                      backgroundOrigin: "border-box",
+                      backgroundClip: "content-box, border-box",
                     }}
                   >
-                    Stats
+                    <Typography
+                      style={{
+                        padding: "7px 10px",
+                        fontSize: "15px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Stats
+                    </Typography>
                   </Box>
                 </Link>
                 <Link to="/drops" smooth style={{ textDecoration: "none" }}>
                   <Box
                     mr={6}
-                    fontSize="16px"
-                    zIndex="1"
-                    fontWeight="700"
-                    style={{
+                    p={0.15}
+                    sx={{
                       textDecoration: "none",
                       cursor: "pointer",
                       color: theme.primary.text,
+                      borderRadius: "5px",
+                      border: "1px transparent",
+                      backgroundImage:
+                        loc.pathname === "/drops"
+                          ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
+                          : null,
+                      backgroundOrigin: "border-box",
+                      backgroundClip: "content-box, border-box",
                     }}
                   >
-                    Drops
+                    <Typography
+                      style={{
+                        padding: "7px 10px",
+                        fontSize: "15px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Drops
+                    </Typography>
                   </Box>
                 </Link>
-                {account ? (
+                <Link to="/activity" smooth style={{ textDecoration: "none" }}>
                   <Box
-                    width="100px"
-                    height="42px"
-                    bgcolor={theme.primary.btnBothDark}
-                    borderRadius="50px"
-                    sx={{ cursor: "pointer" }}
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    color="#ffffff"
-                    fontWeight="700"
-                    fontSize="14px"
-                    onClick={() => disconnect()}
-                    style={{ zIndex: 1 }}
-                  >
-                    {account.slice(0, 4) + "..." + account.slice(-4)}
-                  </Box>
-                ) : (
-                  <Box
-                    zIndex={1}
-                    style={{
-                      cursor: "pointer",
-                    }}
-                    bgcolor={theme.primary.btnBothDark}
-                    width="100px"
-                    height="42px"
-                    borderRadius="50px"
-                    fontWeight="700"
-                    fontSize="14px"
-                    color="#ffffff"
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    onClick={() => connect()}
-                  >
-                    Connect
-                  </Box>
-                )}
-              </Hidden>
-
-              {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
-              {matches ? (
-                <Box
-                  zIndex={1}
-                  style={{
-                    cursor: "pointer",
-                    paddingLeft: "1rem",
-                  }}
-                  mt={0.5}
-                >
-                  <AccountCircleRoundedIcon
+                    mr={6}
+                    p={0.15}
                     sx={{
+                      textDecoration: "none",
+                      cursor: "pointer",
                       color: theme.primary.text,
-                      fontSize: "45px",
-                      // "&:hover": {
-                      //   color: "#000000",
-                      // },
+                      borderRadius: "5px",
+                      border: "1px transparent",
+                      backgroundImage:
+                        loc.pathname === "/drops"
+                          ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
+                          : null,
+                      backgroundOrigin: "border-box",
+                      backgroundClip: "content-box, border-box",
                     }}
-                  />
-                </Box>
-              ) : (
+                  >
+                    <Typography
+                      style={{
+                        padding: "7px 10px",
+                        fontSize: "15px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Activity
+                    </Typography>
+                  </Box>
+                </Link>
                 <Box pr={2} zIndex="1">
                   <Button
                     disableRipple
@@ -422,8 +432,64 @@ export default function Header() {
                     </Link>
                   </StyledMenu>
                 </Box>
-              )}
-              {/* </Link> */}
+                {account ? (
+                  <Box
+                    width="42px"
+                    height="42px"
+                    bgcolor={theme.primary.btnBothDark}
+                    borderRadius="50px"
+                    sx={{ cursor: "pointer" }}
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    color="#ffffff"
+                    fontWeight="700"
+                    fontSize="14px"
+                    onClick={() => disconnect()}
+                    style={{ zIndex: 1 }}
+                    mr={3}
+                  >
+                    <img src={wallet} alt="" />
+                  </Box>
+                ) : (
+                  <Box
+                    mr={3}
+                    zIndex={1}
+                    style={{
+                      cursor: "pointer",
+                    }}
+                    border="1px solid #d1d1d1"
+                    width="42px"
+                    height="42px"
+                    borderRadius="50px"
+                    fontWeight="700"
+                    fontSize="14px"
+                    color="#ffffff"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    onClick={() => connect()}
+                  >
+                    <img src={wallet} alt="" />
+                  </Box>
+                )}
+                <Box
+                  width="30px"
+                  height="30px"
+                  borderRadius="50px"
+                  sx={{ cursor: "pointer" }}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  color="#ffffff"
+                  fontWeight="700"
+                  fontSize="14px"
+                  onClick={() => disconnect()}
+                  style={{ zIndex: 1 }}
+                >
+                  <img src={popIcon4} alt="" />
+                </Box>
+              </Hidden>
             </Box>
 
             <Hidden mdUp>
