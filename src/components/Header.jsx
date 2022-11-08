@@ -37,8 +37,8 @@ const StyledMenu = styled((props) => (
   "& .MuiPaper-root": {
     borderRadius: 6,
     minWidth: 140,
-    color: "white",
-    background: "#6242c3",
+    color: "#000000",
+    background: "#0DF17F",
 
     "& .MuiMenu-list": {
       padding: "4px 0",
@@ -381,12 +381,13 @@ export default function Header() {
                       paddingX: "15px",
                       marginLeft: "10px",
                       paddingY: "8px",
-                      color: "#fff",
+                      color: "#000000",
                       textTransform: "capitalize",
                       fontSize: "15px",
                       "&:hover": {
                         background: theme.primary.btnBothDark,
                       },
+                      fontWeight: "700",
                     }}
                     onClick={handleClick}
                     endIcon={<ArrowDropDownOutlinedIcon />}
@@ -400,33 +401,55 @@ export default function Header() {
                   >
                     <Link
                       to="/dashboard"
-                      style={{ textDecoration: "none", color: "#fff" }}
+                      style={{ textDecoration: "none", color: "#000000" }}
                     >
-                      <MenuItem onClick={handleClose} disableRipple>
+                      <MenuItem
+                        style={{ fontWeight: "700" }}
+                        onClick={handleClose}
+                        disableRipple
+                      >
                         Dashboard
                       </MenuItem>
                     </Link>
                     <Link
                       to="/signin"
-                      style={{ textDecoration: "none", color: "#fff" }}
+                      style={{ textDecoration: "none", color: "#000000" }}
                     >
-                      <MenuItem value={2} onClick={handleClose} disableRipple>
+                      <MenuItem
+                        style={{ fontWeight: "700" }}
+                        value={2}
+                        onClick={handleClose}
+                        disableRipple
+                      >
                         Sign In
                       </MenuItem>
                     </Link>
                     <Link
                       to="/signup"
-                      style={{ textDecoration: "none", color: "#fff" }}
+                      style={{
+                        textDecoration: "none",
+                        color: "#000000",
+                      }}
                     >
-                      <MenuItem value={3} onClick={handleClose} disableRipple>
+                      <MenuItem
+                        style={{ fontWeight: "700" }}
+                        value={3}
+                        onClick={handleClose}
+                        disableRipple
+                      >
                         Sign Up
                       </MenuItem>
                     </Link>
                     <Link
                       to="/user-profile"
-                      style={{ textDecoration: "none", color: "#fff" }}
+                      style={{ textDecoration: "none", color: "#000000" }}
                     >
-                      <MenuItem value={4} onClick={handleClose} disableRipple>
+                      <MenuItem
+                        style={{ fontWeight: "700" }}
+                        value={4}
+                        onClick={handleClose}
+                        disableRipple
+                      >
                         User Profile
                       </MenuItem>
                     </Link>
