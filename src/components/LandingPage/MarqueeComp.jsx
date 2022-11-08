@@ -13,65 +13,66 @@ export default function MarqueeComp() {
     <>
       <Box
         sx={{
-          background: theme.primary.bg,
-          boxShadow: "0px 0px 50px 13px rgba(0, 0, 0, 0.25)",
+          background: theme.primary.bgHeader,
         }}
       >
-        <Container maxWidth="xl">
-          {/* <Box p={2} display="flex" > */}
-          <Marquee
-            speed={50}
-            pauseOnClick={true}
-            pauseOnHover={true}
-            gradient={false}
+        {/* <Container maxWidth="xl"> */}
+        <Marquee
+          style={{
+            boxShadow: "0px 0px 50px 13px rgba(0, 0, 0, 0.25)",
+          }}
+          speed={50}
+          pauseOnClick={true}
+          pauseOnHover={true}
+          gradient={false}
+        >
+          <Box
+            p={2}
+            sx={{}}
+            display="flex"
+            justifyContent="space-evenly"
+            alignItems="center"
+            width="100%"
           >
             <Box
-              p={2}
               display="flex"
-              justifyContent="space-evenly"
+              justifyContent="center"
               alignItems="center"
-              width="100%"
+              sx={{
+                marginRight: matches ? "25px" : "0px",
+                width: "194px",
+                height: "46px",
+                background: "#03DB80",
+                color: "#000",
+                borderRadius: "23px",
+                fontSize: "20px",
+                fontWeight: 700,
+                fontFamily: "Inter",
+              }}
             >
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  marginRight: matches ? "25px" : "0px",
-                  width: "194px",
-                  height: "46px",
-                  background: "#03DB80",
-                  color: "#000",
-                  borderRadius: "23px",
-                  fontSize: "20px",
-                  fontWeight: 700,
-                  fontFamily: "Inter",
-                }}
-              >
-                Select All
-              </Box>
-
-              <img
-                src={binance}
-                style={{ marginRight: matches ? "25px" : "0px" }}
-                alt=""
-              />
-
-              <img
-                src={polygon}
-                style={{ marginRight: matches ? "25px" : "0px" }}
-                alt=""
-              />
-
-              <img
-                src={eth}
-                style={{ marginRight: matches ? "25px" : "0px" }}
-                alt=""
-              />
+              Select All
             </Box>
-          </Marquee>
-          {/* </Box> */}
-        </Container>
+
+            <img
+              src={binance}
+              style={{ marginRight: matches ? "25px" : "0px" }}
+              alt=""
+            />
+
+            <img
+              src={polygon}
+              style={{ marginRight: matches ? "25px" : "0px" }}
+              alt=""
+            />
+
+            <img
+              src={eth}
+              style={{ marginRight: matches ? "25px" : "0px" }}
+              alt=""
+            />
+          </Box>
+        </Marquee>
+        {/* </Container> */}
       </Box>
     </>
   );

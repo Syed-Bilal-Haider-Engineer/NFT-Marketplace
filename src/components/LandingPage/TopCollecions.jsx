@@ -190,7 +190,7 @@ export default function TopCollecions() {
             </Box>
 
             <Box mb={5} display="flex" alignItems="center">
-              <Box sx={{ width: "100%" }}>
+              <Box sx={{ width: "100%", zIndex: 1 }}>
                 {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}> */}
                 <Tabs
                   sx={{

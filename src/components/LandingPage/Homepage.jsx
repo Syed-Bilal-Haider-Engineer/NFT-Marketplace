@@ -9,7 +9,8 @@ import twitter from "../../images/twitter.png";
 import In from "../../images/In.png";
 import insta from "../../images/insta.png";
 import youtube from "../../images/youtube.png";
-
+import sh1 from "../../images/sh1.png";
+import sh10 from "../../images/sh10.png";
 import { Link } from "react-router-dom";
 
 export default function Eleven({ setOpen }) {
@@ -17,11 +18,33 @@ export default function Eleven({ setOpen }) {
   const matches = useMediaQuery("(max-width:600px)");
   return (
     <Box
+      position="relative"
       id="home"
       sx={{
         background: theme.primary.bg,
       }}
     >
+      <img
+        src={sh10}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "40%",
+          bottom: "-60%",
+          left: "0px",
+          // zIndex: -1,
+        }}
+      />
+      {/* <img
+        src={sh2}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "60%",
+          bottom: "0px",
+          right: "0px",
+        }}
+      /> */}
       <Container maxWidth="xl">
         <Box
           sx={{
