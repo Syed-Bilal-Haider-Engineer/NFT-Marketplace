@@ -70,7 +70,7 @@ function TrandingNft() {
             color: theme.primary.text,
             fontSize: { md: "28px", xs: "20px" },
             fontWeight: "800",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           Trending NFTs
@@ -122,6 +122,8 @@ function TrandingNft() {
                   borderRadius: "50px",
                   cursor: "pointer",
                   padding: "7px",
+                  border: "1px solid #fff",
+                  borderRadius: "50%",
                 }}
               />
               <ArrowForwardIcon
@@ -135,6 +137,8 @@ function TrandingNft() {
                   marginLeft: "10px",
                   cursor: "pointer",
                   padding: "7px",
+                  border: "1px solid #fff",
+                  borderRadius: "50%",
                 }}
               />
             </Box>
