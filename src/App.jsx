@@ -85,7 +85,7 @@ function App() {
   useEffect(() => {
     let chain = async () => {
       const chainid = await web3.eth.getChainId();
-      if (chainid !== 56) {
+      if (chainid !== 97) {
         setswitchNetwork(true);
       }
     };

@@ -16,55 +16,11 @@ const providerOptions = {
     options: {
       networkUrl: "https://bsc-dataseed.binance.org/",
       rpc: {
-        56: "https://bsc-dataseed.binance.org/",
+        97: "https://bsc-dataseed.binance.org/",
       },
-      chainId: 56,
+      chainId: 97,
     },
   },
-  "custom-walletlink": {
-    display: {
-      logo: "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
-      name: "Coinbase",
-      description: "Connect to Coinbase Wallet (not Coinbase App)",
-    },
-    options: {
-      appName: "Coinbase", // Your app name
-      networkUrl: `https://bsc-dataseed.binance.org/`,
-      chainId: 56,
-    },
-    package: WalletLink,
-    connector: async (_, options) => {
-      const { appName, networkUrl, chainId } = options;
-      const walletLink = new WalletLink({
-        appName,
-      });
-      const provider = walletLink.makeWeb3Provider(networkUrl, chainId);
-      await provider.enable();
-      return provider;
-    },
-  },
-  // "custom-binancechainwallet": {
-  //   display: {
-  //     logo: binanceWallet,
-  //     name: "Binance Chain Wallet",
-  //     description: "Connect to your Binance Chain Wallet",
-  //   },
-  //   package: true,
-  //   connector: async () => {
-  //     let provider = null;
-  //     if (typeof window.BinanceChain !== "undefined") {
-  //       provider = window.BinanceChain;
-  //       try {
-  //         await provider.request({ method: "eth_requestAccounts" });
-  //       } catch (error) {
-  //         throw new Error("User Rejected");
-  //       }
-  //     } else {
-  //       throw new Error("No Binance Chain Wallet found");
-  //     }
-  //     return provider;
-  //   },
-  // },
 };
 const web3Modal = new Web3Modal({
   network: "mainnet", // optional

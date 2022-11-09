@@ -30,23 +30,21 @@ import CollectionsCard from "./CollectionsCard";
 import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 
-const AntTab = styled((props) => <Tab disableRipple {...props} />)(() => ({
-  textTransform: "none",
-  color: "#fff",
-  border: "1px solid #fff",
-  borderRadius: "23px",
-  height: "36px",
-  width: "94px",
-  // fontSize: "14px",
-  // fontFamily: "Light Bold",
-  // borderRadius: "7px",
-  // color: "#000",
-  "&.Mui-selected": {
-    background: "#0DF17F",
-    color: "#000",
-    border: "1px solid transparent",
-  },
-}));
+const AntTab = styled((props) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: "none",
+    fontWeight: "700",
+    fontSize: "14px",
+    color: "#ffffff",
+    border: "1px solid rgba(255, 255, 255, 0.5)",
+    borderRadius: "30px",
+    marginRight: "10px",
+    "&.Mui-selected": {
+      color: theme.primary.subtext,
+      background: "#0DF17F",
+    },
+  })
+);
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 

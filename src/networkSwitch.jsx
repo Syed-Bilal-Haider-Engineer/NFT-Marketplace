@@ -1,9 +1,39 @@
 import React from "react";
 import { Dialog, DialogContent, Box, Slide } from "@mui/material";
+import { withStyles } from "@mui/styles";
+import CloseIcon from "@mui/icons-material/Close";
+import { useTheme } from "@emotion/react";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const StyledModal = withStyles(() => ({
+  root: {
+    "& .MuiDialog-root": {
+      zIndex: "1301 !important",
+    },
+    "&.MuiDialog-container": {
+      overflowY: "hidden !important",
+    },
+    "& .MuiDialog-paperScrollPaper": {
+      backgroundColor: "#ffffff !important",
+      height: "auto",
+      boxShadow: "#B6CAE8 0px 0px 5px 1px",
+    },
+    "& .dialoge__content__section": {
+      background: "#172225 !important",
+
+      // borderRadius: 5,
+    },
+    "& .MuiDialogContent-root": {
+      paddingTop: "28px",
+      paddingBottom: "28px",
+    },
+  },
+}))(Dialog);
+
 function NetworkChange({ open, setOpen }) {
+  const theme = useTheme();
   const handleClose = () => {
     setOpen(false);
   };
@@ -11,8 +41,8 @@ function NetworkChange({ open, setOpen }) {
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: "0x38" }], //BSC Mainnet
-        // params: [{ chainId: "0x61" }], //BSC Testnet
+        // params: [{ chainId: "0x38" }], //BSC Mainnet
+        params: [{ chainId: "0x61" }], //BSC Testnet
       });
       setOpen(false);
     } catch (error) {
@@ -22,7 +52,7 @@ function NetworkChange({ open, setOpen }) {
   return (
     <div>
       <div className="modal__main__container">
-        <Dialog
+        <StyledModal
           open={open}
           keepMounted
           TransitionComponent={Transition}
@@ -31,36 +61,53 @@ function NetworkChange({ open, setOpen }) {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogContent className="dialoge__content__section">
-            <Box component="h3" color="#000">
-              <Box component="span" color="red" fontSize="30px">
-                Error!
-              </Box>{" "}
-              Please connect your wallet to BSC Mainnet.
-            </Box>
-            <Box align="center">
-              <button
-                style={{
-                  background:
-                    "linear-gradient(180deg, #E54D75 0%, #F72E63 100%)",
-                  borderRadius: "34px",
-                  padding: "15px 20px",
-                  border: "none",
-                  outline: "none",
-                  color: "#fff",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                  lineHeight: "19px",
-                  fontWeight: "bolder",
-                  textTransform: "uppercase",
-                  marginRight: "10px",
+            <Box
+              borderRadius="100px"
+              display="flex"
+              alignItems="center"
+              flexDirection="column"
+            >
+              <CloseIcon
+                sx={{
+                  fontSize: "5rem",
+                  border: "2px solid #fc466b",
+                  borderRadius: "50%",
+                  padding: "3%",
+                  color: "red",
                 }}
-                onClick={networkHandler}
+              />
+
+              <Box mt={1} component="h3" color="#fff">
+                You are on wrong network please switch your network.
+              </Box>
+              <Box
+                mt={2}
+                py={3}
+                display="flex"
+                justifyContent="center"
+                width="100%"
               >
-                Switch Network
-              </button>
+                <Box
+                  width="170px"
+                  height="42px"
+                  bgcolor="#0DF17F"
+                  borderRadius="50px"
+                  sx={{ cursor: "pointer" }}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  color="#000"
+                  fontWeight="700"
+                  fontSize="14px"
+                  style={{ zIndex: 1 }}
+                  onClick={() => networkHandler()}
+                >
+                  Switch
+                </Box>
+              </Box>
             </Box>
           </DialogContent>
-        </Dialog>
+        </StyledModal>
       </div>
     </div>
   );
