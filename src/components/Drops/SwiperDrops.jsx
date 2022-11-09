@@ -8,12 +8,11 @@ import {
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
-
-import { Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import "swiper/swiper.min.css";
-import "swiper/modules/pagination/pagination.min.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import nft1 from "../../images/Art1.png";
 import nft2 from "../../images/Art2.png";

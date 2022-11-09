@@ -2,18 +2,13 @@ import {
   Box,
   Container,
   Grid,
-  Menu,
-  MenuItem,
-  Typography,
+  Tab,
   useMediaQuery,
+  styled,
 } from "@mui/material";
-import React, { useState } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import PropTypes from "prop-types";
+import React from "react";
 import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-// import { styled } from "@mui/material";
-import { styled } from "@mui/styles";
+// import { styled } from "@mui/styles";
 import ArtS1 from "../../images/ArtS1.png";
 import ArtS2 from "../../images/ArtS2.png";
 import ArtS3 from "../../images/ArtS3.png";
@@ -27,7 +22,6 @@ import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
 import Ethereum from "../../images/Ethereum.png";
 import CollectionsCard from "./CollectionsCard";
-import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(
@@ -45,40 +39,34 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     },
   })
 );
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
     <div
       role="tabpanel"
-      hidden={value !== index}
+      hidden={value != index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+      {value == index && (
+        <Box mt={3}>
+          <Box>{children}</Box>
         </Box>
       )}
     </div>
   );
 }
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 export default function TopCollecions() {
+  const matches = useMediaQuery("(max-width:700px)");
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   function createData(img, logo, nftName, price, apr) {
     return { img, logo, nftName, price, apr };
   }
@@ -147,23 +135,8 @@ export default function TopCollecions() {
       "+17.47%"
     ),
   ];
-
   const theme = useTheme();
-  const matches = useMediaQuery("(max-width:700px)");
-  const [filterByDays, setfilterByDays] = useState("last 7 days");
-  const [anchorEl1, setAnchorEl1] = useState(null);
-  const open1 = Boolean(anchorEl1);
-  const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  // const handleClick1 = (event) => {
-  //   setAnchorEl1(event.currentTarget);
-  // };
-  // const handleClose1 = () => {
-  //   setAnchorEl1(null);
-  // };
   return (
     <Box pt={10} bgcolor={theme.primary.bg}>
       <Container maxWidth="lg">
@@ -191,36 +164,17 @@ export default function TopCollecions() {
               <Box sx={{ width: "100%", zIndex: 1 }}>
                 {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}> */}
                 <Tabs
-                  sx={{
-                    "& .MuiTabs-indicator": {
-                      display: "none",
-                      // backgroundColor: "#4473FA",
-                    },
-                    height: "36px",
-                    backgroundColor: "transparent",
-                    boxShadow: "none",
-                    // border: "1px solid #fff",
-                    borderRadius: "25px",
-                  }}
                   value={value}
                   onChange={handleChange}
-                  aria-label="basic tabs example"
+                  sx={{
+                    "& .MuiTabs-indicator": {
+                      background: "transparent",
+                    },
+                  }}
                 >
-                  <AntTab
-                    sx={{ width: "94px", marginRight: "20px" }}
-                    label="1 day"
-                    {...a11yProps(0)}
-                  />
-                  <AntTab
-                    sx={{ width: "94px", marginRight: "20px" }}
-                    label="7 days"
-                    {...a11yProps(1)}
-                  />
-                  <AntTab
-                    sx={{ width: "94px" }}
-                    label="30 days"
-                    {...a11yProps(2)}
-                  />
+                  <AntTab label="1 day" />
+                  <AntTab label="7 days" />
+                  <AntTab label="30 days" />
                 </Tabs>
               </Box>
             </Box>

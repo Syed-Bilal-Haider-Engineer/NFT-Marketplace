@@ -2,10 +2,11 @@ import { Box, Container, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import "swiper/swiper.min.css";
-import "swiper/modules/pagination/pagination.min.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import TrandingCards from "./TrandingCards";
 

@@ -4,8 +4,6 @@ import { MaxUint256 } from "@ethersproject/constants";
 import { Web3Provider } from "@ethersproject/providers";
 import { createContext } from "react";
 import { useState } from "react";
-import WalletLink from "walletlink";
-// import binanceWallet from "./images/binance1.png";
 import { providers } from "ethers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
