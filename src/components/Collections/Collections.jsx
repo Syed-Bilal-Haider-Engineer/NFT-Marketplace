@@ -152,13 +152,18 @@ function Collections() {
 
   return (
     <Box mt={-10} bgcolor={theme.primary.bg}>
-      <Box width="100%">
-        <img width="100%" src={bgCol} alt="" />
-      </Box>
-      <Box mt={-6} textAlign="center" width="100%">
-        <img src={ImgCol} alt="" />
-      </Box>
       <Container>
+        <Box mt={2}>
+          <img
+            width="100%"
+            src={bgCol}
+            style={{ borderRadius: "20px" }}
+            alt=""
+          />
+        </Box>
+        <Box mt={-6} textAlign="center" width="100%">
+          <img src={ImgCol} alt="" />
+        </Box>
         <Typography
           sx={{
             color: theme.primary.text,
