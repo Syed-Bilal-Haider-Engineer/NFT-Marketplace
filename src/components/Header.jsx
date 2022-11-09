@@ -314,64 +314,64 @@ export default function Header() {
                     </Typography>
                   </Box>
                 </Link>
-                <Link to="/drops" smooth style={{ textDecoration: "none" }}>
-                  <Box
-                    mr={6}
-                    p={0.15}
-                    sx={{
-                      textDecoration: "none",
-                      cursor: "pointer",
-                      color: theme.primary.text,
-                      borderRadius: "5px",
-                      border: "1px transparent",
-                      backgroundImage:
-                        loc.pathname === "/drops"
-                          ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
-                          : null,
-                      backgroundOrigin: "border-box",
-                      backgroundClip: "content-box, border-box",
+                {/* <Link to="/drops" smooth style={{ textDecoration: "none" }}> */}
+                <Box
+                  mr={6}
+                  p={0.15}
+                  sx={{
+                    textDecoration: "none",
+                    cursor: "pointer",
+                    color: theme.primary.text,
+                    borderRadius: "5px",
+                    border: "1px transparent",
+                    backgroundImage:
+                      loc.pathname === "/drops"
+                        ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
+                        : null,
+                    backgroundOrigin: "border-box",
+                    backgroundClip: "content-box, border-box",
+                  }}
+                >
+                  <Typography
+                    style={{
+                      padding: "7px 10px",
+                      fontSize: "15px",
+                      fontWeight: "700",
                     }}
                   >
-                    <Typography
-                      style={{
-                        padding: "7px 10px",
-                        fontSize: "15px",
-                        fontWeight: "700",
-                      }}
-                    >
-                      Drops
-                    </Typography>
-                  </Box>
-                </Link>
-                <Link to="/activity" smooth style={{ textDecoration: "none" }}>
-                  <Box
-                    mr={6}
-                    p={0.15}
-                    sx={{
-                      textDecoration: "none",
-                      cursor: "pointer",
-                      color: theme.primary.text,
-                      borderRadius: "5px",
-                      border: "1px transparent",
-                      backgroundImage:
-                        loc.pathname === "/drops"
-                          ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
-                          : null,
-                      backgroundOrigin: "border-box",
-                      backgroundClip: "content-box, border-box",
+                    Drops
+                  </Typography>
+                </Box>
+                {/* </Link> */}
+                {/* <Link to="/activity" smooth style={{ textDecoration: "none" }}> */}
+                <Box
+                  mr={6}
+                  p={0.15}
+                  sx={{
+                    textDecoration: "none",
+                    cursor: "pointer",
+                    color: theme.primary.text,
+                    borderRadius: "5px",
+                    border: "1px transparent",
+                    backgroundImage:
+                      loc.pathname === "/drops"
+                        ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
+                        : null,
+                    backgroundOrigin: "border-box",
+                    backgroundClip: "content-box, border-box",
+                  }}
+                >
+                  <Typography
+                    style={{
+                      padding: "7px 10px",
+                      fontSize: "15px",
+                      fontWeight: "700",
                     }}
                   >
-                    <Typography
-                      style={{
-                        padding: "7px 10px",
-                        fontSize: "15px",
-                        fontWeight: "700",
-                      }}
-                    >
-                      Activity
-                    </Typography>
-                  </Box>
-                </Link>
+                    Activity
+                  </Typography>
+                </Box>
+                {/* </Link> */}
                 <Box pr={2} zIndex="1">
                   <Button
                     disableRipple
@@ -399,60 +399,60 @@ export default function Header() {
                     open={open}
                     onClose={handleClose}
                   >
-                    <Link
+                    {/* <Link
                       to="/dashboard"
                       style={{ textDecoration: "none", color: "#000000" }}
+                    > */}
+                    <MenuItem
+                      style={{ fontWeight: "700" }}
+                      onClick={handleClose}
+                      disableRipple
                     >
-                      <MenuItem
-                        style={{ fontWeight: "700" }}
-                        onClick={handleClose}
-                        disableRipple
-                      >
-                        Dashboard
-                      </MenuItem>
-                    </Link>
-                    <Link
+                      Dashboard
+                    </MenuItem>
+                    {/* </Link> */}
+                    {/* <Link
                       to="/signin"
                       style={{ textDecoration: "none", color: "#000000" }}
+                    > */}
+                    <MenuItem
+                      style={{ fontWeight: "700" }}
+                      value={2}
+                      onClick={handleClose}
+                      disableRipple
                     >
-                      <MenuItem
-                        style={{ fontWeight: "700" }}
-                        value={2}
-                        onClick={handleClose}
-                        disableRipple
-                      >
-                        Sign In
-                      </MenuItem>
-                    </Link>
-                    <Link
+                      Sign In
+                    </MenuItem>
+                    {/* </Link> */}
+                    {/* <Link
                       to="/signup"
                       style={{
                         textDecoration: "none",
                         color: "#000000",
                       }}
+                    > */}
+                    <MenuItem
+                      style={{ fontWeight: "700" }}
+                      value={3}
+                      onClick={handleClose}
+                      disableRipple
                     >
-                      <MenuItem
-                        style={{ fontWeight: "700" }}
-                        value={3}
-                        onClick={handleClose}
-                        disableRipple
-                      >
-                        Sign Up
-                      </MenuItem>
-                    </Link>
-                    <Link
+                      Sign Up
+                    </MenuItem>
+                    {/* </Link> */}
+                    {/* <Link
                       to="/user-profile"
                       style={{ textDecoration: "none", color: "#000000" }}
+                    > */}
+                    {/* <MenuItem
+                      style={{ fontWeight: "700" }}
+                      value={4}
+                      onClick={handleClose}
+                      disableRipple
                     >
-                      <MenuItem
-                        style={{ fontWeight: "700" }}
-                        value={4}
-                        onClick={handleClose}
-                        disableRipple
-                      >
-                        User Profile
-                      </MenuItem>
-                    </Link>
+                      User Profile
+                    </MenuItem> */}
+                    {/* </Link> */}
                   </StyledMenu>
                 </Box>
                 {account ? (
