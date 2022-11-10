@@ -8,7 +8,6 @@ export default function NoteableCard({
   nftName,
   bidPrice,
   likes,
-  status,
   avatar,
   logo,
 }) {
@@ -29,7 +28,7 @@ export default function NoteableCard({
         alignItems="center"
         justifyContent="space-between"
       >
-        <Box
+        {/* <Box
           px={2}
           py={0.5}
           color={
@@ -45,7 +44,8 @@ export default function NoteableCard({
           textAlign="center"
         >
           {status}
-        </Box>
+        </Box> */}
+        <img width="70px" src={avatar} alt="" />
         <Box
           fontWeight="700"
           fontSize="14px"
@@ -90,8 +90,6 @@ export default function NoteableCard({
         </span>
         {bidPrice}
       </Box>
-
-      <img width="70px" src={avatar} alt="" />
     </Box>
   );
 }

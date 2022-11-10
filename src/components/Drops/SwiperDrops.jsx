@@ -1,18 +1,5 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  Grid,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@emotion/react";
-import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 import nft1 from "../../images/Art1.png";
 import nft2 from "../../images/Art2.png";
@@ -24,7 +11,7 @@ import Author3 from "../../images/Author3.png";
 import Author4 from "../../images/Author4.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
-import Ethereum from "../../images/Ethereum.png";
+import Ethereum from "../../images/eth11.png";
 import NoteableCard from "../LandingPage/NoteableCard";
 
 function createData(img, nftName, bidPrice, likes, status, avatar, logo) {
@@ -86,41 +73,13 @@ const SwiperDrops = ({ name }) => {
         >
           {name}
         </Typography>
-        <Box>
-          <FaArrowCircleLeft
-            className="swiper-button-prev"
-            style={{
-              marginRight: "10px",
-              color: theme.primary.text,
-              fontSize: "28px",
-            }}
-          />
-          <FaArrowCircleRight
-            className="swiper-button-next"
-            style={{
-              color: theme.primary.text,
-              fontSize: "28px",
-            }}
-          />
-        </Box>
       </Box>
-      <Swiper
-        slidesPerView={matches ? 4 : matches1 ? 3 : matches2 ? 2 : 1}
-        spaceBetween={10}
-        slidesPerGroup={1}
-        loop={true}
-        loopFillGroupWithBlank={true}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
-        modules={[Navigation]}
-        className="mySwiper"
-      >
-        <Box>
-          {trendingArray.map(
-            ({ img, nftName, bidPrice, likes, status, avatar, logo }, i) => (
-              <SwiperSlide>
+
+      <Grid container spacing={4}>
+        {trendingArray.map(
+          ({ img, nftName, bidPrice, likes, status, avatar, logo }, i) => (
+            <Grid item xs={12} sm={6} md={3}>
+              <Box>
                 <NoteableCard
                   img={img}
                   nftName={nftName}
@@ -130,21 +89,11 @@ const SwiperDrops = ({ name }) => {
                   avatar={avatar}
                   logo={logo}
                 />
-              </SwiperSlide>
-            )
-          )}
-        </Box>
-      </Swiper>
-
-      {/* <Typography
-        sx={{
-          color: theme.primary.text,
-          fontWeight: "800",
-          fontSize: { xs: "20px", md: "28px" },
-        }}
-      >
-        Active drops
-      </Typography> */}
+              </Box>
+            </Grid>
+          )
+        )}
+      </Grid>
     </Box>
   );
 };
