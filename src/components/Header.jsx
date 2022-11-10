@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   paper: {
-    background: "#5D5D5B !important",
+    background: "#172225 !important",
     justifyContent: "center",
   },
   hover: {
@@ -146,7 +146,7 @@ export default function Header() {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            color="#ffffff"
+            color="#000"
             fontWeight="700"
             fontSize="14px"
             onClick={() => disconnect()}
@@ -166,7 +166,7 @@ export default function Header() {
             borderRadius="50px"
             fontWeight="700"
             fontSize="14px"
-            color="#ffffff"
+            color="#000"
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -477,22 +477,27 @@ export default function Header() {
                     <img src={wallet} alt="" />
                   </Box>
                 )}
-                <Box
-                  width="30px"
-                  height="30px"
-                  borderRadius="50px"
-                  sx={{ cursor: "pointer" }}
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  color="#ffffff"
-                  fontWeight="700"
-                  fontSize="14px"
-                  onClick={() => disconnect()}
-                  style={{ zIndex: 1 }}
+                <Link
+                  to="/user-profile"
+                  style={{ textDecoration: "none", color: "#000000" }}
                 >
-                  <img src={popIcon4} alt="" />
-                </Box>
+                  <Box
+                    width="30px"
+                    height="30px"
+                    borderRadius="50px"
+                    sx={{ cursor: "pointer" }}
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    color="#ffffff"
+                    fontWeight="700"
+                    fontSize="14px"
+                    onClick={() => disconnect()}
+                    style={{ zIndex: 1 }}
+                  >
+                    <img src={popIcon4} alt="" />
+                  </Box>
+                </Link>
               </Hidden>
             </Box>
 

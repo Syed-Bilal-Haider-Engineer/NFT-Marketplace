@@ -66,11 +66,11 @@ export default function UserProfileCards({
         {price}
       </Box>
       <Box
-        color={theme.primary.text}
+        color={theme.primary.subtext}
         fontSize="12px"
         display="flex"
         alignItems="center"
-        bgcolor={theme.primary.bg}
+        bgcolor={theme.primary.bgButtonTwo}
         p={1}
         sx={{
           width: "fit-content",
@@ -84,7 +84,7 @@ export default function UserProfileCards({
         <FavoriteBorderIcon
           style={{
             fontSize: "16px",
-            color: theme.primary.text,
+            color: theme.primary.subtext,
             marginRight: "6px",
           }}
         />

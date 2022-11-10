@@ -74,8 +74,8 @@ export default function Chart() {
             <stop offset="95%" stopColor="#FFBD00" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="colorView" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#7A52F4" stopOpacity={0.6} />
-            <stop offset="95%" stopColor="#7A52F4" stopOpacity={0} />
+            <stop offset="5%" stopColor="#0DF17F" stopOpacity={0.6} />
+            <stop offset="95%" stopColor="#0DF17F" stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis dataKey="month" axisLine={false} tickLine={false} />
@@ -109,15 +109,15 @@ export default function Chart() {
         <Area
           type="monotone"
           dataKey="View"
-          stroke="#7A52F4"
-          fillOpacity={0.3}
+          stroke="#0DF17F"
+          fillOpacity={0.5}
           fill="url(#colorView)"
         />
         <Area
           type="monotone"
           dataKey="Sales"
           stroke="#FFBD00"
-          fillOpacity={0.3}
+          fillOpacity={0.4}
           fill="url(#colorSale)"
         />
       </AreaChart>

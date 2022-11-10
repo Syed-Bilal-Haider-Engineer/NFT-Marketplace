@@ -24,6 +24,9 @@ export const UpperCardMain = ({ number, text, percent, value }) => {
         minWidth: "250px",
         height: "80px",
         display: "flex",
+        "&:hover": {
+          border: "1px solid #0DF17F",
+        },
       }}
     >
       <Box
@@ -81,7 +84,7 @@ export const UpperCardMain = ({ number, text, percent, value }) => {
             {+percent > 0 ? (
               <BsArrowUpRight
                 style={{
-                  color: "#F4C952",
+                  color: "#0DF17F",
                   verticalAlign: "-3px",
                   marginLeft: "5px",
                 }}
@@ -89,7 +92,7 @@ export const UpperCardMain = ({ number, text, percent, value }) => {
             ) : (
               <BsArrowDownLeft
                 style={{
-                  color: "#F71111",
+                  color: "#0DF17F",
                   verticalAlign: "-3px",
                   marginLeft: "5px",
                 }}

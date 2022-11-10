@@ -34,6 +34,7 @@ import card4 from "../../images/card4.png";
 import twitter from "../../images/tw.png";
 import Checkbox from "@mui/material/Checkbox";
 import Bars from "../../images/Bars.png";
+import sh12 from "../../images/sh12.png";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -165,7 +166,29 @@ function Collections() {
     setValue1(newValue1);
   };
   return (
-    <Box pt={4} bgcolor={theme.primary.bg}>
+    <Box pt={4} bgcolor={theme.primary.bg} position="relative">
+      <img
+        src={sh12}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "70%",
+          bottom: matches ? "-3%" : "-25%",
+          left: "-16%",
+          // zIndex: -1,
+        }}
+      />
+      <img
+        src={sh12}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "70%",
+          bottom: matches ? "10%" : "40%",
+          left: "10%",
+          zIndex: 0,
+        }}
+      />
       <Container maxWidth="lg">
         <Box>
           <img
@@ -202,6 +225,7 @@ function Collections() {
         </Typography>
         <Container maxWidth="md">
           <Grid
+            zIndex={2}
             mt={2}
             container
             spacing={2}

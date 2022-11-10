@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     width: "auto",
   },
   paper: {
-    background: "#5D5D5B !important",
+    background: "#172225 !important",
     justifyContent: "center",
   },
 });
@@ -45,7 +45,7 @@ export default function SideBar() {
 
   let activeStyle = {
     textDecoration: "none",
-    color: theme.primary.text,
+    color: theme.primary.bgButtonTwo,
   };
 
   let activeClassName = {
@@ -65,6 +65,10 @@ export default function SideBar() {
   };
   const list = (anchor) => (
     <div
+      style={{
+        zIndex: 1,
+        // paddingBottom: "50px",
+      }}
       className={clsx(classes.list, {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}

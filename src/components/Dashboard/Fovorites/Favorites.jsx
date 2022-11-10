@@ -8,7 +8,7 @@ function Favorites() {
   const theme = useTheme();
 
   return (
-    <Box bgcolor={theme.primary.bg} height="100%">
+    <Box bgcolor={theme.primary.bg} height="100%" mb={20}>
       <Container>
         <Typography
           mt={0.2}
@@ -58,12 +58,12 @@ function Favorites() {
           <Link to="/favorites/details" style={{ textDecoration: "none" }}>
             <Button
               sx={{
-                background: "#7A52F4",
+                background: "#0DF17F",
                 borderRadius: "23px",
-                color: "#fff",
+                color: "#000",
                 padding: "10px 20px",
                 "&:hover": {
-                  background: "#7A52F4a1",
+                  background: "#0DF17Fa1",
                 },
               }}
             >

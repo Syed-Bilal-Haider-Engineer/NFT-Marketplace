@@ -36,7 +36,7 @@ function HelpCenter() {
 
   return (
     <Box bgcolor={theme.primary.bg} height="100%">
-      <Container>
+      <Container maxWidth="md">
         <Typography
           mt={0.2}
           ml={{ xs: 1, md: 0 }}
@@ -56,7 +56,10 @@ function HelpCenter() {
               return (
                 <Grid item xs={12} md={6}>
                   <Box
-                    bgcolor={theme.primary.bgProfile}
+                    sx={{
+                      background:
+                        "linear-gradient(180deg, #0df17f3e 0%, rgba(0, 204, 254, 0) 100%)",
+                    }}
                     borderRadius="16px"
                     p={3}
                   >
@@ -67,16 +70,16 @@ function HelpCenter() {
                     >
                       {title}
                     </Typography>
-                    <Typography color="#7A52F4" fontSize="14px" mt={1.5}>
+                    <Typography color="#0DF17F" fontSize="14px" mt={1.5}>
                       {point1}
                     </Typography>
-                    <Typography color="#7A52F4" fontSize="14px" mt={1.5}>
+                    <Typography color="#0DF17F" fontSize="14px" mt={1.5}>
                       {point2}
                     </Typography>
-                    <Typography color="#7A52F4" fontSize="14px" mt={1.5}>
+                    <Typography color="#0DF17F" fontSize="14px" mt={1.5}>
                       {point3}
                     </Typography>
-                    <Typography color="#7A52F4" fontSize="14px" mt={1.5}>
+                    <Typography color="#0DF17F" fontSize="14px" mt={1.5}>
                       {point4}
                     </Typography>
                     <Typography
@@ -107,14 +110,27 @@ function HelpCenter() {
           Popular help articles
         </Typography>
 
-        <Box mt={3}>
+        <Box mt={3} mb={5}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <Box border="1px solid #E4E6E8" borderRadius="15px" p={3}>
+              <Box
+                borderRadius="15px"
+                sx={{
+                  border: "1px transparent",
+                  backgroundImage:
+                    " linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)",
+                  backgroundOrigin: "border-box",
+                  backgroundClip: "content-box, border-box",
+                  boxShadow: "3px 8px 17px rgba(0, 0, 0, 0.15)",
+                  padding: "2px",
+                }}
+              >
                 {/* <Typography
                   sx={{ background: "#EBF0F0", height: "4px" }}
                 ></Typography> */}
                 <Typography
+                  mx={3}
+                  my={3}
                   color={theme.primary.text}
                   fontSize={{ xs: "14px", md: "16px" }}
                   fontWeight="700"
@@ -125,7 +141,7 @@ function HelpCenter() {
                 <Typography
                   color={theme.primary.sideBarNonActive}
                   fontSize="14px"
-                  mt={1.5}
+                  mx={3}
                 >
                   NFTs are decentralized and stored on the blockchain forever —
                   so you might be to see
@@ -135,7 +151,8 @@ function HelpCenter() {
                   color={theme.primary.text}
                   fontSize="14px"
                   fontWeight="700"
-                  mt={1.5}
+                  my={1.5}
+                  mx={3}
                 >
                   Read more
                 </Typography>
@@ -143,8 +160,21 @@ function HelpCenter() {
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <Box border="1px solid #E4E6E8" borderRadius="15px" p={3}>
+              <Box
+                borderRadius="15px"
+                sx={{
+                  border: "1px transparent",
+                  backgroundImage:
+                    " linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)",
+                  backgroundOrigin: "border-box",
+                  backgroundClip: "content-box, border-box",
+                  boxShadow: "3px 8px 17px rgba(0, 0, 0, 0.15)",
+                  padding: "2px",
+                }}
+              >
                 <Typography
+                  mx={3}
+                  my={3}
                   color={theme.primary.text}
                   fontSize={{ xs: "14px", md: "16px" }}
                   fontWeight="700"
@@ -154,7 +184,7 @@ function HelpCenter() {
                 <Typography
                   color={theme.primary.sideBarNonActive}
                   fontSize="14px"
-                  mt={1.5}
+                  mx={3}
                 >
                   Is our site or your profile not loading? Are you having issues
                   you try to create, buy, or sell NFTs
@@ -164,7 +194,8 @@ function HelpCenter() {
                   color={theme.primary.text}
                   fontSize="14px"
                   fontWeight="700"
-                  mt={1.5}
+                  my={1.5}
+                  mx={3}
                 >
                   Read more
                 </Typography>

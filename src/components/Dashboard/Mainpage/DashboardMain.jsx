@@ -26,12 +26,12 @@ const DashboardMain = () => {
     {
       number: "316.94k",
       text: "Impressions",
-      percentage: 10,
+      percentage: +10,
     },
     {
       number: "3.829",
       text: "Favorites",
-      percentage: 2,
+      percentage: +2,
     },
     {
       number: "1.234",
@@ -49,6 +49,24 @@ const DashboardMain = () => {
       text4: "+18.60%",
       price: "4916",
       logo: Flow,
+    },
+    {
+      img: Art2,
+      text1: "Bored Ape Chemistry Club",
+      text2: "Photography",
+      text3: "8.3k",
+      text4: "+24.5%",
+      price: "99.1",
+      logo: xtz,
+    },
+    {
+      img: Art3,
+      text1: "RTFKT CloneX Mintvial",
+      text2: "Photography",
+      text3: "14.5k",
+      text4: "+13.00%",
+      price: "4310",
+      logo: Ethereum,
     },
     {
       img: Art2,
@@ -94,14 +112,14 @@ const DashboardMain = () => {
               overflowX: "scroll",
               scrollBehavior: "smooth",
               "&::-webkit-scrollbar": {
-                width: "2px"
+                width: "2px",
               },
               "&::-webkit-scrollbar-track": {
-                background: "transparent"
+                background: "transparent",
               },
               "&::-webkit-scrollbar-thumb": {
-                background: "transparent"
-              }
+                background: "transparent",
+              },
             }}
           >
             {upperCard.map(({ number, text, percentage }, index) => {
@@ -117,7 +135,7 @@ const DashboardMain = () => {
           </Box>
 
           <Box
-            my={3}
+            my={5}
             sx={{
               border: `1px solid rgba(207, 219, 213, 0.6)`,
               borderRadius: "12px",
@@ -128,6 +146,7 @@ const DashboardMain = () => {
               color={theme.primary.text}
               fontSize={{ xs: "15px", md: "18px" }}
               fontWeight="700"
+              borderBottom="1px solid #979797"
             >
               Sales history
             </Box>
@@ -135,35 +154,37 @@ const DashboardMain = () => {
             <Container>
               <Chart />
             </Container>
-          </Box>
 
-          <Typography
-            variant="body1"
-            sx={{
-              fontFamily: "Inter",
-              fontSize: "12px",
-              color: theme.primary.text,
-              fontWeight: "500",
-            }}
-          >
-            Bestsellers
-          </Typography>
-          <Box mt={1}>
-            {cardList.map(
-              ({ img, text1, text2, text3, text4, price, logo }, i) => {
-                return (
-                  <BestSellers
-                    img={img}
-                    text1={text1}
-                    text2={text2}
-                    text3={text3}
-                    text4={text4}
-                    price={price}
-                    logo={logo}
-                  />
-                );
-              }
-            )}
+            <Typography
+              variant="body1"
+              borderTop="1px solid #979797"
+              p={2}
+              sx={{
+                fontFamily: "Inter",
+                fontSize: "12px",
+                color: theme.primary.text,
+                fontWeight: "500",
+              }}
+            >
+              Bestsellers
+            </Typography>
+            <Box mt={1} p={2}>
+              {cardList.map(
+                ({ img, text1, text2, text3, text4, price, logo }, i) => {
+                  return (
+                    <BestSellers
+                      img={img}
+                      text1={text1}
+                      text2={text2}
+                      text3={text3}
+                      text4={text4}
+                      price={price}
+                      logo={logo}
+                    />
+                  );
+                }
+              )}
+            </Box>
           </Box>
         </Container>
       </Box>

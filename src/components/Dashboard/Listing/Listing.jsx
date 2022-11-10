@@ -8,7 +8,7 @@ function Listing() {
   const theme = useTheme();
 
   return (
-    <Box bgcolor={theme.primary.bg} height="100%">
+    <Box bgcolor={theme.primary.bg} height="100%" mb={20}>
       <Container>
         <Typography
           mt={0.2}
@@ -21,7 +21,7 @@ function Listing() {
             fontWeight: "800",
           }}
         >
-          Your listings 
+          Your listings
         </Typography>
 
         <Box
@@ -42,7 +42,7 @@ function Listing() {
               fontWeight: "800",
             }}
           >
-            No processed payouts
+            No posted listings found
           </Typography>
           <Typography
             my={1}
@@ -52,18 +52,18 @@ function Listing() {
               width: "40%",
             }}
           >
-            Try to assign more tasks to your employees or
-create a new project from scratch
+            Try to assign more tasks to your employees or create a new project
+            from scratch
           </Typography>
           <Link to="/listing/details" style={{ textDecoration: "none" }}>
             <Button
               sx={{
-                background: "#7A52F4",
+                background: "#0DF17F",
                 borderRadius: "23px",
-                color: "#fff",
+                color: "#000",
                 padding: "10px 20px",
                 "&:hover": {
-                  background: "#7A52F4a1",
+                  background: "#0DF17Fa1",
                 },
               }}
             >

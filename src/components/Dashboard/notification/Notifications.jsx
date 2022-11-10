@@ -24,7 +24,7 @@ const IOSSwitch = styled((props) => (
       transform: "translateX(16px)",
       color: "#fff",
       "& + .MuiSwitch-track": {
-        backgroundColor: "#7A52F4",
+        backgroundColor: "#0DF17F",
         opacity: 1,
         border: 0,
       },
@@ -67,222 +67,230 @@ const Notifications = () => {
 
   return (
     <Box bgcolor={theme.primary.bg} height="100%">
-      <Typography
-        mt={0.2}
-        ml={{ xs: 1, md: 0 }}
-        mb={3}
-        variant="body1"
-        sx={{
-          fontSize: { md: "42px", xs: "28px" },
-          color: theme.primary.text,
-          fontWeight: "800",
-        }}
-      >
-        Profile Settings
-      </Typography>
-
-      <Typography
-        my={1}
-        sx={{
-          fontSize: "18px",
-          fontWeight: "bold",
-          color: theme.primary.text,
-        }}
-      >
-        Notifications
-      </Typography>
-
-      <Box
-        p={2}
-        sx={{
-          borderRadius: "16px",
-          background: theme.primary.bgProfile,
-        }}
-      >
-        <Box sx={{ display: "flex" }}>
-          <Box flexGrow="1">
-            <Typography
-              sx={{
-                fontSize: "12px",
-                color: "#5d5d5b",
-              }}
-            >
-              Product updates
-            </Typography>
-            <Typography
-              py={1}
-              sx={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: theme.primary.text,
-              }}
-            >
-              Receive messages from our platform
-            </Typography>
-          </Box>
-          <IOSSwitch sx={{ m: 1 }} defaultChecked />
-        </Box>
-
-        <Divider fullWidth color="#CFDBD5" />
-
-        <Box mt={1} sx={{ display: "flex" }}>
-          <Box flexGrow="1">
-            <Typography
-              sx={{
-                fontSize: "12px",
-                color: "#5d5d5b",
-              }}
-            >
-              Reminders
-            </Typography>
-            <Typography
-              py={1}
-              sx={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: theme.primary.text,
-              }}
-            >
-              Receive booking reminders, pricing notices
-            </Typography>
-          </Box>
-          <IOSSwitch sx={{ m: 1 }} />
-        </Box>
-
-        <Divider fullWidth color="#CFDBD5" />
-
-        <Box mt={1} sx={{ display: "flex" }}>
-          <Box flexGrow="1">
-            <Typography
-              sx={{
-                fontSize: "12px",
-                color: "#5d5d5b",
-              }}
-            >
-              Promotions and tips
-            </Typography>
-            <Typography
-              py={1}
-              sx={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: theme.primary.text,
-              }}
-            >
-              Receive coupons, promotions, surveys
-            </Typography>
-          </Box>
-          <IOSSwitch sx={{ m: 1 }} defaultChecked />
-        </Box>
-
-        <Divider fullWidth color="#CFDBD5" />
-        <Box mt={1} sx={{ display: "flex" }}>
-          <Box flexGrow="1">
-            <Typography
-              sx={{
-                fontSize: "12px",
-                color: "#5d5d5b",
-              }}
-            >
-              Product updates
-            </Typography>
-            <Typography
-              py={1}
-              sx={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: theme.primary.text,
-              }}
-            >
-              Receive messages from our platform
-            </Typography>
-          </Box>
-          <IOSSwitch sx={{ m: 1 }} defaultChecked />
-        </Box>
-
-        <Divider fullWidth color="#CFDBD5" />
-
-        <Box mt={1} sx={{ display: "flex" }}>
-          <Box flexGrow="1">
-            <Typography
-              sx={{
-                fontSize: "12px",
-                color: "#5d5d5b",
-              }}
-            >
-              Reminders
-            </Typography>
-            <Typography
-              py={1}
-              sx={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: theme.primary.text,
-              }}
-            >
-              Receive booking reminders, pricing notices
-            </Typography>
-          </Box>
-          <IOSSwitch sx={{ m: 1 }} />
-        </Box>
-
-        <Divider fullWidth color="#CFDBD5" />
-
-        <Box mt={1} sx={{ display: "flex" }}>
-          <Box flexGrow="1">
-            <Typography
-              sx={{
-                fontSize: "12px",
-                color: "#5d5d5b",
-              }}
-            >
-              Promotions and tips
-            </Typography>
-            <Typography
-              py={1}
-              sx={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: theme.primary.text,
-              }}
-            >
-              Receive coupons, promotions, surveys
-            </Typography>
-          </Box>
-          <IOSSwitch sx={{ m: 1 }} defaultChecked />
-        </Box>
-
-        <Divider fullWidth color="#CFDBD5" />
-      </Box>
-
-      <Box mt={1.5} sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button
+      <Container maxWidth="md">
+        <Typography
+          mt={0.2}
+          ml={{ xs: 1, md: 0 }}
+          mb={3}
+          variant="body1"
           sx={{
-            background: "#7A52F4",
-            borderRadius: "23px",
-            color: "#fff",
-            padding: "10px 20px",
-            "&:hover": {
-              background: "#7A52F4a1",
-            },
+            fontSize: { md: "42px", xs: "28px" },
+            color: theme.primary.text,
+            fontWeight: "800",
           }}
         >
-          Update Settings
-        </Button>
-        <Button
+          Profile Settings
+        </Typography>
+
+        <Typography
+          my={1}
           sx={{
-            background: theme.primary.bgProfile1,
-            borderRadius: "23px",
-            color: theme.primary.textPurple,
-            padding: "10px 20px",
-            "&:hover": {
-              background: "#5d5d5ba1",
-            },
+            fontSize: "18px",
+            fontWeight: "bold",
+            color: theme.primary.text,
           }}
         >
-          Cancel
-        </Button>
-      </Box>
+          Notifications
+        </Typography>
+
+        <Box
+          p={2}
+          sx={{
+            borderRadius: "16px",
+            background: theme.primary.bgProfile,
+          }}
+        >
+          <Box sx={{ display: "flex" }}>
+            <Box flexGrow="1">
+              <Typography
+                sx={{
+                  fontSize: "12px",
+                  color: "#5d5d5b",
+                }}
+              >
+                Product updates
+              </Typography>
+              <Typography
+                py={1}
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  color: theme.primary.text,
+                }}
+              >
+                Receive messages from our platform
+              </Typography>
+            </Box>
+            <IOSSwitch sx={{ m: 1 }} defaultChecked />
+          </Box>
+
+          <Divider fullWidth color="#CFDBD5" />
+
+          <Box mt={1} sx={{ display: "flex" }}>
+            <Box flexGrow="1">
+              <Typography
+                sx={{
+                  fontSize: "12px",
+                  color: "#5d5d5b",
+                }}
+              >
+                Reminders
+              </Typography>
+              <Typography
+                py={1}
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  color: theme.primary.text,
+                }}
+              >
+                Receive booking reminders, pricing notices
+              </Typography>
+            </Box>
+            <IOSSwitch sx={{ m: 1 }} />
+          </Box>
+
+          <Divider fullWidth color="#CFDBD5" />
+
+          <Box mt={1} sx={{ display: "flex" }}>
+            <Box flexGrow="1">
+              <Typography
+                sx={{
+                  fontSize: "12px",
+                  color: "#5d5d5b",
+                }}
+              >
+                Promotions and tips
+              </Typography>
+              <Typography
+                py={1}
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  color: theme.primary.text,
+                }}
+              >
+                Receive coupons, promotions, surveys
+              </Typography>
+            </Box>
+            <IOSSwitch sx={{ m: 1 }} defaultChecked />
+          </Box>
+
+          <Divider fullWidth color="#CFDBD5" />
+          <Box mt={1} sx={{ display: "flex" }}>
+            <Box flexGrow="1">
+              <Typography
+                sx={{
+                  fontSize: "12px",
+                  color: "#5d5d5b",
+                }}
+              >
+                Product updates
+              </Typography>
+              <Typography
+                py={1}
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  color: theme.primary.text,
+                }}
+              >
+                Receive messages from our platform
+              </Typography>
+            </Box>
+            <IOSSwitch sx={{ m: 1 }} defaultChecked />
+          </Box>
+
+          <Divider fullWidth color="#CFDBD5" />
+
+          <Box mt={1} sx={{ display: "flex" }}>
+            <Box flexGrow="1">
+              <Typography
+                sx={{
+                  fontSize: "12px",
+                  color: "#5d5d5b",
+                }}
+              >
+                Reminders
+              </Typography>
+              <Typography
+                py={1}
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  color: theme.primary.text,
+                }}
+              >
+                Receive booking reminders, pricing notices
+              </Typography>
+            </Box>
+            <IOSSwitch sx={{ m: 1 }} />
+          </Box>
+
+          <Divider fullWidth color="#CFDBD5" />
+
+          <Box mt={1} sx={{ display: "flex" }}>
+            <Box flexGrow="1">
+              <Typography
+                sx={{
+                  fontSize: "12px",
+                  color: "#5d5d5b",
+                }}
+              >
+                Promotions and tips
+              </Typography>
+              <Typography
+                py={1}
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  color: theme.primary.text,
+                }}
+              >
+                Receive coupons, promotions, surveys
+              </Typography>
+            </Box>
+            <IOSSwitch sx={{ m: 1 }} defaultChecked />
+          </Box>
+
+          <Divider fullWidth color="#CFDBD5" />
+        </Box>
+
+        <Box
+          mt={1.5}
+          mb={5}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
+          <Button
+            sx={{
+              background: "#0DF17F",
+              borderRadius: "23px",
+              color: "#000",
+              padding: "10px 20px",
+              "&:hover": {
+                background: "#0DF17Fa1",
+              },
+            }}
+          >
+            Update Settings
+          </Button>
+          <Button
+            sx={{
+              width: "165px",
+              height: "46px",
+              background: theme.primary.bgProfile1,
+              borderRadius: "23px",
+              color: theme.primary.textPurple,
+              padding: "10px 20px",
+              "&:hover": {
+                background: "#5d5d5ba1",
+              },
+            }}
+          >
+            Cancel
+          </Button>
+        </Box>
+      </Container>
     </Box>
   );
 };
