@@ -187,6 +187,8 @@ function MarketPlace() {
           <Tabs
             value={value}
             onChange={handleChange}
+            variant="scrollable"
+            scrollButtons={false}
             sx={{
               "& .MuiTabs-indicator": {
                 background: "transparent",
