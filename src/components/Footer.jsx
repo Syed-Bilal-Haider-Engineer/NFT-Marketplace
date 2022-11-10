@@ -217,7 +217,7 @@ export default () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "158px",
+                  width: "168px",
                   heigth: "46px",
                   border: "1px solid gray",
                   borderRadius: "23px",
