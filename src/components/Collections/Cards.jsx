@@ -7,6 +7,8 @@ export default function Cards({
   img,
   icon,
   name,
+  AuctionPrice,
+  BuyPrice,
   owner,
   currencyLogo,
   favourite,
@@ -16,61 +18,68 @@ export default function Cards({
   return (
     <Box
       height="100%"
-      textAlign="center"
-      border="1px solid #e0e0e0"
+      textAlign="left"
+      // border="1px solid #e0e0e0"
       pb={2}
       borderRadius="10px"
       position="relative"
     >
-      <img src={img} alt="" width="100%" />
-
       <img
-        src={icon}
+        src={img}
+        style={{ borderRadius: "16px", height: "300px" }}
         alt=""
-        width="48px"
-        height="48px"
-        style={{ position: "relative", top: "-6%" }}
+        width="100%"
       />
 
       <Typography
         color={theme.primary.text}
         fontSize={{ xs: "16px", md: "18px" }}
         fontWeight="800"
-        mt={-2}
+        mt={1}
       >
         {name}
       </Typography>
-      <Typography
-        mt={0.5}
-        color="#5D5D5B"
-        fontSize={{ xs: "13px", md: "14px" }}
-        fontWeight="400"
-      >
-        by {owner}
-      </Typography>
+      <Box display="flex">
+        <Box
+          diplay="flex"
+          flexDirection="column"
+          mt={1}
+          width={"70px"}
+          borderRight="1px solid gray"
+        >
+          <Typography sx={{ color: "gray", fontSize: "12px" }}>
+            Auction
+          </Typography>
+          <Typography sx={{ color: "#ffffff", fontSize: "15px" }}>
+            {AuctionPrice}
+          </Typography>
+        </Box>
+        <Box diplay="flex" flexDirection="column" mt={1} ml={3} width={"70px"}>
+          <Typography sx={{ color: "gray", fontSize: "12px" }}>
+            Buy Now
+          </Typography>
+          <Typography sx={{ color: "#ffffff", fontSize: "15px" }}>
+            {BuyPrice}
+          </Typography>
+        </Box>
+      </Box>
       <Box
         display="flex"
         alignItems="center"
         color={theme.primary.text}
         fontWeight="400"
         fontSize="14px"
-        justifyContent="center"
         mt={1}
       >
-        <img
-          style={{ marginRight: "5px" }}
-          width="17px"
-          src={currencyLogo}
-          alt=""
-        />{" "}
-        {price}
+        <img src={icon} width="25px" style={{ marginRight: "10px" }} alt="" />
+        {owner}
       </Box>
       <Box
-        color={theme.primary.text}
+        color={theme.primary.subtext}
         fontSize="12px"
         display="flex"
         alignItems="center"
-        bgcolor={theme.primary.bg}
+        bgcolor={theme.primary.bgButtonTwo}
         p={1}
         sx={{
           width: "fit-content",
@@ -84,7 +93,7 @@ export default function Cards({
         <FavoriteBorderIcon
           style={{
             fontSize: "16px",
-            color: theme.primary.text,
+            color: theme.primary.subtext,
             marginRight: "6px",
           }}
         />
