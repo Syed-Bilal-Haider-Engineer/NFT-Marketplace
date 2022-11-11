@@ -27,10 +27,11 @@ export default function MarketPlaceCard({
       <img src={img} alt="" width="100%" />
 
       <Typography
+        pl={2}
         color={theme.primary.text}
         fontSize={{ xs: "16px", md: "18px" }}
         fontWeight="800"
-        // mt={-2}
+        textAlign="left"
       >
         {name}
       </Typography>

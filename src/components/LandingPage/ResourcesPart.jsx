@@ -6,6 +6,8 @@ import resource1 from "../../images/resource1.png";
 import resource2 from "../../images/resource2.png";
 const ResourcesPart = () => {
   const theme = useTheme();
+  const matches = useMediaQuery("(max-width:600px)");
+
   return (
     <Box bgcolor={theme.primary.bg} p={4} pb={10}>
       <Container maxWidth="lg">
@@ -41,6 +43,7 @@ const ResourcesPart = () => {
             return (
               <Box
                 key={i}
+                mr={matches ? 2 : 0}
                 sx={{
                   background:
                     "linear-gradient(180deg, #0DF17F 0%, rgba(0, 204, 254, 0) 100%)",

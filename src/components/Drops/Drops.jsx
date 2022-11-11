@@ -10,7 +10,11 @@ import popIcon4 from "../../images/popIcon41.png";
 import SwiperDrops from "./SwiperDrops";
 import dropsbg from "../../images/dropsbg.png";
 import sh5 from "../../images/sh5.png";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import CallMadeIcon from "@mui/icons-material/CallMade";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import sh6 from "../../images/sh6.png";
+import zIndex from "@mui/material/styles/zIndex";
 
 const Drops = () => {
   const theme = useTheme();
@@ -45,6 +49,7 @@ const Drops = () => {
       />
       <Container>
         <Box
+          position="relative"
           py={13}
           sx={{
             background: `url(${dropsbg})`,
@@ -59,6 +64,70 @@ const Drops = () => {
             textAlign: "center",
           }}
         >
+          <Box
+            position="absolute"
+            right={matches ? "10px" : "20px"}
+            top={matches ? "3px" : "10px"}
+            display="flex"
+          >
+            <Box
+              mr={matches ? 0.5 : 1}
+              width={matches ? "74px" : "174px"}
+              height={matches ? "24px" : "46px"}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              borderRadius="26px"
+              fontSize={matches ? "7px" : "14px"}
+              fontWeight={matches ? "700" : "700"}
+              sx={{
+                background: "#0DF17F",
+                color: "#000",
+                cursor: "pointer",
+              }}
+            >
+              <FavoriteBorderIcon
+                style={{
+                  color: "#000",
+                  marginRight: matches ? "2px" : "10px",
+                  fontSize: matches ? "8px" : "",
+                }}
+              />
+              Add to Wishlist
+            </Box>
+            <Box
+              mr={matches ? 0.5 : 1}
+              width={matches ? "22px" : "44px"}
+              height={matches ? "22px" : "44px"}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              borderRadius="50%"
+              sx={{
+                background: "#0DF17F",
+                color: "#000",
+                cursor: "pointer",
+              }}
+            >
+              <CallMadeIcon sx={{ fontSize: matches ? "13px" : "18px" }} />
+            </Box>
+            <Box
+              width={matches ? "22px" : "44px"}
+              height={matches ? "22px" : "44px"}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              borderRadius="50%"
+              sx={{
+                background: "#0DF17F",
+                color: "#000",
+                cursor: "pointer",
+              }}
+            >
+              <MoreHorizIcon sx={{ fontSize: matches ? "13px" : "18px" }} />
+            </Box>
+          </Box>
+
           <Button
             sx={{
               background: "linear-gradient(0deg, #0DF17F, #0DF17F), #0DF17F",
@@ -99,9 +168,11 @@ const Drops = () => {
           >
             View Drop Details
           </Button> */}
+          <Box position="absolute" bottom="-30px">
+            <img src={popIcon4} style={{ zIndex: 2 }} alt="" width="50px" />
+          </Box>
         </Box>
-        <Box mt={-3} width="100%" textAlign="center">
-          <img src={popIcon4} alt="" width="50px" />
+        <Box mt={3} width="100%" textAlign="center">
           <Typography
             sx={{
               color: theme.primary.text,
@@ -130,6 +201,24 @@ const Drops = () => {
 
         <SwiperDrops name="Active Drops" />
         <SwiperDrops name="Upcoming Drops" />
+        <Box mt={2} py={3} display="flex" justifyContent="center" width="100%">
+          <Box
+            width="240px"
+            height="46px"
+            bgcolor={theme.primary.bgButtonTwo}
+            borderRadius="50px"
+            sx={{ cursor: "pointer" }}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            color={theme.primary.subtext}
+            fontWeight="700"
+            fontSize="14px"
+            style={{ zIndex: 1 }}
+          >
+            Load More
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
