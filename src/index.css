@@ -35,7 +35,34 @@ code {
 .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
   color: #797979 !important;
 }
+.chatBody {
+  flex: 1;
 
+  padding: 30px;
+}
+.chat-msg {
+  position: relative;
+  font-size: 1.2rem;
+  padding: 5px;
+  display: flex;
+  width: fit-content;
+
+  
+  margin-bottom: 2rem;
+}
+.chat-reciver {
+  margin-left: auto;
+}
+.chat_timestamps {
+  margin-left: 10px;
+  font-size: x-small;
+}
+.chat-name {
+  font-size: small;
+  position: absolute;
+  top: -16px;
+  font-weight: 800;
+}
 /* .css-uj4o2e-MuiButtonBase-root-MuiTab-root {
   min-height: 42px !important;
   min-width: 75px !important;

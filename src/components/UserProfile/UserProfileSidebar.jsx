@@ -36,7 +36,7 @@ function UserProfileSidebar({ profileInfo }) {
               color={theme.primary.text}
               mt={2}
             >
-              Francisco Maia
+              {profileInfo ? profileInfo?.name : "user name"}
             </Box>
             <Box
               textAlign="center"
@@ -51,7 +51,7 @@ function UserProfileSidebar({ profileInfo }) {
                 style={{ marginRight: "10px" }}
                 alt=""
               />
-              {account ? account : ""}
+              {profileInfo ? profileInfo.walletaddress : "user wallet address"}
             </Box>
             <Box
               mt={1}
@@ -78,7 +78,7 @@ function UserProfileSidebar({ profileInfo }) {
                   padding: "2px",
                 }}
               >
-                Message
+                Edite
               </Box>
             </Box>
             <Box
