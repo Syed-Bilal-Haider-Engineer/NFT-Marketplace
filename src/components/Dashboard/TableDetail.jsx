@@ -318,16 +318,11 @@ function ListingDetail() {
                     currentPage * postsPerPage
                   )
                   .map(
-                    ({
-                      icon,
-                      name,
-                      category,
-                      blockchain,
-                      bid,
-                      view,
-                      auction,
-                    }) => (
-                      <TableRow>
+                    (
+                      { icon, name, category, blockchain, bid, view, auction },
+                      i
+                    ) => (
+                      <TableRow key={i}>
                         <StyledTableCell>
                           <Box display="flex" alignItems="center">
                             <img src={icon} alt="" width="82px" height="82px" />

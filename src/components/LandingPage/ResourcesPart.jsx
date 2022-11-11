@@ -41,8 +41,6 @@ const ResourcesPart = () => {
             return (
               <Box
                 key={i}
-                // ml={1.5}
-
                 sx={{
                   background:
                     "linear-gradient(180deg, #0DF17F 0%, rgba(0, 204, 254, 0) 100%)",

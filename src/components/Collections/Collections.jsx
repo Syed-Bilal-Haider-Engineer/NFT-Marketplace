@@ -815,7 +815,7 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <Link
                             to="/explore"
                             style={{ textDecoration: "none" }}
@@ -858,7 +858,7 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <Link
                             to="/explore"
                             style={{ textDecoration: "none" }}
@@ -902,7 +902,7 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <Link
                             to="/explore"
                             style={{ textDecoration: "none" }}
@@ -946,7 +946,7 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <Link
                             to="/explore"
                             style={{ textDecoration: "none" }}
@@ -990,7 +990,7 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <Link
                             to="/explore"
                             style={{ textDecoration: "none" }}
@@ -1034,7 +1034,7 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <Link
                             to="/explore"
                             style={{ textDecoration: "none" }}

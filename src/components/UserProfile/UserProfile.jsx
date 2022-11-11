@@ -175,10 +175,10 @@ export default function UserProfile() {
       </Box>
       <Container maxWidth="lg">
         <Grid container justifyContent="center">
-          <Grid xs={12} sm={2.5} zIndex={1}>
+          <Grid item xs={12} sm={2.5} zIndex={1}>
             <UserProfileSidebar />
           </Grid>
-          <Grid ml={matches ? 0 : 3} xs={12} sm={8.5} zIndex={1}>
+          <Grid item ml={matches ? 0 : 3} xs={12} sm={8.5} zIndex={1}>
             <Box
               mt={5}
               display="flex"
@@ -221,7 +221,7 @@ export default function UserProfile() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <UserProfileCards
                             img={img}
                             icon={icon}
@@ -255,7 +255,7 @@ export default function UserProfile() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <UserProfileCards
                             img={img}
                             icon={icon}
@@ -290,7 +290,7 @@ export default function UserProfile() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <UserProfileCards
                             img={img}
                             icon={icon}
@@ -325,7 +325,7 @@ export default function UserProfile() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <UserProfileCards
                             img={img}
                             icon={icon}
@@ -360,7 +360,7 @@ export default function UserProfile() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <UserProfileCards
                             img={img}
                             icon={icon}
@@ -395,7 +395,7 @@ export default function UserProfile() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid key={i} item xs={12} sm={4} md={4}>
                           <UserProfileCards
                             img={img}
                             icon={icon}

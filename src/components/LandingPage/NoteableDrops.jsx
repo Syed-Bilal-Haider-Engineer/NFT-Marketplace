@@ -97,7 +97,7 @@ export default function NoteableDrops() {
                   i
                 ) => (
                   //   <Link to="/detail" style={{ textDecoration: "none" }}>
-                  <Grid item xs={12} sm={4} md={3}>
+                  <Grid key={i} item xs={12} sm={4} md={3}>
                     <NoteableCard
                       img={img}
                       nftName={nftName}

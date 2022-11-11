@@ -54,7 +54,7 @@ function HelpCenter() {
           <Grid container spacing={3}>
             {cards.map(({ title, point1, point2, point3, point4 }, i) => {
               return (
-                <Grid item xs={12} md={6}>
+                <Grid key={i} item xs={12} md={6}>
                   <Box
                     sx={{
                       background:

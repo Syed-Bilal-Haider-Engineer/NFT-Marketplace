@@ -106,7 +106,15 @@ export default function Header() {
         <img width="60px" src="/logo.png" alt="" />
       </Box>
       <List>
-        {["Explore", "Stats", "Drops"].map((text, index) => (
+        {[
+          "Marketplace",
+          "Stats",
+          "Drops",
+          "Activity",
+          "Dashboard",
+          "Signin",
+          "Signup",
+        ].map((text, index) => (
           <ListItem
             button
             style={{
@@ -114,11 +122,7 @@ export default function Header() {
             }}
             key={text}
           >
-            <Link
-              to={text.toLowerCase()}
-              smooth
-              style={{ textDecoration: "none" }}
-            >
+            <Link to={text.toLowerCase()} style={{ textDecoration: "none" }}>
               <ListItemText
                 style={{
                   textTransform: "capitalize",
@@ -233,11 +237,7 @@ export default function Header() {
               alignItems="center"
             >
               <Hidden mdDown>
-                <Link
-                  to="/marketplace"
-                  smooth
-                  style={{ textDecoration: "none" }}
-                >
+                <Link to="/marketplace" style={{ textDecoration: "none" }}>
                   <Box
                     mr={6}
                     p={0.15}
@@ -266,7 +266,7 @@ export default function Header() {
                     </Typography>
                   </Box>
                 </Link>
-                <Link to="/stats" smooth style={{ textDecoration: "none" }}>
+                <Link to="/stats" style={{ textDecoration: "none" }}>
                   <Box
                     mr={6}
                     p={0.15}
@@ -295,7 +295,7 @@ export default function Header() {
                     </Typography>
                   </Box>
                 </Link>
-                <Link to="/drops" smooth style={{ textDecoration: "none" }}>
+                <Link to="/drops" style={{ textDecoration: "none" }}>
                   <Box
                     mr={6}
                     p={0.15}
@@ -324,35 +324,35 @@ export default function Header() {
                     </Typography>
                   </Box>
                 </Link>
-                <Link to="/activity" smooth style={{ textDecoration: "none" }}>
-                  <Box
-                    mr={6}
-                    p={0.15}
-                    sx={{
-                      textDecoration: "none",
-                      cursor: "pointer",
-                      color: theme.primary.text,
-                      borderRadius: "5px",
-                      border: "1px transparent",
-                      backgroundImage:
-                        loc.pathname === "/drops"
-                          ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
-                          : null,
-                      backgroundOrigin: "border-box",
-                      backgroundClip: "content-box, border-box",
+                {/* <Link to="/activity" style={{ textDecoration: "none" }}> */}
+                <Box
+                  mr={6}
+                  p={0.15}
+                  sx={{
+                    textDecoration: "none",
+                    cursor: "pointer",
+                    color: theme.primary.text,
+                    borderRadius: "5px",
+                    // border: "1px transparent",
+                    // backgroundImage:
+                    //   loc.pathname === "/drops"
+                    //     ? "linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)"
+                    //     : null,
+                    // backgroundOrigin: "border-box",
+                    // backgroundClip: "content-box, border-box",
+                  }}
+                >
+                  <Typography
+                    style={{
+                      padding: "7px 10px",
+                      fontSize: "15px",
+                      fontWeight: "700",
                     }}
                   >
-                    <Typography
-                      style={{
-                        padding: "7px 10px",
-                        fontSize: "15px",
-                        fontWeight: "700",
-                      }}
-                    >
-                      Activity
-                    </Typography>
-                  </Box>
-                </Link>
+                    Activity
+                  </Typography>
+                </Box>
+                {/* </Link> */}
                 <Box pr={2} zIndex="1">
                   <Button
                     disableRipple
