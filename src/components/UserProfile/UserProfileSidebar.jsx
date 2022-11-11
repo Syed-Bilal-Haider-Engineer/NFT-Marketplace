@@ -11,16 +11,19 @@ import eth11 from "../../images/eth11.png";
 import Editeprofile from "./ProfileEdite";
 import React, { useState } from "react";
 import { url } from "../URL";
-function UserProfileSidebar({ userInfo }) {
+function UserProfileSidebar({ userInfo, setRenderstate, state }) {
   const [open, setOpenstate] = useState(false);
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();
-
   //////////Edite Profile handler/////////
   const editeHandler = () => {
     setOpenstate(true);
   };
   console.log("user side bar:", userInfo);
+  const openHanldle = (value) => {
+    setRenderstate(!state);
+    setOpenstate(value);
+  };
   return (
     <Box
       mt={matches ? -4 : -10}
@@ -29,7 +32,7 @@ function UserProfileSidebar({ userInfo }) {
       boxShadow={theme.primary.boxShadow}
       zIndex={1}
     >
-      <Editeprofile open={open} func={setOpenstate} userInfo={userInfo} />
+      <Editeprofile open={open} func={openHanldle} userInfo={userInfo} />
       <Box py={4}>
         <Container>
           <Box display="flex" flexDirection="column">

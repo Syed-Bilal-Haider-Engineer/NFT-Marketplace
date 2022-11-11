@@ -67,6 +67,7 @@ function TabPanel(props) {
 
 export default function UserProfile({ id }) {
   const [value, setValue] = useState("0");
+  const [renderState, setRenderstate] = useState(false);
   const [loading, setLoading] = useState(false);
   const [userprofile, setProfilestate] = useState("");
   const matches = useMediaQuery("(max-width:750px)");
@@ -148,7 +149,7 @@ export default function UserProfile({ id }) {
   };
   useEffect(() => {
     fetchuser();
-  }, [id]);
+  }, [renderState, id]);
   console.log("userprofile:", userprofile);
   return (
     <>
@@ -199,7 +200,11 @@ export default function UserProfile({ id }) {
         <Container maxWidth="lg">
           <Grid container justifyContent="center">
             <Grid item xs={12} sm={2.5} zIndex={1}>
-              <UserProfileSidebar userInfo={userprofile} />
+              <UserProfileSidebar
+                userInfo={userprofile}
+                setRenderstate={setRenderstate}
+                state={renderState}
+              />
             </Grid>
             <Grid item ml={matches ? 0 : 3} xs={12} sm={8.5} zIndex={1}>
               <Box
