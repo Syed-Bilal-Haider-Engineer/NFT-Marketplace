@@ -112,6 +112,7 @@ export default function Header() {
           "Drops",
           "Activity",
           "Dashboard",
+          "Profile",
           "Signin",
           "Signup",
         ].map((text, index) => (

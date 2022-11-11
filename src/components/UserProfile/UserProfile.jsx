@@ -64,7 +64,7 @@ function TabPanel(props) {
 }
 
 export default function UserProfile() {
-  const [value, setValue] = useState("0");
+  const [value, setValue] = useState(0);
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();
   const handleChange = (event, newValue) => {
