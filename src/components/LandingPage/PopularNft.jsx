@@ -317,8 +317,8 @@ function PopularNft() {
 
         <Box mt={2} py={3} display="flex" justifyContent="center" width="100%">
           <Box
-            width="170px"
-            height="42px"
+            width="241px"
+            height="46px"
             bgcolor={theme.primary.bgButtonTwo}
             borderRadius="50px"
             sx={{ cursor: "pointer" }}
