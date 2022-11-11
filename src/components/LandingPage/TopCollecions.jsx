@@ -182,7 +182,7 @@ export default function TopCollecions() {
           <Grid container spacing={3}>
             {collectionArray.length > 0 ? (
               collectionArray.map(({ img, logo, nftName, price, apr }, i) => (
-                <Grid mt={-5} item xs={12} sm={6} md={4}>
+                <Grid key={i} item mt={-5} xs={12} sm={6} md={4}>
                   <TabPanel value={value} index={0}>
                     <CollectionsCard
                       img={img}

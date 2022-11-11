@@ -39,7 +39,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art2}`,
@@ -49,7 +49,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art3}`,
@@ -59,7 +59,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art4}`,
@@ -69,7 +69,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art1}`,
@@ -79,7 +79,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art1}`,
@@ -89,7 +89,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art2}`,
@@ -99,7 +99,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art3}`,
@@ -109,7 +109,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art4}`,
@@ -119,7 +119,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art1}`,
@@ -129,7 +129,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art1}`,
@@ -139,7 +139,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art2}`,
@@ -149,7 +149,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art3}`,
@@ -159,7 +159,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art4}`,
@@ -169,7 +169,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art1}`,
@@ -179,7 +179,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art1}`,
@@ -189,7 +189,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art2}`,
@@ -199,7 +199,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art3}`,
@@ -209,7 +209,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art4}`,
@@ -219,7 +219,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
   {
     icon: `${Art1}`,
@@ -229,7 +229,7 @@ const rankData = [
     bid: "+18.60%",
     view: "4915",
     auction: "6.3k",
-    items : "10.0k"
+    items: "10.0k",
   },
 ];
 
@@ -247,7 +247,6 @@ function StatTable() {
   return (
     <>
       <Box mt={2} bgcolor={theme.primary.bg} height="100%">
-        
         <TableContainer
           component={Paper}
           sx={{
@@ -336,10 +335,19 @@ function StatTable() {
                 )
                 .map(
                   (
-                    { icon, name, category, blockchain, bid, view, auction  ,items },
+                    {
+                      icon,
+                      name,
+                      category,
+                      blockchain,
+                      bid,
+                      view,
+                      auction,
+                      items,
+                    },
                     i
                   ) => (
-                    <TableRow>
+                    <TableRow key={i}>
                       <StyledTableCell>
                         <Box display="flex" alignItems="center">
                           <Typography mr={1} color={theme.primary.text}>

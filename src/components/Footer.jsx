@@ -133,6 +133,7 @@ export default () => {
                 {picAddress.map((item, i) => {
                   return (
                     <img
+                      key={i}
                       src={item}
                       alt=""
                       style={{
@@ -155,6 +156,7 @@ export default () => {
                 {Marketplace.map((item, i) => {
                   return (
                     <Box
+                      key={i}
                       mb={2}
                       sx={{
                         fontSize: "14px",
@@ -178,6 +180,7 @@ export default () => {
                 {Links.map((item, i) => {
                   return (
                     <Box
+                      key={i}
                       mb={2}
                       sx={{
                         fontSize: "14px",

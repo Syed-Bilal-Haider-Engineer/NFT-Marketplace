@@ -184,7 +184,7 @@ function PopularNft() {
               {cardData2.map(
                 ({ img, icon, name, owner, description, favourite }, i) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <PopularNftCard
                         img={img}
                         icon={icon}
@@ -206,7 +206,7 @@ function PopularNft() {
               {cardData1.map(
                 ({ img, icon, name, owner, description, favourite }, i) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <PopularNftCard
                         img={img}
                         icon={icon}
@@ -229,7 +229,7 @@ function PopularNft() {
               {cardData2.map(
                 ({ img, icon, name, owner, description, favourite }, i) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <PopularNftCard
                         img={img}
                         icon={icon}
@@ -252,7 +252,7 @@ function PopularNft() {
               {cardData1.map(
                 ({ img, icon, name, owner, description, favourite }, i) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <PopularNftCard
                         img={img}
                         icon={icon}
@@ -275,7 +275,7 @@ function PopularNft() {
               {cardData2.map(
                 ({ img, icon, name, owner, description, favourite }, i) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <PopularNftCard
                         img={img}
                         icon={icon}
@@ -298,7 +298,7 @@ function PopularNft() {
               {cardData1.map(
                 ({ img, icon, name, owner, description, favourite }, i) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <PopularNftCard
                         img={img}
                         icon={icon}

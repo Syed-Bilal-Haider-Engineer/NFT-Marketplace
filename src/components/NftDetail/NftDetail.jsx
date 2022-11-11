@@ -213,27 +213,25 @@ const NftDetail = () => {
                   flexWrap: "wrap",
                 }}
               >
-                {data.map(({ img, text }) => {
+                {data.map(({ img, text }, i) => {
                   return (
-                    <Box>
-                      {" "}
-                      <Box
-                        mr={0.5}
-                        mb={1}
-                        padding="5px 10px"
-                        borderRadius="18px"
-                        textAlign="center"
-                        fontWeight="700"
-                        fontSize="14px"
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                        color={theme.primary.text}
-                        border={theme.primary.btnBorder}
-                      >
-                        <img src={img} alt="" style={{ marginRight: "5px" }} />
-                        {text}
-                      </Box>{" "}
+                    <Box
+                      key={i}
+                      mr={0.5}
+                      mb={1}
+                      padding="5px 10px"
+                      borderRadius="18px"
+                      textAlign="center"
+                      fontWeight="700"
+                      fontSize="14px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      color={theme.primary.text}
+                      border={theme.primary.btnBorder}
+                    >
+                      <img src={img} alt="" style={{ marginRight: "5px" }} />
+                      {text}
                     </Box>
                   );
                 })}

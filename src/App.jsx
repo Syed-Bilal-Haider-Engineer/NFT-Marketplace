@@ -24,6 +24,7 @@ import MarketPlace from "./components/MarketPlace/MarketPlace";
 import Collections from "./components/Collections/Collections";
 import UserProfile from "./components/UserProfile/UserProfile";
 import MarqueeComp from "./components/LandingPage/MarqueeComp";
+import ChatMain from "./components/Chat/MainChat";
 
 function App() {
   const [switchNetwork, setswitchNetwork] = useState(false);
@@ -121,6 +122,7 @@ function App() {
           <Route path="/*" element={<Dashboard />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/chat" element={<ChatMain />} />
         </Routes>
         <Footer />
       </ProviderMui>
