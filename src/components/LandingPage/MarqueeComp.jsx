@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
 import { Box, Container, useMediaQuery } from "@mui/material";
-import binance from "../../images/binance.png";
+import binance from "../../images/Binance.png";
 import polygon from "../../images/polygon.png";
 import eth from "../../images/Ethereum.png";
 import Marquee from "react-fast-marquee";
