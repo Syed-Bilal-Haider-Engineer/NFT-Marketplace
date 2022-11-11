@@ -78,7 +78,7 @@ const SwiperDrops = ({ name }) => {
       <Grid container spacing={4}>
         {trendingArray.map(
           ({ img, nftName, bidPrice, likes, status, avatar, logo }, i) => (
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid key={i} item xs={12} sm={6} md={3}>
               <Box>
                 <NoteableCard
                   img={img}

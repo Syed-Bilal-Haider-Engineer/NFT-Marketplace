@@ -34,6 +34,7 @@ import card4 from "../../images/card4.png";
 import twitter from "../../images/tw.png";
 import Checkbox from "@mui/material/Checkbox";
 import Bars from "../../images/Bars.png";
+import sh12 from "../../images/sh12.png";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -165,7 +166,29 @@ function Collections() {
     setValue1(newValue1);
   };
   return (
-    <Box pt={4} bgcolor={theme.primary.bg}>
+    <Box pt={4} bgcolor={theme.primary.bg} position="relative">
+      <img
+        src={sh12}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "70%",
+          bottom: matches ? "-3%" : "-25%",
+          left: "-16%",
+          // zIndex: -1,
+        }}
+      />
+      {/* <img
+        src={sh12}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "70%",
+          bottom: matches ? "10%" : "40%",
+          left: "10%",
+          zIndex: 0,
+        }}
+      /> */}
       <Container maxWidth="lg">
         <Box>
           <img
@@ -202,6 +225,7 @@ function Collections() {
         </Typography>
         <Container maxWidth="md">
           <Grid
+            zIndex={2}
             mt={2}
             container
             spacing={2}
@@ -791,18 +815,23 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
-                          <Cards
-                            img={img}
-                            icon={icon}
-                            AuctionPrice={AuctionPrice}
-                            BuyPrice={BuyPrice}
-                            name={name}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
+                        <Grid key={i} item xs={12} sm={4} md={4}>
+                          <Link
+                            to="/explore"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Cards
+                              img={img}
+                              icon={icon}
+                              AuctionPrice={AuctionPrice}
+                              BuyPrice={BuyPrice}
+                              name={name}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Link>
                         </Grid>
                       );
                     }
@@ -829,18 +858,23 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
-                          <Cards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            AuctionPrice={AuctionPrice}
-                            BuyPrice={BuyPrice}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
+                        <Grid key={i} item xs={12} sm={4} md={4}>
+                          <Link
+                            to="/explore"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Cards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              AuctionPrice={AuctionPrice}
+                              BuyPrice={BuyPrice}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Link>
                         </Grid>
                       );
                     }
@@ -868,18 +902,23 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
-                          <Cards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            AuctionPrice={AuctionPrice}
-                            BuyPrice={BuyPrice}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
+                        <Grid key={i} item xs={12} sm={4} md={4}>
+                          <Link
+                            to="/explore"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Cards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              AuctionPrice={AuctionPrice}
+                              BuyPrice={BuyPrice}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Link>
                         </Grid>
                       );
                     }
@@ -907,18 +946,23 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
-                          <Cards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            AuctionPrice={AuctionPrice}
-                            BuyPrice={BuyPrice}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
+                        <Grid key={i} item xs={12} sm={4} md={4}>
+                          <Link
+                            to="/explore"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Cards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              AuctionPrice={AuctionPrice}
+                              BuyPrice={BuyPrice}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Link>
                         </Grid>
                       );
                     }
@@ -946,18 +990,23 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
-                          <Cards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            AuctionPrice={AuctionPrice}
-                            BuyPrice={BuyPrice}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
+                        <Grid key={i} item xs={12} sm={4} md={4}>
+                          <Link
+                            to="/explore"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Cards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              AuctionPrice={AuctionPrice}
+                              BuyPrice={BuyPrice}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Link>
                         </Grid>
                       );
                     }
@@ -985,18 +1034,23 @@ function Collections() {
                       i
                     ) => {
                       return (
-                        <Grid item xs={12} sm={4} md={4}>
-                          <Cards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            AuctionPrice={AuctionPrice}
-                            BuyPrice={BuyPrice}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
+                        <Grid key={i} item xs={12} sm={4} md={4}>
+                          <Link
+                            to="/explore"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Cards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              AuctionPrice={AuctionPrice}
+                              BuyPrice={BuyPrice}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Link>
                         </Grid>
                       );
                     }

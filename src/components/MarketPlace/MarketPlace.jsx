@@ -212,7 +212,7 @@ function MarketPlace() {
                   i
                 ) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <Link
                         to="/collections"
                         style={{ textDecoration: "none" }}
@@ -243,7 +243,7 @@ function MarketPlace() {
                   i
                 ) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <Link
                         to="/collections"
                         style={{ textDecoration: "none" }}
@@ -274,7 +274,7 @@ function MarketPlace() {
                   i
                 ) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <Link
                         to="/collections"
                         style={{ textDecoration: "none" }}
@@ -305,7 +305,7 @@ function MarketPlace() {
                   i
                 ) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <Link
                         to="/collections"
                         style={{ textDecoration: "none" }}
@@ -336,7 +336,7 @@ function MarketPlace() {
                   i
                 ) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <Link
                         to="/collections"
                         style={{ textDecoration: "none" }}
@@ -367,7 +367,7 @@ function MarketPlace() {
                   i
                 ) => {
                   return (
-                    <Grid item xs={12} sm={4} md={3}>
+                    <Grid key={i} item xs={12} sm={4} md={3}>
                       <Link
                         to="/collections"
                         style={{ textDecoration: "none" }}

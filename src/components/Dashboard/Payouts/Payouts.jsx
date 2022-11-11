@@ -1,24 +1,15 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  
-} from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 import listingImage from "../../../images/listing.png";
 
-
-
 function Payouts() {
   const theme = useTheme();
 
   return (
-    <Box bgcolor={theme.primary.bg} height="100%">
+    <Box bgcolor={theme.primary.bg} height="100%" mb={20}>
       <Container>
-       
         <Typography
           mt={0.2}
           ml={{ xs: 1, md: 0 }}
@@ -51,7 +42,7 @@ function Payouts() {
               fontWeight: "800",
             }}
           >
-            No posted listings found
+            No processed payouts
           </Typography>
           <Typography
             my={1}
@@ -67,12 +58,12 @@ function Payouts() {
           <Link to="/payouts/details" style={{ textDecoration: "none" }}>
             <Button
               sx={{
-                background: "#7A52F4",
+                background: "#0DF17F",
                 borderRadius: "23px",
-                color: "#fff",
+                color: "#000",
                 padding: "10px 20px",
                 "&:hover": {
-                  background: "#7A52F4a1",
+                  background: "#0DF17Fa1",
                 },
               }}
             >

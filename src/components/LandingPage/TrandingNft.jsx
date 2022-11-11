@@ -106,7 +106,7 @@ function TrandingNft() {
               {cardData.map(
                 ({ img, icon, name, owner, description, favourite }, i) => {
                   return (
-                    <SwiperSlide>
+                    <SwiperSlide key={i}>
                       <TrandingCards
                         img={img}
                         icon={icon}

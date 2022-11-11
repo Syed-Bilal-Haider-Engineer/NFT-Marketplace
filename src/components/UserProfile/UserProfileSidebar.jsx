@@ -9,7 +9,7 @@ import { useTheme } from "@emotion/react";
 import GroupIcon from "@mui/icons-material/Group";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-
+import eth11 from "../../images/eth11.png";
 function UserProfileSidebar() {
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();
@@ -20,6 +20,7 @@ function UserProfileSidebar() {
       bgcolor={theme.primary.section}
       borderRadius="12px"
       boxShadow={theme.primary.boxShadow}
+      zIndex={1}
     >
       <Box py={4}>
         <Container>
@@ -43,7 +44,41 @@ function UserProfileSidebar() {
               color={theme.primary.text}
               mt={1}
             >
+              <img
+                src={eth11}
+                width="20px"
+                style={{ marginRight: "10px" }}
+                alt=""
+              />
               0x59485…82590
+            </Box>
+            <Box
+              mt={1}
+              display={"flex"}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Box
+                width="122px"
+                height="46px"
+                display={"flex"}
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                  color: "#fff",
+                  cursor: "pointer",
+                  border: "1px transparent",
+                  borderRadius: "23px",
+                  backgroundImage:
+                    " linear-gradient(#172225, #172225  ),linear-gradient(92.1deg, #0DF17F 0.3%, #00CDFF 74.1%)",
+                  backgroundOrigin: "border-box",
+                  backgroundClip: "content-box, border-box",
+                  boxShadow: "3px 8px 17px rgba(0, 0, 0, 0.15)",
+                  padding: "2px",
+                }}
+              >
+                Message
+              </Box>
             </Box>
             <Box
               textAlign="center"
@@ -76,14 +111,14 @@ function UserProfileSidebar() {
                 <Box
                   fontWeight="800"
                   fontSize="18px"
-                  color={theme.primary.text}
+                  color={theme.primary.bgButtonTwo}
                 >
                   96
                 </Box>
                 <Box
                   fontWeight="500"
                   fontSize="12px"
-                  color={theme.primary.text}
+                  color={theme.primary.bgGray}
                 >
                   followers
                 </Box>
@@ -92,14 +127,14 @@ function UserProfileSidebar() {
                 <Box
                   fontWeight="800"
                   fontSize="18px"
-                  color={theme.primary.text}
+                  color={theme.primary.bgButtonTwo}
                 >
                   64
                 </Box>
                 <Box
                   fontWeight="500"
                   fontSize="12px"
-                  color={theme.primary.text}
+                  color={theme.primary.bgGray}
                 >
                   items
                 </Box>
@@ -108,14 +143,14 @@ function UserProfileSidebar() {
                 <Box
                   fontWeight="800"
                   fontSize="18px"
-                  color={theme.primary.text}
+                  color={theme.primary.bgButtonTwo}
                 >
                   26
                 </Box>
                 <Box
                   fontWeight="500"
                   fontSize="12px"
-                  color={theme.primary.text}
+                  color={theme.primary.bgGray}
                 >
                   following
                 </Box>
@@ -160,7 +195,7 @@ function UserProfileSidebar() {
                 {" "}
                 <ArrowRightAltIcon
                   style={{
-                    color: theme.primary.subtext,
+                    color: theme.primary.text,
                     fontSize: "20px",
                   }}
                 />
@@ -175,7 +210,7 @@ function UserProfileSidebar() {
                 {" "}
                 <MoreHorizIcon
                   style={{
-                    color: theme.primary.subtext,
+                    color: theme.primary.text,
                     fontSize: "20px",
                   }}
                 />
