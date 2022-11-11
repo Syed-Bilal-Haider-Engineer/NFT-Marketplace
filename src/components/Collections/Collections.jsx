@@ -41,7 +41,9 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Slider from "@mui/material/Slider";
-
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import CallMadeIcon from "@mui/icons-material/CallMade";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 function valuetext(value) {
   return `${value}°C`;
 }
@@ -190,17 +192,81 @@ function Collections() {
         }}
       /> */}
       <Container maxWidth="lg">
-        <Box>
+        <Box position="relative">
+          <Box
+            position="absolute"
+            right={matches ? "10px" : "20px"}
+            top={matches ? "3px" : "10px"}
+            display="flex"
+          >
+            <Box
+              mr={matches ? 0.5 : 1}
+              width={matches ? "74px" : "174px"}
+              height={matches ? "24px" : "46px"}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              borderRadius="26px"
+              fontSize={matches ? "7px" : "14px"}
+              fontWeight={matches ? "700" : "700"}
+              sx={{
+                background: "#0DF17F",
+                color: "#000",
+                cursor: "pointer",
+              }}
+            >
+              <FavoriteBorderIcon
+                style={{
+                  color: "#000",
+                  marginRight: matches ? "2px" : "10px",
+                  fontSize: matches ? "8px" : "",
+                }}
+              />
+              Add to Wishlist
+            </Box>
+            <Box
+              mr={matches ? 0.5 : 1}
+              width={matches ? "22px" : "44px"}
+              height={matches ? "22px" : "44px"}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              borderRadius="50%"
+              sx={{
+                background: "#000",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              <CallMadeIcon sx={{ fontSize: matches ? "13px" : "18px" }} />
+            </Box>
+            <Box
+              width={matches ? "22px" : "44px"}
+              height={matches ? "22px" : "44px"}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              borderRadius="50%"
+              sx={{
+                background: "#000",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              <MoreHorizIcon sx={{ fontSize: matches ? "13px" : "18px" }} />
+            </Box>
+          </Box>
           <img
             width="100%"
             src={bgCol}
             style={{ borderRadius: "20px" }}
             alt=""
           />
+          <Box mt={-6} textAlign="center" width="100%">
+            <img src={ImgCol} alt="" />
+          </Box>
         </Box>
-        <Box mt={-6} textAlign="center" width="100%">
-          <img src={ImgCol} alt="" />
-        </Box>
+
         <Typography
           sx={{
             color: theme.primary.text,
@@ -275,7 +341,12 @@ function Collections() {
                 </Box>
               </Link>
             </Grid>
-            <Grid item xs={6} md={3} borderRight="1px solid gray">
+            <Grid
+              item
+              xs={6}
+              md={3}
+              borderRight={matches ? "" : "1px solid gray"}
+            >
               <Link to="/explore" style={{ textDecoration: "none" }}>
                 <Box
                   py={2}
@@ -308,32 +379,78 @@ function Collections() {
                 </Box>
               </Link>
             </Grid>
-            {!matches && (
-              <Grid item xs={6} md={3} borderRight="1px solid gray">
-                <Link to="/explore" style={{ textDecoration: "none" }}>
-                  <Box
-                    py={2}
-                    px={7}
+            {/* {!matches && ( */}
+            <Grid item xs={6} md={3} borderRight="1px solid gray">
+              <Link to="/explore" style={{ textDecoration: "none" }}>
+                <Box
+                  py={2}
+                  px={7}
+                  sx={{
+                    // border: theme.primary.btnBorder,
+                    textAlign: "center",
+                    borderRadius: "12px",
+                  }}
+                >
+                  <Box display="flex" justifyContent="center">
+                    <img src={eth11} width="30px" height="30px" alt="" />
+                    <Typography
+                      mt={1}
+                      ml={1}
+                      sx={{
+                        fontSize: "18px",
+                        color: theme.primary.text,
+                        fontWeight: "800",
+                      }}
+                    >
+                      0.209k
+                    </Typography>
+                  </Box>
+                  <Typography
+                    pb={1}
                     sx={{
-                      // border: theme.primary.btnBorder,
-                      textAlign: "center",
-                      borderRadius: "12px",
+                      fontSize: "12px",
+                      color: "#5d5d5b",
                     }}
                   >
-                    <Box display="flex">
-                      <img src={eth11} width="30px" height="30px" alt="" />
-                      <Typography
-                        mt={1}
-                        ml={1}
-                        sx={{
-                          fontSize: "18px",
-                          color: theme.primary.text,
-                          fontWeight: "800",
-                        }}
-                      >
-                        0.209k
-                      </Typography>
-                    </Box>
+                    Floor Price
+                  </Typography>
+                </Box>
+              </Link>
+            </Grid>
+            {/* // )} */}
+            {/* {!matches && ( */}
+            <Grid item xs={6} md={3}>
+              <Link to="/explore" style={{ textDecoration: "none" }}>
+                <Box
+                  py={2}
+                  px={7}
+                  sx={{
+                    // border: theme.primary.btnBorder,
+                    textAlign: "center",
+                    borderRadius: "12px",
+                  }}
+                >
+                  <Box display="flex" justifyContent="center">
+                    <img src={eth11} width="30px" height="30px" alt="" />
+                    <Typography
+                      mt={1}
+                      ml={1}
+                      sx={{
+                        fontSize: "18px",
+                        color: theme.primary.text,
+                        fontWeight: "800",
+                      }}
+                    >
+                      4.8k
+                    </Typography>
+                  </Box>
+                  <Typography
+                    pb={1}
+                    sx={{
+                      fontSize: "12px",
+                      color: "#5d5d5b",
+                    }}
+                  >
                     <Typography
                       pb={1}
                       sx={{
@@ -341,59 +458,13 @@ function Collections() {
                         color: "#5d5d5b",
                       }}
                     >
-                      Floor Price
+                      volume
                     </Typography>
-                  </Box>
-                </Link>
-              </Grid>
-            )}
-            {!matches && (
-              <Grid item xs={6} md={3} borderRight="1px solid gray">
-                <Link to="/explore" style={{ textDecoration: "none" }}>
-                  <Box
-                    py={2}
-                    px={7}
-                    sx={{
-                      // border: theme.primary.btnBorder,
-                      textAlign: "center",
-                      borderRadius: "12px",
-                    }}
-                  >
-                    <Box display="flex">
-                      <img src={eth11} width="30px" height="30px" alt="" />
-                      <Typography
-                        mt={1}
-                        ml={1}
-                        sx={{
-                          fontSize: "18px",
-                          color: theme.primary.text,
-                          fontWeight: "800",
-                        }}
-                      >
-                        4.8k
-                      </Typography>
-                    </Box>
-                    <Typography
-                      pb={1}
-                      sx={{
-                        fontSize: "12px",
-                        color: "#5d5d5b",
-                      }}
-                    >
-                      <Typography
-                        pb={1}
-                        sx={{
-                          fontSize: "12px",
-                          color: "#5d5d5b",
-                        }}
-                      >
-                        volume
-                      </Typography>
-                    </Typography>
-                  </Box>
-                </Link>
-              </Grid>
-            )}
+                  </Typography>
+                </Box>
+              </Link>
+            </Grid>
+            {/* // )} */}
           </Grid>
         </Container>
         <Box mt={3} fontSize="14px" color="#5D5D5B" textAlign="center">

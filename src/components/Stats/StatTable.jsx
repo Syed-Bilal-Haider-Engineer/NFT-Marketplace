@@ -375,12 +375,12 @@ function StatTable() {
                         </Typography>
                       </StyledTableCell>
                       <StyledTableCell>
-                        <Typography color={theme.primary.text} fontSize="14px">
+                        <Typography color="red" fontSize="14px">
                           {blockchain}
                         </Typography>
                       </StyledTableCell>
                       <StyledTableCell>
-                        <Typography color={theme.primary.text} fontSize="14px">
+                        <Typography color="green" fontSize="14px">
                           {bid}
                         </Typography>
                       </StyledTableCell>

@@ -24,6 +24,8 @@ export const UpperCardMain = ({ number, text, percent, value }) => {
         minWidth: "250px",
         height: "80px",
         display: "flex",
+        cursor: "pointer  ",
+
         "&:hover": {
           border: "1px solid #0DF17F",
         },

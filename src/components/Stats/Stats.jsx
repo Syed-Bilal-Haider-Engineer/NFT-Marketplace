@@ -138,6 +138,24 @@ const Stats = () => {
           </Button>
         </Box>
         <StatTable />
+        <Box mt={2} py={3} display="flex" justifyContent="center" width="100%">
+          <Box
+            width="240px"
+            height="46px"
+            bgcolor={theme.primary.bgButtonTwo}
+            borderRadius="50px"
+            sx={{ cursor: "pointer" }}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            color={theme.primary.subtext}
+            fontWeight="700"
+            fontSize="14px"
+            style={{ zIndex: 1 }}
+          >
+            Load More
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

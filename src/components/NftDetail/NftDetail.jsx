@@ -20,6 +20,8 @@ import HistoryTable from "./HistoryTable";
 import ActivityTable from "./ActivityTable";
 import Chartdetail from "./Chartdetail";
 import detailimg from "../../images/detailimg.png";
+import NoteableCard from "../LandingPage/NoteableCard";
+import SwiperDrops from "../Drops/SwiperDrops";
 
 const TextInput = styled(InputBase)(() => ({
   "& .MuiInputBase-input": {
@@ -324,6 +326,18 @@ const NftDetail = () => {
 
         <Box py={5}>
           <ActivityTable />
+        </Box>
+        <Box py={5}>
+          <Typography
+            sx={{
+              fontSize: "28px",
+              fontWeight: "800",
+              color: "#ffffff",
+            }}
+          >
+            More from This Collection
+          </Typography>
+          <SwiperDrops />
         </Box>
       </Container>
     </Box>

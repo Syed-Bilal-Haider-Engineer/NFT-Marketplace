@@ -162,6 +162,8 @@ function PopularNft() {
           <Tabs
             value={value}
             onChange={handleChange}
+            variant="scrollable"
+            scrollButtons={false}
             sx={{
               "& .MuiTabs-indicator": {
                 // display: "none",

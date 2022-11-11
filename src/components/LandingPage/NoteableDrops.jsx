@@ -13,7 +13,7 @@ import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
 import eth11 from "../../images/eth11.png";
 import sh11 from "../../images/sh11.png";
-import NoteableCard from "./NoteableCard";
+import LiveCards from "./LiveCards";
 import { Link } from "react-router-dom";
 
 export default function NoteableDrops() {
@@ -98,7 +98,7 @@ export default function NoteableDrops() {
                 ) => (
                   //   <Link to="/detail" style={{ textDecoration: "none" }}>
                   <Grid key={i} item xs={12} sm={4} md={3}>
-                    <NoteableCard
+                    <LiveCards
                       img={img}
                       nftName={nftName}
                       bidPrice={bidPrice}
