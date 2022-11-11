@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import { makeStyles } from "@mui/styles";
 import { gsap } from "gsap";
-
 const Loader = () => {
   const blue = useRef(null);
   const red = useRef(null);
@@ -31,9 +30,9 @@ const Loader = () => {
     </svg>
   );
 };
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   backdrop: {
-    zIndex: theme.zIndex.drawer + 1000,
+    zIndex: 200000,
     color: "#fff",
   },
 }));

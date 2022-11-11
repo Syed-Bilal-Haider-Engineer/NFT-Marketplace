@@ -8,6 +8,7 @@ import {
   Tabs,
   useMediaQuery,
 } from "@mui/material";
+import Loading from "../../loading";
 import React, { useState, useEffect } from "react";
 import banner from "../../images/banner.png";
 import UserProfileCards from "./UserProfileCards";
@@ -66,6 +67,7 @@ function TabPanel(props) {
 
 export default function UserProfile({ id }) {
   const [value, setValue] = useState("0");
+  const [loading, setLoading] = useState(false);
   const [userprofile, setProfilestate] = useState("");
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();
@@ -134,327 +136,333 @@ export default function UserProfile({ id }) {
   /////////////////Fetch login  user details //////////////
   const fetchuser = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get(`${url}/getuser/${id}`);
       console.log("Profile value", data);
       setProfilestate(data?.data);
+      setLoading(false);
     } catch (error) {
       console.log("user profile value error", error);
+      setLoading(false);
     }
   };
   useEffect(() => {
     fetchuser();
   }, [id]);
-
+  console.log("userprofile:", userprofile);
   return (
-    <Box
-      position="relative"
-      mt={matches ? -2 : -10}
-      pb={5}
-      width="100%"
-      bgcolor={theme.primary.bg}
-    >
-      <img
-        src={sh13}
-        alt=""
-        style={{
-          position: "absolute",
-          width: "60%",
-          top: "5%",
-          left: "0%",
-          // zIndex: -1,
-        }}
-      />
-      <img
-        src={sh14}
-        alt=""
-        style={{
-          position: "absolute",
-          width: "30%",
-          top: "65%",
-          left: "-5%",
-          // zIndex: -1,
-        }}
-      />
-      <img
-        src={sh12}
-        alt=""
-        style={{
-          position: "absolute",
-          width: "40%",
-          top: "85%",
-          left: "50%",
-          // zIndex: -1,
-        }}
-      />
-      <Box width="100%">
-        <img width="100%" src={banner} alt="" />
-      </Box>
-      <Container maxWidth="lg">
-        <Grid container justifyContent="center">
-          <Grid item xs={12} sm={2.5} zIndex={1}>
-            <UserProfileSidebar profileInfo={userprofile} />
-          </Grid>
-          <Grid item ml={matches ? 0 : 3} xs={12} sm={8.5} zIndex={1}>
-            <Box
-              mt={5}
-              display="flex"
-              alignItems="center"
-              //   justifyContent="center"
-              pt={3}
-            >
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                sx={{
-                  "& .MuiTabs-indicator": {
-                    // display: "none",
-                    background: theme.primary.bgButtonTwo,
-                  },
-                }}
-              >
-                <AntTab label="All" />
-                <AntTab label="Trending" />
-                <AntTab label="Collectibles" />
-                <AntTab label="Domain Names" />
-                <AntTab label="Music" />
-                <AntTab label="Photography" />
-              </Tabs>
-            </Box>
-            <TabPanel value={value} index={0}>
-              <Box my={5}>
-                <Grid container spacing={2}>
-                  {cardData1.map(
-                    (
-                      {
-                        img,
-                        icon,
-                        name,
-                        owner,
-                        currencyLogo,
-                        favourite,
-                        price,
-                      },
-                      i
-                    ) => {
-                      return (
-                        <Grid key={i} item xs={12} sm={4} md={4}>
-                          <UserProfileCards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
-                        </Grid>
-                      );
-                    }
-                  )}
-                </Grid>
-              </Box>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <Box my={5}>
-                <Grid container spacing={2}>
-                  {cardData1.map(
-                    (
-                      {
-                        img,
-                        icon,
-                        name,
-                        owner,
-                        currencyLogo,
-                        favourite,
-                        price,
-                      },
-                      i
-                    ) => {
-                      return (
-                        <Grid key={i} item xs={12} sm={4} md={4}>
-                          <UserProfileCards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
-                        </Grid>
-                      );
-                    }
-                  )}
-                </Grid>
-              </Box>
-            </TabPanel>
-
-            <TabPanel value={value} index={2}>
-              <Box my={5}>
-                <Grid container spacing={2}>
-                  {cardData1.map(
-                    (
-                      {
-                        img,
-                        icon,
-                        name,
-                        owner,
-                        currencyLogo,
-                        favourite,
-                        price,
-                      },
-                      i
-                    ) => {
-                      return (
-                        <Grid key={i} item xs={12} sm={4} md={4}>
-                          <UserProfileCards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
-                        </Grid>
-                      );
-                    }
-                  )}
-                </Grid>
-              </Box>
-            </TabPanel>
-
-            <TabPanel value={value} index={3}>
-              <Box my={5}>
-                <Grid container spacing={2}>
-                  {cardData1.map(
-                    (
-                      {
-                        img,
-                        icon,
-                        name,
-                        owner,
-                        currencyLogo,
-                        favourite,
-                        price,
-                      },
-                      i
-                    ) => {
-                      return (
-                        <Grid key={i} item xs={12} sm={4} md={4}>
-                          <UserProfileCards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
-                        </Grid>
-                      );
-                    }
-                  )}
-                </Grid>
-              </Box>
-            </TabPanel>
-
-            <TabPanel value={value} index={4}>
-              <Box my={5}>
-                <Grid container spacing={2}>
-                  {cardData1.map(
-                    (
-                      {
-                        img,
-                        icon,
-                        name,
-                        owner,
-                        currencyLogo,
-                        favourite,
-                        price,
-                      },
-                      i
-                    ) => {
-                      return (
-                        <Grid key={i} item xs={12} sm={4} md={4}>
-                          <UserProfileCards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
-                        </Grid>
-                      );
-                    }
-                  )}
-                </Grid>
-              </Box>
-            </TabPanel>
-
-            <TabPanel value={value} index={5}>
-              <Box my={5}>
-                <Grid container spacing={2}>
-                  {cardData1.map(
-                    (
-                      {
-                        img,
-                        icon,
-                        name,
-                        owner,
-                        currencyLogo,
-                        favourite,
-                        price,
-                      },
-                      i
-                    ) => {
-                      return (
-                        <Grid key={i} item xs={12} sm={4} md={4}>
-                          <UserProfileCards
-                            img={img}
-                            icon={icon}
-                            name={name}
-                            owner={owner}
-                            currencyLogo={currencyLogo}
-                            favourite={favourite}
-                            price={price}
-                          />
-                        </Grid>
-                      );
-                    }
-                  )}
-                </Grid>
-              </Box>
-            </TabPanel>
-            <Box
-              mt={2}
-              py={3}
-              display="flex"
-              justifyContent="center"
-              width="100%"
-            >
+    <>
+      <Loading loading={loading} />
+      <Box
+        position="relative"
+        mt={matches ? -2 : -10}
+        pb={5}
+        width="100%"
+        bgcolor={theme.primary.bg}
+      >
+        <img
+          src={sh13}
+          alt=""
+          style={{
+            position: "absolute",
+            width: "60%",
+            top: "5%",
+            left: "0%",
+            // zIndex: -1,
+          }}
+        />
+        <img
+          src={sh14}
+          alt=""
+          style={{
+            position: "absolute",
+            width: "30%",
+            top: "65%",
+            left: "-5%",
+            // zIndex: -1,
+          }}
+        />
+        <img
+          src={sh12}
+          alt=""
+          style={{
+            position: "absolute",
+            width: "40%",
+            top: "85%",
+            left: "50%",
+            // zIndex: -1,
+          }}
+        />
+        <Box width="100%">
+          <img width="100%" src={banner} alt="" />
+        </Box>
+        <Container maxWidth="lg">
+          <Grid container justifyContent="center">
+            <Grid item xs={12} sm={2.5} zIndex={1}>
+              <UserProfileSidebar userInfo={userprofile} />
+            </Grid>
+            <Grid item ml={matches ? 0 : 3} xs={12} sm={8.5} zIndex={1}>
               <Box
-                width="241px"
-                height="46px"
-                bgcolor={theme.primary.bgButtonTwo}
-                borderRadius="50px"
-                sx={{ cursor: "pointer" }}
+                mt={5}
+                display="flex"
+                alignItems="center"
+                //   justifyContent="center"
+                pt={3}
+              >
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  sx={{
+                    "& .MuiTabs-indicator": {
+                      // display: "none",
+                      background: theme.primary.bgButtonTwo,
+                    },
+                  }}
+                >
+                  <AntTab label="All" />
+                  <AntTab label="Trending" />
+                  <AntTab label="Collectibles" />
+                  <AntTab label="Domain Names" />
+                  <AntTab label="Music" />
+                  <AntTab label="Photography" />
+                </Tabs>
+              </Box>
+              <TabPanel value={value} index={0}>
+                <Box my={5}>
+                  <Grid container spacing={2}>
+                    {cardData1.map(
+                      (
+                        {
+                          img,
+                          icon,
+                          name,
+                          owner,
+                          currencyLogo,
+                          favourite,
+                          price,
+                        },
+                        i
+                      ) => {
+                        return (
+                          <Grid key={i} item xs={12} sm={4} md={4}>
+                            <UserProfileCards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Grid>
+                        );
+                      }
+                    )}
+                  </Grid>
+                </Box>
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                <Box my={5}>
+                  <Grid container spacing={2}>
+                    {cardData1.map(
+                      (
+                        {
+                          img,
+                          icon,
+                          name,
+                          owner,
+                          currencyLogo,
+                          favourite,
+                          price,
+                        },
+                        i
+                      ) => {
+                        return (
+                          <Grid key={i} item xs={12} sm={4} md={4}>
+                            <UserProfileCards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Grid>
+                        );
+                      }
+                    )}
+                  </Grid>
+                </Box>
+              </TabPanel>
+
+              <TabPanel value={value} index={2}>
+                <Box my={5}>
+                  <Grid container spacing={2}>
+                    {cardData1.map(
+                      (
+                        {
+                          img,
+                          icon,
+                          name,
+                          owner,
+                          currencyLogo,
+                          favourite,
+                          price,
+                        },
+                        i
+                      ) => {
+                        return (
+                          <Grid key={i} item xs={12} sm={4} md={4}>
+                            <UserProfileCards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Grid>
+                        );
+                      }
+                    )}
+                  </Grid>
+                </Box>
+              </TabPanel>
+
+              <TabPanel value={value} index={3}>
+                <Box my={5}>
+                  <Grid container spacing={2}>
+                    {cardData1.map(
+                      (
+                        {
+                          img,
+                          icon,
+                          name,
+                          owner,
+                          currencyLogo,
+                          favourite,
+                          price,
+                        },
+                        i
+                      ) => {
+                        return (
+                          <Grid key={i} item xs={12} sm={4} md={4}>
+                            <UserProfileCards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Grid>
+                        );
+                      }
+                    )}
+                  </Grid>
+                </Box>
+              </TabPanel>
+
+              <TabPanel value={value} index={4}>
+                <Box my={5}>
+                  <Grid container spacing={2}>
+                    {cardData1.map(
+                      (
+                        {
+                          img,
+                          icon,
+                          name,
+                          owner,
+                          currencyLogo,
+                          favourite,
+                          price,
+                        },
+                        i
+                      ) => {
+                        return (
+                          <Grid key={i} item xs={12} sm={4} md={4}>
+                            <UserProfileCards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Grid>
+                        );
+                      }
+                    )}
+                  </Grid>
+                </Box>
+              </TabPanel>
+
+              <TabPanel value={value} index={5}>
+                <Box my={5}>
+                  <Grid container spacing={2}>
+                    {cardData1.map(
+                      (
+                        {
+                          img,
+                          icon,
+                          name,
+                          owner,
+                          currencyLogo,
+                          favourite,
+                          price,
+                        },
+                        i
+                      ) => {
+                        return (
+                          <Grid key={i} item xs={12} sm={4} md={4}>
+                            <UserProfileCards
+                              img={img}
+                              icon={icon}
+                              name={name}
+                              owner={owner}
+                              currencyLogo={currencyLogo}
+                              favourite={favourite}
+                              price={price}
+                            />
+                          </Grid>
+                        );
+                      }
+                    )}
+                  </Grid>
+                </Box>
+              </TabPanel>
+              <Box
+                mt={2}
+                py={3}
                 display="flex"
                 justifyContent="center"
-                alignItems="center"
-                color={theme.primary.subtext}
-                fontWeight="700"
-                fontSize="14px"
-                style={{ zIndex: 1 }}
+                width="100%"
               >
-                Load More
+                <Box
+                  width="241px"
+                  height="46px"
+                  bgcolor={theme.primary.bgButtonTwo}
+                  borderRadius="50px"
+                  sx={{ cursor: "pointer" }}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  color={theme.primary.subtext}
+                  fontWeight="700"
+                  fontSize="14px"
+                  style={{ zIndex: 1 }}
+                >
+                  Load More
+                </Box>
               </Box>
-            </Box>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+    </>
   );
 }

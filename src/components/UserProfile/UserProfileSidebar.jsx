@@ -1,20 +1,26 @@
 import { Box, Container, useMediaQuery } from "@mui/material";
-import { useContext } from "react";
 import profileImg from "../../images/profileImg.png";
 import facebook from "../../images/fb.png";
 import twitter from "../../images/tw.png";
 import arrow from "../../images/arrow.png";
-import { AppContext } from "../../utils";
 import { useTheme } from "@emotion/react";
 import GroupIcon from "@mui/icons-material/Group";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import eth11 from "../../images/eth11.png";
-function UserProfileSidebar({ profileInfo }) {
-  console.log("profileInfo", profileInfo);
+import Editeprofile from "./ProfileEdite";
+import React, { useState } from "react";
+import { url } from "../URL";
+function UserProfileSidebar({ userInfo }) {
+  const [open, setOpenstate] = useState(false);
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();
-  const { account } = useContext(AppContext);
+
+  //////////Edite Profile handler/////////
+  const editeHandler = () => {
+    setOpenstate(true);
+  };
+  console.log("user side bar:", userInfo);
   return (
     <Box
       mt={matches ? -4 : -10}
@@ -23,11 +29,21 @@ function UserProfileSidebar({ profileInfo }) {
       boxShadow={theme.primary.boxShadow}
       zIndex={1}
     >
+      <Editeprofile open={open} func={setOpenstate} userInfo={userInfo} />
       <Box py={4}>
         <Container>
           <Box display="flex" flexDirection="column">
-            <Box textAlign="center">
-              <img width="100px" src={profileImg} alt="" />
+            <Box textAlign="center" borderRadius="50%">
+              {userInfo?.img ? (
+                <img
+                  width="100px"
+                  height="100px"
+                  src={`${url}/upload/${userInfo?.img}`}
+                  alt=""
+                />
+              ) : (
+                <img width="100px" src={profileImg} alt="" />
+              )}
             </Box>
             <Box
               textAlign="center"
@@ -36,7 +52,7 @@ function UserProfileSidebar({ profileInfo }) {
               color={theme.primary.text}
               mt={2}
             >
-              {profileInfo ? profileInfo?.name : "user name"}
+              {userInfo ? userInfo?.name : "user name"}
             </Box>
             <Box
               textAlign="center"
@@ -51,12 +67,14 @@ function UserProfileSidebar({ profileInfo }) {
                 style={{ marginRight: "10px" }}
                 alt=""
               />
-              {profileInfo ? profileInfo.walletaddress : "user wallet address"}
+              {userInfo
+                ? userInfo.walletaddress.slice(0, 22)
+                : "user wallet address"}
             </Box>
             <Box
               mt={1}
               display={"flex"}
-              justifyContent="center"
+              justifyContent="centr"
               alignItems="center"
             >
               <Box
@@ -76,6 +94,9 @@ function UserProfileSidebar({ profileInfo }) {
                   backgroundClip: "content-box, border-box",
                   boxShadow: "3px 8px 17px rgba(0, 0, 0, 0.15)",
                   padding: "2px",
+                }}
+                onClick={() => {
+                  editeHandler();
                 }}
               >
                 Edite
