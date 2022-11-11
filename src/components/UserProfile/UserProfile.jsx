@@ -8,7 +8,7 @@ import {
   Tabs,
   useMediaQuery,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import banner from "../../images/banner.png";
 import UserProfileCards from "./UserProfileCards";
 import UserProfileSidebar from "./UserProfileSidebar";
@@ -30,7 +30,8 @@ import card4 from "../../images/card4.png";
 import sh14 from "../../images/sh14.png";
 import sh13 from "../../images/sh13.png";
 import sh12 from "../../images/sh12.png";
-
+import axios from "axios";
+import { url } from "../URL";
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
     textTransform: "none",
@@ -63,8 +64,9 @@ function TabPanel(props) {
   );
 }
 
-export default function UserProfile() {
-  const [value, setValue] = useState(0);
+export default function UserProfile({ id }) {
+  const [value, setValue] = useState("0");
+  const [userprofile, setProfilestate] = useState("");
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();
   const handleChange = (event, newValue) => {
@@ -129,6 +131,20 @@ export default function UserProfile() {
     },
   ];
 
+  /////////////////Fetch login  user details //////////////
+  const fetchuser = async () => {
+    try {
+      const { data } = await axios.get(`${url}/getuser/${id}`);
+      console.log("Profile value", data);
+      setProfilestate(data?.data);
+    } catch (error) {
+      console.log("user profile value error", error);
+    }
+  };
+  useEffect(() => {
+    fetchuser();
+  }, [id]);
+
   return (
     <Box
       position="relative"
@@ -176,7 +192,7 @@ export default function UserProfile() {
       <Container maxWidth="lg">
         <Grid container justifyContent="center">
           <Grid item xs={12} sm={2.5} zIndex={1}>
-            <UserProfileSidebar />
+            <UserProfileSidebar profileInfo={userprofile} />
           </Grid>
           <Grid item ml={matches ? 0 : 3} xs={12} sm={8.5} zIndex={1}>
             <Box

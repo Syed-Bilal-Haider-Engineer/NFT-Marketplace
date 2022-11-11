@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
@@ -10,8 +10,10 @@ import { Box, Button, Container, Grid, Stack } from "@mui/material";
 import loginImg from "../../images/Login-img.png";
 import sh4 from "../../images/sh4.png";
 import sh8 from "../../images/sh8.png";
-
+import { AppContext } from "../../utils";
+import { url } from "../URL";
 export default function Register() {
+  const { account } = useContext(AppContext);
   const navigate = useNavigate();
   const toastOptions = {
     position: "bottom-right",
@@ -24,6 +26,7 @@ export default function Register() {
     username: "",
     email: "",
     password: "",
+    walletaddress: account,
     confirmPassword: "",
   });
 
@@ -66,25 +69,33 @@ export default function Register() {
   };
 
   const handleSubmit = async (event) => {
-    // event.preventDefault();
-    // if (handleValidation()) {
-    //   const { email, username, password } = values;
-    //   const { data } = await axios.post(registerRoute, {
-    //     username,
-    //     email,
-    //     password,
-    //   });
-    //   if (data.status === false) {
-    //     toast.error(data.msg, toastOptions);
-    //   }
-    //   if (data.status === true) {
-    //     localStorage.setItem(
-    //       process.env.REACT_APP_LOCALHOST_KEY,
-    //       JSON.stringify(data.user)
-    //     );
-    //     navigate("/");
-    //   }
-    // }
+    event.preventDefault();
+    if (handleValidation()) {
+      try {
+        if (account) {
+          const { email, username, password, walletaddress } = values;
+          console.log(values, "values");
+          const { data } = await axios.post(`${url}/createuser`, {
+            name: username,
+            email,
+            password,
+            walletaddress,
+          });
+          setValues({
+            username: "",
+            email: "",
+            password: "",
+            walletaddress: account,
+            confirmPassword: "",
+          });
+          data?.status == "ok" && toast.success(data?.message);
+        } else {
+          toast.error("please connect with Wallet");
+        }
+      } catch (error) {
+        console.log("signup error", error);
+      }
+    }
   };
 
   return (
