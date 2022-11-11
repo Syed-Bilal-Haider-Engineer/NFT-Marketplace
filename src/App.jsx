@@ -8,7 +8,6 @@ import NetworkChange from "./networkSwitch";
 import Homepage from "./components/LandingPage/Homepage";
 import { Route, Routes } from "react-router-dom";
 import NoteableDrops from "./components/LandingPage/NoteableDrops";
-
 import Dashboard from "./components/Dashboard/Dashboard";
 import TopCollecions from "./components/LandingPage/TopCollecions";
 import ResourcesPart from "./components/LandingPage/ResourcesPart";
@@ -24,10 +23,10 @@ import MarketPlace from "./components/MarketPlace/MarketPlace";
 import Collections from "./components/Collections/Collections";
 import UserProfile from "./components/UserProfile/UserProfile";
 import MarqueeComp from "./components/LandingPage/MarqueeComp";
-
+import { url } from "./components/URL";
 function App() {
   const [switchNetwork, setswitchNetwork] = useState(false);
-
+  const [userid, setUserId] = useState("");
   // const LightTheme = createTheme({
   //   primary: {
   //     bgHeader: "transparent",
@@ -91,7 +90,31 @@ function App() {
     };
     chain();
   }, []);
+  ///////////////Token  verifications here//////////////
+  const token = localStorage.getItem("nft_aly_Token");
+  const tokenVerfiy = async () => {
+    try {
+      await fetch(`${url}/verifytoken`, {
+        method: "POST",
+        headers: {
+          "x-access-token": token,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setUserId(data.id);
+          console.log("token verify value", data);
+        });
+    } catch (error) {
+      console.log("Token verify route", error);
+    }
+  };
 
+  useEffect(() => {
+    if (token) {
+      tokenVerfiy();
+    }
+  }, [token]);
   return (
     <>
       <NetworkChange open={switchNetwork} setOpen={setswitchNetwork} />
@@ -117,7 +140,7 @@ function App() {
           <Route path="/explore" element={<NftDetail />} />
           <Route path="/marketplace" element={<MarketPlace />} />
           <Route path="/collections" element={<Collections />} />
-          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/user-profile" element={<UserProfile id={userid} />} />
           <Route path="/*" element={<Dashboard />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />

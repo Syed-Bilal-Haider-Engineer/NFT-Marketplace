@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
 // import Logo from "../../../assets/logo.svg";
-// import { loginRoute } from "../../utils/APIRoutes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Box, Button, Grid, Stack } from "@mui/material";
@@ -11,6 +10,8 @@ import { Container } from "@mui/system";
 import loginImg from "../../images/Login-img.png";
 import sh4 from "../../images/sh4.png";
 import sh8 from "../../images/sh8.png";
+import { AppContext } from "../../utils";
+import { url } from "../URL";
 // import Eth from "./assets/Eth.png";
 // import Tz from "./assets/Tz.png";
 // import Flow from "./assets/Flow.png";
@@ -20,6 +21,7 @@ import sh8 from "../../images/sh8.png";
 // import TabPanel from "@mui/lab/TabPanel";
 
 export default function Login() {
+  const { account } = useContext(AppContext);
   const [value, setValue] = React.useState("1");
 
   const handleTabChange = (event, newValue) => {
@@ -27,7 +29,11 @@ export default function Login() {
   };
   //
   const navigate = useNavigate();
-  const [values, setValues] = useState({ username: "", password: "" });
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    walletaddress: account,
+  });
   const toastOptions = {
     position: "bottom-right",
     autoClose: 8000,
@@ -46,8 +52,8 @@ export default function Login() {
   };
 
   const validateForm = () => {
-    const { username, password } = values;
-    if (username === "") {
+    const { email, password } = values;
+    if (email === "") {
       toast.error("Email and Password is required.", toastOptions);
       return false;
     } else if (password === "") {
@@ -58,24 +64,37 @@ export default function Login() {
   };
 
   const handleSubmit = async (event) => {
-    // event.preventDefault();
-    // if (validateForm()) {
-    //   const { username, password } = values;
-    //   const { data } = await axios.post(loginRoute, {
-    //     username,
-    //     password,
-    //   });
-    //   if (data.status === false) {
-    //     toast.error(data.msg, toastOptions);
-    //   }
-    //   if (data.status === true) {
-    //     localStorage.setItem(
-    //       process.env.REACT_APP_LOCALHOST_KEY,
-    //       JSON.stringify(data.user)
-    //     );
-    //     navigate("/chat");
-    //   }
-    // }
+    event.preventDefault();
+    if (validateForm()) {
+      try {
+        if (account) {
+          const { email, password, walletaddress } = values;
+          const { data } = await axios.post(`${url}/login`, {
+            email,
+            password,
+            walletaddress,
+          });
+          console.log("data login:", data);
+          if (data.status == false) {
+            toast.error(data.msg, toastOptions);
+          }
+          if (data.status == true) {
+            console.log("login succesfully", data);
+            localStorage.setItem("nft_aly_Token", data?.token);
+            setValue({
+              email: "",
+              password: "",
+              walletaddress: account,
+            });
+            toast.success(data?.message);
+          }
+        } else {
+          toast.error("Please connect with wallet");
+        }
+      } catch (error) {
+        console.log("login error", error);
+      }
+    }
   };
 
   return (
@@ -173,17 +192,18 @@ export default function Login() {
               <FormContainer>
                 <form action="" onSubmit={(event) => handleSubmit(event)}>
                   <input
-                    type="text"
-                    placeholder="Username"
-                    name="username"
+                    type="email"
+                    placeholder="email"
+                    name="email"
                     onChange={(e) => handleChange(e)}
-                    min="3"
+                    required
                   />
                   <input
                     type="password"
                     placeholder="Password"
                     name="password"
                     onChange={(e) => handleChange(e)}
+                    required
                   />
                   <button type="submit">Log In</button>
                 </form>

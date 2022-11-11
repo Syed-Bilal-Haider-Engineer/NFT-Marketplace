@@ -10,7 +10,8 @@ import GroupIcon from "@mui/icons-material/Group";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import eth11 from "../../images/eth11.png";
-function UserProfileSidebar() {
+function UserProfileSidebar({ profileInfo }) {
+  console.log("profileInfo", profileInfo);
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();
   const { account } = useContext(AppContext);
@@ -50,7 +51,7 @@ function UserProfileSidebar() {
                 style={{ marginRight: "10px" }}
                 alt=""
               />
-              0x59485…82590
+              {account ? account : ""}
             </Box>
             <Box
               mt={1}
