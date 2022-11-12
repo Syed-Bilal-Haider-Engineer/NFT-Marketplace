@@ -32,6 +32,7 @@
     "react-svg-piechart": "^2.4.2",
     "react-toastify": "^9.0.8",
     "recharts": "^2.1.12",
+    "socket.io-client": "^4.5.3",
     "swiper": "^8.4.4",
     "web-vitals": "^2.1.0",
     "web3": "^1.7.5",

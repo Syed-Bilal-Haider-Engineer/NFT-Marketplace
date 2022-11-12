@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Box,
@@ -10,13 +10,67 @@ import {
   TextField,
 } from "@mui/material";
 import popIcon41 from "../../images/popIcon41.png";
+import io from "socket.io-client";
 import { useTheme } from "@emotion/react";
 import Icon from "../../images/Icon.png";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import GifBoxIcon from "@mui/icons-material/GifBox";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 const Chat = () => {
+  const [user, setUser] = useState([]);
+  const [initialMsg, setInitialMsg] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [msg, setMsg] = useState([]);
+  const [myRooms, setMyRooms] = useState([]);
+
+  const socket = io("http://localhost:8080");
+  const location = useLocation();
   const theme = useTheme();
+  let myAddress = "123";
+  useEffect(() => {
+    socket.emit("create-room", {
+      user1: location?.state?.walletAddress,
+      user2: myAddress,
+    });
+    console.log("running", socket);
+  }, []);
+
+  useEffect(() => {
+    socket.on("recieve-message", ({ name, message }) => {
+      console.log(name, message, "messaf");
+      msg.push({ walletAddress: name, message: message });
+      setMsg([...msg]);
+    });
+    socket.on("allRoomsUsers", ({ rooms }) => {
+      let allusers = [];
+      for (let i = 0; i < rooms.length; i++) {
+        allusers.push(...rooms[i].users);
+      }
+
+      setMyRooms(allusers);
+    });
+
+    // GetUsers().then((data) => {
+    //   setUsers(data.data);
+    // });
+    socket.on("recieve-room", ({ room }) => {
+      setInitialMsg([...room.messages]);
+      setMsg([]);
+    });
+  }, []);
+  const allMsg = [...initialMsg, ...msg];
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      socket.emit("message", {
+        name: myAddress,
+        message: event.target.value,
+        otherUser: location?.state?.walletAddress,
+      });
+      console.log(socket, "socket");
+    }
+  };
   return (
     <Box
       sx={{
@@ -83,7 +137,7 @@ const Chat = () => {
       </Box>
 
       <div className="chatBody">
-        <Box className="chat-msg">
+        {/* <Box className="chat-msg">
           <Avatar src={popIcon41}></Avatar>
           <Box
             sx={{
@@ -96,9 +150,35 @@ const Chat = () => {
           >
             Hi , How are you doing
           </Box>
-        </Box>
+        </Box> */}
+        {allMsg.map((msg) => {
+          return (
+            <Box
+              className={
+                msg.walletAddress === myAddress
+                  ? "chat-msg chat-reciver"
+                  : "chat-msg"
+              }
+            >
+              <Box
+                sx={{
+                  backgroundColor: "transparent",
+                  padding: "0.5rem 1rem",
+                  border: "1px solid #0DF17F",
+                  borderRadius: "15px",
+                  color: "white",
+                  maxWidth: "230px",
+                }}
+              >
+                {msg?.message}
+              </Box>
 
-        <Box className="chat-msg chat-reciver">
+              <Avatar src={popIcon41} sx={{ marginLeft: "1rem" }}></Avatar>
+            </Box>
+          );
+        })}
+
+        {/* <Box className="chat-msg chat-reciver">
           <Box
             sx={{
               backgroundColor: "transparent",
@@ -130,10 +210,11 @@ const Chat = () => {
             Actually I really like your NFT collection, they
             <br /> are awesome
           </Box>
-        </Box>
+        </Box> */}
       </div>
       <Box mb={2} px={6}>
         <TextField
+          onKeyPress={handleKeyPress}
           sx={{
             width: { xs: "100%", md: "100%" },
 
@@ -214,6 +295,7 @@ const Chat = () => {
               </>
             ),
           }}
+          on
         />
       </Box>
     </Box>

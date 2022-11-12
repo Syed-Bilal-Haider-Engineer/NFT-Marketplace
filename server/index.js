@@ -1,9 +1,13 @@
 import express from "express";
 import routes from "./Routes/routes.js";
 import cors from "cors";
+import { Server } from "socket.io";
 import connectDB from "./Database/connectDB.js";
 import multer from "multer";
 import usersModal from "./Modules/User.js";
+import CreateRoom from "./ChatOperations/createRoom.js";
+import pushMsg from "./ChatOperations/pushMsg.js";
+import findRoom from "./ChatOperations/findRoom.js";
 import path from "path";
 import fs from "fs";
 const app = express();
@@ -95,6 +99,35 @@ app.get("/*", function (req, res) {
   });
 });
 
-app.listen(PORT, (req, res) => {
+const server = app.listen(PORT, (req, res) => {
   console.log("Server run successfully");
+});
+
+const io = new Server(server, {
+  cors: {
+    origin:
+      process.env.NODE_ENV === "production" ? "" : "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
+io.on("connection", (socket) => {
+  socket.on("create-room", async ({ user1, user2 }) => {
+    const room = await CreateRoom(user1, user2);
+
+    socket.emit("recieve-room", { room });
+    socket.join(`${room._id}`);
+  });
+  socket.on("findRooms", async ({ account }) => {
+    const rooms = await findRoom(account);
+
+    socket.emit("allRoomsUsers", { rooms });
+  });
+
+  socket.on("message", async ({ name, message, otherUser }) => {
+    const room = await CreateRoom(name, otherUser);
+    pushMsg(message, room, name);
+    socket
+      .to(`${room._id}`)
+      .emit("recieve-message", { name, message, otherUser });
+  });
 });

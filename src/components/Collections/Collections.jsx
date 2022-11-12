@@ -5,12 +5,13 @@ import {
   Typography,
   Grid,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Cards from "./Cards";
 import eth11 from "../../images/eth11.png";
@@ -84,6 +85,7 @@ function TabPanel(props) {
 }
 
 function Collections() {
+  const navigate = useNavigate();
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -278,6 +280,11 @@ function Collections() {
         >
           8SIAN Main Collection
         </Typography>
+        <Button
+          onClick={() => navigate("/chat", { state: { walletAddress: "456" } })}
+        >
+          Send Message
+        </Button>
         <Typography
           sx={{
             color: theme.primary.text,
