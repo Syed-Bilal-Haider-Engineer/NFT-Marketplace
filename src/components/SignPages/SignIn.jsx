@@ -32,7 +32,7 @@ export default function Login() {
   const [values, setValues] = useState({
     email: "",
     password: "",
-    walletaddress: account,
+    walletaddress: "",
   });
   const toastOptions = {
     position: "bottom-right",
@@ -66,9 +66,14 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
+      const uservalues = {
+        ...values,
+        walletaddress: account?.toLowerCase(),
+      };
+      console.log("uservalues:", uservalues);
       try {
         if (account) {
-          const { email, password, walletaddress } = values;
+          const { email, password, walletaddress } = uservalues;
           const { data } = await axios.post(`${url}/login`, {
             email,
             password,
@@ -87,7 +92,11 @@ export default function Login() {
               walletaddress: account,
             });
             toast.success(data?.message);
+            setTimeout(() => {
+              navigate("/");
+            }, 2500);
           }
+          data?.status == false && toast.error(data?.message);
         } else {
           toast.error("Please connect with wallet");
         }

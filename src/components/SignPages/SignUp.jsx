@@ -23,13 +23,13 @@ export default function Register() {
     theme: "dark",
   };
   const [values, setValues] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
-    walletaddress: account,
+    walletaddress: "",
     confirmPassword: "",
   });
-
+  console.log("account:", account);
   useEffect(() => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       navigate("/");
@@ -41,18 +41,15 @@ export default function Register() {
   };
 
   const handleValidation = () => {
-    const { password, confirmPassword, username, email } = values;
+    const { password, confirmPassword, name, email } = values;
     if (password !== confirmPassword) {
       toast.error(
         "Password and confirm password should be same.",
         toastOptions
       );
       return false;
-    } else if (username.length < 3) {
-      toast.error(
-        "Username should be greater than 3 characters.",
-        toastOptions
-      );
+    } else if (name.length < 3) {
+      toast.error("name should be greater than 3 characters.", toastOptions);
       return false;
     } else if (password.length < 8) {
       toast.error(
@@ -73,22 +70,26 @@ export default function Register() {
     if (handleValidation()) {
       try {
         if (account) {
-          const { email, username, password, walletaddress } = values;
-          console.log(values, "values");
-          const { data } = await axios.post(`${url}/createuser`, {
-            name: username,
-            email,
-            password,
-            walletaddress,
-          });
-          setValues({
-            username: "",
-            email: "",
-            password: "",
-            walletaddress: account,
-            confirmPassword: "",
-          });
-          data?.status == "ok" && toast.success(data?.message);
+          const uservalues = {
+            ...values,
+            walletaddress: account?.toLowerCase(),
+          };
+          const { data } = await axios.post(`${url}/createuser`, uservalues);
+          console.log("value:", data);
+          if (data?.status == "ok") {
+            toast.success(data?.message);
+            setValues({
+              name: "",
+              email: "",
+              password: "",
+              walletaddress: account,
+              confirmPassword: "",
+            });
+            setTimeout(() => {
+              navigate("/");
+            }, 2500);
+          }
+          data?.error == false && toast.error(data?.message);
         } else {
           toast.error("please connect with Wallet");
         }
@@ -194,8 +195,8 @@ export default function Register() {
                 <form action="" onSubmit={(event) => handleSubmit(event)}>
                   <input
                     type="text"
-                    placeholder="Username"
-                    name="username"
+                    placeholder="name"
+                    name="name"
                     onChange={(e) => handleChange(e)}
                   />
                   <input
@@ -287,8 +288,8 @@ export default function Register() {
        
           <input
             type="text"
-            placeholder="Username"
-            name="username"
+            placeholder="name"
+            name="name"
             onChange={(e) => handleChange(e)}
           />
           <input
