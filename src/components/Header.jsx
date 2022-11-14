@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, styled, Menu, MenuItem, Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
@@ -80,9 +80,16 @@ export default function Header() {
   const { account, connect, disconnect } = useContext(AppContext);
   const classes = useStyles();
   const loc = useLocation();
+  const [useExist, setuseExist] = useState("");
   const [state, setState] = React.useState({
     left: false,
   });
+  useEffect(() => {
+    try {
+      const userLogin = localStorage.getItem("nft_aly_Token");
+      setuseExist(userLogin);
+    } catch (error) {}
+  }, []);
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event &&
@@ -479,7 +486,7 @@ export default function Header() {
                   </Box>
                 )}
                 <Link
-                  to="/user-profile"
+                  to={useExist ? "/user-profile" : "/signin"}
                   style={{ textDecoration: "none", color: "#000000" }}
                 >
                   <Box

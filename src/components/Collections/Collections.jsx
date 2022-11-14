@@ -182,17 +182,17 @@ function Collections() {
           // zIndex: -1,
         }}
       />
-      {/* <img
+      <img
         src={sh12}
         alt=""
         style={{
           position: "absolute",
-          width: "70%",
+          width: "90%",
           bottom: matches ? "10%" : "40%",
           left: "10%",
           zIndex: 0,
         }}
-      /> */}
+      />
       <Container maxWidth="lg">
         <Box position="relative">
           <Box
@@ -280,11 +280,11 @@ function Collections() {
         >
           8SIAN Main Collection
         </Typography>
-        <Button
+        {/* <Button
           onClick={() => navigate("/chat", { state: { walletAddress: "456" } })}
         >
           Send Message
-        </Button>
+        </Button> */}
         <Typography
           sx={{
             color: theme.primary.text,

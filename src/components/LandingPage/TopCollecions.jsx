@@ -20,7 +20,7 @@ import ArtS8 from "../../images/ArtS8.png";
 import ArtS9 from "../../images/ArtS9.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
-import Ethereum from "../../images/Ethereum.png";
+import Ethereum from "../../images/eth11.png";
 import CollectionsCard from "./CollectionsCard";
 import { useTheme } from "@emotion/react";
 
@@ -179,7 +179,7 @@ export default function TopCollecions() {
               </Box>
             </Box>
           </Box>
-          <Grid container spacing={3}>
+          <Grid container spacing={5}>
             {collectionArray.length > 0 ? (
               collectionArray.map(({ img, logo, nftName, price, apr }, i) => (
                 <Grid key={i} item mt={-5} xs={12} sm={6} md={4}>

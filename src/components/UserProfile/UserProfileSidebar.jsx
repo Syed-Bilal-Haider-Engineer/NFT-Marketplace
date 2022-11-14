@@ -76,16 +76,18 @@ function UserProfileSidebar({ userInfo, setRenderstate, state }) {
             </Box>
             <Box
               mt={1}
-              display={"flex"}
+              display="flex"
               justifyContent="centr"
               alignItems="center"
+              width="100%"
             >
               <Box
-                width="122px"
+                width="100%"
                 height="46px"
                 display={"flex"}
                 justifyContent="center"
                 alignItems="center"
+                mt={1}
                 sx={{
                   color: "#fff",
                   cursor: "pointer",

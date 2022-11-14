@@ -36,11 +36,11 @@ const StyledModal = withStyles((theme) => ({
     },
     "& .MuiDialog-paperScrollPaper": {
       backgroundColor: `lightgray !important`,
-      boxShadow: "#B6CAE8 0px 0px 5px 1px",
+      boxShadow: "#0DF17F 0px 0px 5px 1px",
       borderRadius: 0,
     },
     "& .dialoge__content__section": {
-      background: "#123B53",
+      background: "#172225",
     },
   },
 }))(Dialog);
@@ -141,7 +141,6 @@ function Editeprofile({ open, func, userInfo }) {
                   textAlign: "center",
                   fontSize: "20px",
                   fontWeight: 700,
-                  fontFamily: "Maven Pro",
                   paddingBottom: "10px",
                   color: "#fff",
                 }}
@@ -188,19 +187,18 @@ function Editeprofile({ open, func, userInfo }) {
                   onClick={profilehandler}
                   type="submit"
                   sx={{
+                    background: "#0DF17F",
+                    borderRadius: "23px",
+                    color: "#000000",
+                    fontSize: "14px",
+                    fontWeight: "700",
                     width: "100%",
-                    borderRadius: 0,
-                    my: 1.5,
-                    py: 1.5,
-                    color: "white",
-                    background: `linear-gradient(90deg, rgba(57,87,166,1) 0%, rgba(242,150,191,1) 84%)`,
-                    "&:hover": {
-                      background: `linear-gradient(90deg, rgba(57,87,166,1) 0%, rgba(242,150,191,1) 84%)`,
-                    },
+                    mr: 1,
+                    mt: 2,
                   }}
                   value="submit"
                 >
-                  Edit
+                  EDIT
                 </Button>
               </Box>
             </Box>

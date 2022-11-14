@@ -39,7 +39,10 @@ export default function PopularNftCard({
       >
         {name}
       </Typography>
-      <Typography color="#5D5D5B" fontSize={{ xs: "13px", md: "14px" }}>
+      <Typography
+        color="rgba(255, 255, 255, 0.5)"
+        fontSize={{ xs: "13px", md: "14px" }}
+      >
         by {owner}
       </Typography>
       <Typography
