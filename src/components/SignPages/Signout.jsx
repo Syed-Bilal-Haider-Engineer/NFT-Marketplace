@@ -5,9 +5,10 @@ function Signout() {
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {
-      navigate("/");
+      localStorage.removeItem("nft_aly_Token");
+      window.location = "/";
     } else {
-      navigate("/");
+      window.location = "/";
     }
   }, []);
   return true;

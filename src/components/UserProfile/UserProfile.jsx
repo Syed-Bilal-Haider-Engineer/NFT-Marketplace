@@ -24,8 +24,6 @@ import img3 from "../../images/ArtS7.png";
 import xtz from "../../images/xtz.png";
 import Flow from "../../images/Flow.png";
 import Ethereum from "../../images/Ethereum.png";
-import card1 from "../../images/card1.png";
-import card2 from "../../images/card2.png";
 import card3 from "../../images/card3.png";
 import card4 from "../../images/card4.png";
 import sh14 from "../../images/sh14.png";
@@ -65,7 +63,7 @@ function TabPanel(props) {
   );
 }
 
-export default function UserProfile({ id }) {
+function UserProfile({ id }) {
   const [value, setValue] = useState("0");
   const [renderState, setRenderstate] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -471,3 +469,4 @@ export default function UserProfile({ id }) {
     </>
   );
 }
+export default React.memo(UserProfile);

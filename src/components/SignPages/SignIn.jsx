@@ -19,11 +19,9 @@ import { url } from "../URL";
 // import TabContext from "@mui/lab/TabContext";
 // import TabList from "@mui/lab/TabList";
 // import TabPanel from "@mui/lab/TabPanel";
-
 export default function Login() {
   const { account } = useContext(AppContext);
   const [value, setValue] = React.useState("1");
-
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -93,7 +91,7 @@ export default function Login() {
             });
             toast.success(data?.message);
             setTimeout(() => {
-              navigate("/");
+              window.location = "/";
             }, 2500);
           }
           data?.status == false && toast.error(data?.message);
@@ -301,7 +299,7 @@ export default function Login() {
           </span>
         </form>
       </FormContainer> */}
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </>
   );
 }

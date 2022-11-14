@@ -65,8 +65,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Header() {
+export default function Header({ id }) {
   //close menu tag on click
+  console.log("user id", id);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -80,16 +81,10 @@ export default function Header() {
   const { account, connect, disconnect } = useContext(AppContext);
   const classes = useStyles();
   const loc = useLocation();
-  const [useExist, setuseExist] = useState("");
   const [state, setState] = React.useState({
     left: false,
   });
-  useEffect(() => {
-    try {
-      const userLogin = localStorage.getItem("nft_aly_Token");
-      setuseExist(userLogin);
-    } catch (error) {}
-  }, []);
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event &&
@@ -400,19 +395,36 @@ export default function Header() {
                         Dashboard
                       </MenuItem>
                     </Link>
-                    <Link
-                      to="/signin"
-                      style={{ textDecoration: "none", color: "#000000" }}
-                    >
-                      <MenuItem
-                        style={{ fontWeight: "700" }}
-                        value={2}
-                        onClick={handleClose}
-                        disableRipple
+                    {id == "" ? (
+                      <Link
+                        to="/signin"
+                        style={{ textDecoration: "none", color: "#000000" }}
                       >
-                        Sign In
-                      </MenuItem>
-                    </Link>
+                        <MenuItem
+                          style={{ fontWeight: "700" }}
+                          value={2}
+                          onClick={handleClose}
+                          disableRipple
+                        >
+                          Sign In
+                        </MenuItem>
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/signout"
+                        style={{ textDecoration: "none", color: "#000000" }}
+                      >
+                        <MenuItem
+                          style={{ fontWeight: "700" }}
+                          value={2}
+                          onClick={handleClose}
+                          disableRipple
+                        >
+                          SignOut
+                        </MenuItem>
+                      </Link>
+                    )}
+
                     <Link
                       to="/signup"
                       style={{
@@ -429,19 +441,6 @@ export default function Header() {
                         Sign Up
                       </MenuItem>
                     </Link>
-                    {/* <Link
-                      to="/user-profile"
-                      style={{ textDecoration: "none", color: "#000000" }}
-                    > */}
-                    {/* <MenuItem
-                      style={{ fontWeight: "700" }}
-                      value={4}
-                      onClick={handleClose}
-                      disableRipple
-                    >
-                      User Profile
-                    </MenuItem> */}
-                    {/* </Link> */}
                   </StyledMenu>
                 </Box>
                 {account ? (
@@ -457,7 +456,6 @@ export default function Header() {
                     color="#ffffff"
                     fontWeight="700"
                     fontSize="14px"
-                    onClick={() => disconnect()}
                     style={{ zIndex: 1 }}
                     mr={3}
                   >
@@ -480,13 +478,13 @@ export default function Header() {
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
-                    onClick={() => connect()}
+                    onClick={() => (account ? disconnect() : connect())}
                   >
                     <img src={wallet} alt="" />
                   </Box>
                 )}
                 <Link
-                  to={useExist ? "/user-profile" : "/signin"}
+                  to="/user-profile"
                   style={{ textDecoration: "none", color: "#000000" }}
                 >
                   <Box
@@ -500,7 +498,6 @@ export default function Header() {
                     color="#ffffff"
                     fontWeight="700"
                     fontSize="14px"
-                    onClick={() => disconnect()}
                     style={{ zIndex: 1 }}
                   >
                     <img src={popIcon4} alt="" />

@@ -12,6 +12,7 @@ import Editeprofile from "./ProfileEdite";
 import React, { useState } from "react";
 import { url } from "../URL";
 function UserProfileSidebar({ userInfo, setRenderstate, state }) {
+  console.log("userInfo sidebar:", userInfo);
   const [open, setOpenstate] = useState(false);
   const matches = useMediaQuery("(max-width:750px)");
   const theme = useTheme();

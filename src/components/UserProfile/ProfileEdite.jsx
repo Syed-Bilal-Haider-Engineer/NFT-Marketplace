@@ -54,7 +54,6 @@ function Editeprofile({ open, func, userInfo }) {
     email: "",
     name: "",
   });
-
   useEffect(() => {
     setUserstate({
       ...userstate,
@@ -62,7 +61,7 @@ function Editeprofile({ open, func, userInfo }) {
       email: userInfo?.email,
       name: userInfo?.name,
     });
-  }, []);
+  }, [userInfo]);
 
   const formData = new FormData();
   //input filed change handler;

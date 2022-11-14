@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 // import Logo from "../../../assets/logo.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,7 +17,7 @@ export default function Register() {
   const navigate = useNavigate();
   const toastOptions = {
     position: "bottom-right",
-    autoClose: 8000,
+    autoClose: 2000,
     pauseOnHover: true,
     draggable: true,
     theme: "dark",
@@ -61,10 +61,8 @@ export default function Register() {
       toast.error("Email is required.", toastOptions);
       return false;
     }
-
     return true;
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (handleValidation()) {
@@ -86,7 +84,7 @@ export default function Register() {
               confirmPassword: "",
             });
             setTimeout(() => {
-              navigate("/");
+              navigate("/signin");
             }, 2500);
           }
           data?.error == false && toast.error(data?.message);
@@ -95,6 +93,7 @@ export default function Register() {
         }
       } catch (error) {
         console.log("signup error", error);
+        toast.error(error.message);
       }
     }
   };

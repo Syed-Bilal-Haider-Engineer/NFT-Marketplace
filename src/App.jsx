@@ -6,7 +6,7 @@ import { createTheme, Grid } from "@mui/material";
 import Web3 from "web3";
 import NetworkChange from "./networkSwitch";
 import Homepage from "./components/LandingPage/Homepage";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import NoteableDrops from "./components/LandingPage/NoteableDrops";
 import Dashboard from "./components/Dashboard/Dashboard";
 import TopCollecions from "./components/LandingPage/TopCollecions";
@@ -25,7 +25,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import MarqueeComp from "./components/LandingPage/MarqueeComp";
 import { url } from "./components/URL";
 import ChatMain from "./components/Chat/MainChat";
-
+import Signout from "./components/SignPages/Signout";
 function App() {
   const [switchNetwork, setswitchNetwork] = useState(false);
   const [userid, setUserId] = useState("");
@@ -94,6 +94,7 @@ function App() {
   }, []);
   ///////////////Token  verifications here//////////////
   const token = localStorage.getItem("nft_aly_Token");
+  console.log("token here:", token);
   const tokenVerfiy = async () => {
     try {
       await fetch(`${url}/verifytoken`, {
@@ -111,17 +112,23 @@ function App() {
       console.log("Token verify route", error);
     }
   };
-
   useEffect(() => {
     if (token) {
       tokenVerfiy();
     }
   }, [token]);
+  /////////////////Protected routes userProfile/////////////
+  const PrivateRoute = ({ children, id }) => {
+    if (id == "") {
+      return <Navigate to="/" />;
+    }
+    return children;
+  };
   return (
     <>
       <NetworkChange open={switchNetwork} setOpen={setswitchNetwork} />
       <ProviderMui theme={DarkTheme}>
-        <Header />
+        <Header id={userid} />
         <Routes>
           <Route
             path="/"
@@ -142,11 +149,21 @@ function App() {
           <Route path="/explore" element={<NftDetail />} />
           <Route path="/marketplace" element={<MarketPlace />} />
           <Route path="/collections" element={<Collections />} />
-          <Route path="/user-profile" element={<UserProfile id={userid} />} />
           <Route path="/*" element={<Dashboard />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/chat" element={<ChatMain />} />
+          <Route path="/signout" element={<Signout />} />
+          <Route
+            path="/user-profile"
+            element={
+              <>
+                <PrivateRoute id={userid}>
+                  <UserProfile id={userid} />
+                </PrivateRoute>
+              </>
+            }
+          />
         </Routes>
         <Footer />
       </ProviderMui>
