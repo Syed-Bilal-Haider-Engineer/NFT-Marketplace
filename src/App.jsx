@@ -117,6 +117,8 @@ function App() {
       tokenVerfiy();
     }
   }, [token]);
+
+  console.log("userid:", userid);
   /////////////////Protected routes userProfile/////////////
   const PrivateRoute = ({ children, id }) => {
     if (id == "") {
