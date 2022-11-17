@@ -11,6 +11,7 @@ import findRoom from "./ChatOperations/findRoom.js";
 import path from "path";
 import fs from "fs";
 const app = express();
+import { writeFile } from "fs";
 const __dirname = path.resolve();
 const PORT = 8080;
 const url = `mongodb+srv://bilal:151214bscs@cluster0.ouusdwa.mongodb.net/?retryWrites=true&w=majority`;
@@ -124,11 +125,11 @@ io.on("connection", (socket) => {
     socket.emit("allRoomsUsers", { rooms });
   });
 
-  socket.on("message", async ({ name, message, otherUser }) => {
+  socket.on("message", async ({ name, message, otherUser, type }) => {
     const room = await CreateRoom(name, otherUser);
-    pushMsg(message, room, name);
+    pushMsg(message, room, name, type);
     socket
       .to(`${room._id}`)
-      .emit("recieve-message", { name, message, otherUser });
+      .emit("recieve-message", { name, message, otherUser, type });
   });
 });

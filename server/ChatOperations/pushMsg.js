@@ -1,6 +1,6 @@
 import Room from "../Modules/ChatRoomSchema.js";
 // import usersModal from "../Modules/User";
-const pushMsg = async (message, room, name) => {
+const pushMsg = async (message, room, name, type) => {
   console.log(message, room._id, name);
   // const newUser = userModel.findOne({ walletAddress: name });
   const ChatRoom = await Room.findOneAndUpdate(
@@ -10,6 +10,7 @@ const pushMsg = async (message, room, name) => {
         messages: {
           walletAddress: name,
           message: message,
+          type: type,
         },
       },
     }

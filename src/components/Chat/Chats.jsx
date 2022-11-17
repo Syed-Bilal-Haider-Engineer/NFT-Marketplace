@@ -26,6 +26,7 @@ const Chat = () => {
   const [msg, setMsg] = useState([]);
   const [thisMsg, setThisMsg] = useState("");
   const [emojiMsg, setEmpjiMsg] = useState("");
+  const [file, setFile] = useState("");
 
   const socket = io("http://localhost:8080");
   const location = useLocation();
@@ -42,9 +43,9 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
-    socket.on("recieve-message", ({ name, message }) => {
+    socket.on("recieve-message", ({ name, message, type }) => {
       console.log(name, message, "messaf");
-      msg.push({ walletAddress: name, message: message });
+      msg.push({ walletAddress: name, message: message, type: type });
       setMsg([...msg]);
     });
 
@@ -58,9 +59,11 @@ const Chat = () => {
     if (event.key === "Enter") {
       socket.emit("message", {
         name: myAddress,
-        message: event.target.value,
+        message: file === "" ? event.target.value : file,
         otherUser: location?.state?.walletAddress,
+        type: file === "" ? "String" : "Image",
       });
+
       console.log(socket, "socket");
       setThisMsg("");
     }
@@ -157,7 +160,7 @@ const Chat = () => {
           </Box>
         </Box> */}
         {allMsg.map((msg) => {
-          return (
+          return msg?.type === "String" ? (
             <Box
               className={
                 msg.walletAddress === myAddress
@@ -179,6 +182,14 @@ const Chat = () => {
 
               <Avatar src={popIcon41} sx={{ marginLeft: "1rem" }}></Avatar>
             </Box>
+          ) : (
+            // console.log()
+            <img
+              src={msg.message.toString("base64")}
+              width={244}
+              height={255}
+              alt=""
+            />
           );
         })}
 
@@ -291,12 +302,25 @@ const Chat = () => {
                       color: "#0E7C54",
                     }}
                   />
-                  <AttachFileIcon
-                    sx={{
-                      fontSize: "2.5rem",
-                      color: "#0E7C54",
-                    }}
-                  />
+                  <label htmlFor="as">
+                    <input
+                      type="file"
+                      name=""
+                      id="as"
+                      style={{ display: "none" }}
+                      onChange={(e) => {
+                        setFile(e.target.files[0]);
+                        setThisMsg(e.target.files[0].name);
+                      }}
+                    />
+
+                    <AttachFileIcon
+                      sx={{
+                        fontSize: "2.5rem",
+                        color: "#0E7C54",
+                      }}
+                    />
+                  </label>
                   <Box
                     sx={{
                       height: "30px",
