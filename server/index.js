@@ -106,12 +106,13 @@ const server = app.listen(PORT, (req, res) => {
 const io = new Server(server, {
   cors: {
     origin:
-      process.env.NODE_ENV === "production" ? "" : "http://localhost:3000",
+      process.env.NODE_ENV === "production" ? "" : "http://localhost:3001",
     methods: ["GET", "POST"],
   },
 });
 io.on("connection", (socket) => {
   socket.on("create-room", async ({ user1, user2 }) => {
+    console.log(user1, user2, "user12, ");
     const room = await CreateRoom(user1, user2);
 
     socket.emit("recieve-room", { room });

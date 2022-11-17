@@ -19,21 +19,20 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 const Chat = () => {
-  const [user, setUser] = useState([]);
   const [initialMsg, setInitialMsg] = useState([]);
-  const [users, setUsers] = useState([]);
   const [msg, setMsg] = useState([]);
-  const [myRooms, setMyRooms] = useState([]);
 
   const socket = io("http://localhost:8080");
   const location = useLocation();
   const theme = useTheme();
-  let myAddress = "123";
+  let myAddress = "456";
   useEffect(() => {
     socket.emit("create-room", {
       user1: location?.state?.walletAddress,
       user2: myAddress,
     });
+    console.log("running", socket);
+
     console.log("running", socket);
   }, []);
 
@@ -43,18 +42,7 @@ const Chat = () => {
       msg.push({ walletAddress: name, message: message });
       setMsg([...msg]);
     });
-    socket.on("allRoomsUsers", ({ rooms }) => {
-      let allusers = [];
-      for (let i = 0; i < rooms.length; i++) {
-        allusers.push(...rooms[i].users);
-      }
 
-      setMyRooms(allusers);
-    });
-
-    // GetUsers().then((data) => {
-    //   setUsers(data.data);
-    // });
     socket.on("recieve-room", ({ room }) => {
       setInitialMsg([...room.messages]);
       setMsg([]);
@@ -71,6 +59,7 @@ const Chat = () => {
       console.log(socket, "socket");
     }
   };
+
   return (
     <Box
       sx={{
