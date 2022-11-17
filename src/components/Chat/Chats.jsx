@@ -24,6 +24,7 @@ const Chat = () => {
 
   const [initialMsg, setInitialMsg] = useState([]);
   const [msg, setMsg] = useState([]);
+  const [thisMsg, setThisMsg] = useState("");
   const [emojiMsg, setEmpjiMsg] = useState("");
 
   const socket = io("http://localhost:8080");
@@ -61,7 +62,7 @@ const Chat = () => {
         otherUser: location?.state?.walletAddress,
       });
       console.log(socket, "socket");
-      setMsg([]);
+      setThisMsg("");
     }
   };
 
@@ -71,9 +72,9 @@ const Chat = () => {
 
   const handleEmojiClick = (emojiData, event) => {
     console.log(emojiData, "emoj");
-    let messages = msg;
+    let messages = thisMsg;
     messages += emojiData.emoji;
-    setMsg(messages);
+    setThisMsg(messages);
   };
 
   return (
@@ -259,9 +260,9 @@ const Chat = () => {
             background: theme.primary.bg,
           }}
           id="standard-name"
-          value={msg}
+          value={thisMsg}
           onChange={(e) => {
-            setMsg(e.target.value);
+            setThisMsg(e.target.value);
           }}
           type="text"
           placeholder={"Thank you so much that very sweet of you "}

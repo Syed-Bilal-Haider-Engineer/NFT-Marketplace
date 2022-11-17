@@ -106,7 +106,7 @@ const server = app.listen(PORT, (req, res) => {
 const io = new Server(server, {
   cors: {
     origin:
-      process.env.NODE_ENV === "production" ? "" : "http://localhost:3000",
+      process.env.NODE_ENV === "production" ? "" : "http://localhost:3001",
     methods: ["GET", "POST"],
   },
 });
