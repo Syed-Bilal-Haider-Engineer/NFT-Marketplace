@@ -17,6 +17,7 @@
     "@walletconnect/web3-provider": "^1.8.0",
     "axios": "^0.27.2",
     "chart.js": "^3.7.1",
+    "emoji-picker-react": "^4.4.5",
     "ethers": "^5.7.0",
     "gsap": "^3.11.1",
     "moment": "^2.29.4",

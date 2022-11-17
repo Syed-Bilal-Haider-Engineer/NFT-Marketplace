@@ -18,9 +18,13 @@ import GifBoxIcon from "@mui/icons-material/GifBox";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Picker from "emoji-picker-react";
 const Chat = () => {
+  const [showEmojiPicker, setShowEmojiPiker] = useState(false);
+
   const [initialMsg, setInitialMsg] = useState([]);
   const [msg, setMsg] = useState([]);
+  const [emojiMsg, setEmpjiMsg] = useState("");
 
   const socket = io("http://localhost:8080");
   const location = useLocation();
@@ -57,7 +61,19 @@ const Chat = () => {
         otherUser: location?.state?.walletAddress,
       });
       console.log(socket, "socket");
+      setMsg([]);
     }
+  };
+
+  const handlePicEmoji = () => {
+    setShowEmojiPiker(!showEmojiPicker);
+  };
+
+  const handleEmojiClick = (emojiData, event) => {
+    console.log(emojiData, "emoj");
+    let messages = msg;
+    messages += emojiData.emoji;
+    setMsg(messages);
   };
 
   return (
@@ -66,7 +82,6 @@ const Chat = () => {
         border: "1px solid #0DF17F",
         borderRadius: "23px",
         width: { md: "700px", xs: "100%" },
-        height: "auto",
       }}
     >
       <Box
@@ -156,7 +171,6 @@ const Chat = () => {
                   border: "1px solid #0DF17F",
                   borderRadius: "15px",
                   color: "white",
-                  maxWidth: "230px",
                 }}
               >
                 {msg?.message}
@@ -201,7 +215,11 @@ const Chat = () => {
           </Box>
         </Box> */}
       </div>
-      <Box mb={2} px={6}>
+
+      <Box mb={2} px={6} sx={{ position: "relative" }}>
+        <Box sx={{ position: "absolute", top: "-470px" }}>
+          {showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
+        </Box>
         <TextField
           onKeyPress={handleKeyPress}
           sx={{
@@ -241,8 +259,11 @@ const Chat = () => {
             background: theme.primary.bg,
           }}
           id="standard-name"
-          // value={amount}
-          // onChange={(e) => setamount(e.target.value)}
+          value={msg}
+          onChange={(e) => {
+            setMsg(e.target.value);
+          }}
+          type="text"
           placeholder={"Thank you so much that very sweet of you "}
           InputProps={{
             startAdornment: (
@@ -260,7 +281,9 @@ const Chat = () => {
                       fontSize: "2.5rem",
                       color: "#0E7C54",
                     }}
+                    onClick={handlePicEmoji}
                   />
+
                   <GifBoxIcon
                     sx={{
                       fontSize: "2.5rem",

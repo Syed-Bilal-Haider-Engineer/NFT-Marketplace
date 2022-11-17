@@ -37,7 +37,8 @@ code {
 }
 .chatBody {
   flex: 1;
-
+  height: 500px!important;
+  overflow-Y: scroll;
   padding: 30px;
 }
 .chat-msg {
