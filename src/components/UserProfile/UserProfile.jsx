@@ -64,7 +64,7 @@ function TabPanel(props) {
 }
 
 function UserProfile({ id }) {
-  const [value, setValue] = useState("0");
+  const [value, setValue] = useState(0);
   const [renderState, setRenderstate] = useState(false);
   const [loading, setLoading] = useState(false);
   const [userprofile, setProfilestate] = useState("");
