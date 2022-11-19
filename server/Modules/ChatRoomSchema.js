@@ -5,7 +5,7 @@ const chatRoomSchema = new Schema(
     users: [
       {
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "nftlay",
       },
     ],
     messages: [
@@ -15,6 +15,10 @@ const chatRoomSchema = new Schema(
           required: true,
         },
         message: {
+          type: String,
+          required: true,
+        },
+        type: {
           type: String,
           required: true,
         },

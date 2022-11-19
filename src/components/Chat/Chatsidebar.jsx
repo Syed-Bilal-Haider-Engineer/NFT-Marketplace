@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Box,
@@ -15,11 +15,27 @@ import {
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import Icon from "../../images/Icon.png";
-
+import io from "socket.io-client";
 import popIcon41 from "../../images/popIcon41.png";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 const Chatsidebar = () => {
+  const socket = io("http://localhost:8080");
+  const [myRooms, setMyRooms] = useState([]);
+  let myAddress = "456";
+  useEffect(() => {
+    socket.emit("findRooms", { account: myAddress });
+    socket.on("allRoomsUsers", ({ rooms }) => {
+      console.log(rooms, "--------------");
+      let allusers = [];
+      for (let i = 0; i < rooms.length; i++) {
+        allusers.push(...rooms[i].users);
+      }
+
+      setMyRooms(allusers);
+      console.log(rooms, allusers, "This is room and users");
+    });
+  }, []);
   const matches1 = useMediaQuery("(max-width:1279px)");
   const theme = useTheme();
 
@@ -106,43 +122,45 @@ const Chatsidebar = () => {
       </Box>
 
       <Box sx={{ color: "white" }} mt={2}>
-        {[1, 2, 3].map(() => {
-          return (
-            <ListItem
-              sx={{
-                cursor: "pointer",
-                "&:hover": {
-                  background: "#2D393B",
-                  borderRadius: "0.5rem",
-                },
-              }}
-            >
-              <ListItemAvatar>
-                <Avatar src={popIcon41}></Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                sx={{ color: "white" }}
-                primary={
-                  <Typography type="body2" style={{ color: "#FFFFFF" }}>
-                    Rosiie
-                  </Typography>
-                }
-                secondary={
-                  <Typography
-                    type="body2"
-                    style={{
-                      color: "#EBF0F0",
-                      fontSize: "0.7rem",
-                      opacity: "0.6",
-                    }}
-                  >
-                    Nftaly is best platform
-                  </Typography>
-                }
-              />
-            </ListItem>
-          );
-        })}
+        {myRooms
+          .filter((m) => m.walletaddress !== myAddress)
+          .map((user) => {
+            return (
+              <ListItem
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    background: "#2D393B",
+                    borderRadius: "0.5rem",
+                  },
+                }}
+              >
+                <ListItemAvatar>
+                  <Avatar src={popIcon41}></Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  sx={{ color: "white" }}
+                  primary={
+                    <Typography type="body2" style={{ color: "#FFFFFF" }}>
+                      {user.name}
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      type="body2"
+                      style={{
+                        color: "#EBF0F0",
+                        fontSize: "0.7rem",
+                        opacity: "0.6",
+                      }}
+                    >
+                      Nftaly is best platform
+                    </Typography>
+                  }
+                />
+              </ListItem>
+            );
+          })}
       </Box>
     </Box>
   );

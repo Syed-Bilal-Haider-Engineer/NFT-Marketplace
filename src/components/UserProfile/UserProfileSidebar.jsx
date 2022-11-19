@@ -42,6 +42,7 @@ function UserProfileSidebar({ userInfo, setRenderstate, state }) {
                 <img
                   width="100px"
                   height="100px"
+                  style={{ borderRadius: "50%" }}
                   src={`${url}/upload/${userInfo?.img}`}
                   alt=""
                 />

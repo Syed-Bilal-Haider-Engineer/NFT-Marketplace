@@ -18,43 +18,37 @@ import GifBoxIcon from "@mui/icons-material/GifBox";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Picker from "emoji-picker-react";
 const Chat = () => {
-  const [user, setUser] = useState([]);
+  const [showEmojiPicker, setShowEmojiPiker] = useState(false);
+
   const [initialMsg, setInitialMsg] = useState([]);
-  const [users, setUsers] = useState([]);
   const [msg, setMsg] = useState([]);
-  const [myRooms, setMyRooms] = useState([]);
+  const [thisMsg, setThisMsg] = useState("");
+  const [emojiMsg, setEmpjiMsg] = useState("");
+  const [file, setFile] = useState("");
 
   const socket = io("http://localhost:8080");
   const location = useLocation();
   const theme = useTheme();
-  let myAddress = "123";
+  let myAddress = "456";
   useEffect(() => {
     socket.emit("create-room", {
       user1: location?.state?.walletAddress,
       user2: myAddress,
     });
     console.log("running", socket);
+
+    console.log("running", socket);
   }, []);
 
   useEffect(() => {
-    socket.on("recieve-message", ({ name, message }) => {
+    socket.on("recieve-message", ({ name, message, type }) => {
       console.log(name, message, "messaf");
-      msg.push({ walletAddress: name, message: message });
+      msg.push({ walletAddress: name, message: message, type: type });
       setMsg([...msg]);
     });
-    socket.on("allRoomsUsers", ({ rooms }) => {
-      let allusers = [];
-      for (let i = 0; i < rooms.length; i++) {
-        allusers.push(...rooms[i].users);
-      }
 
-      setMyRooms(allusers);
-    });
-
-    // GetUsers().then((data) => {
-    //   setUsers(data.data);
-    // });
     socket.on("recieve-room", ({ room }) => {
       setInitialMsg([...room.messages]);
       setMsg([]);
@@ -65,19 +59,33 @@ const Chat = () => {
     if (event.key === "Enter") {
       socket.emit("message", {
         name: myAddress,
-        message: event.target.value,
+        message: file === "" ? event.target.value : file,
         otherUser: location?.state?.walletAddress,
+        type: file === "" ? "String" : "Image",
       });
+
       console.log(socket, "socket");
+      setThisMsg("");
     }
   };
+
+  const handlePicEmoji = () => {
+    setShowEmojiPiker(!showEmojiPicker);
+  };
+
+  const handleEmojiClick = (emojiData, event) => {
+    console.log(emojiData, "emoj");
+    let messages = thisMsg;
+    messages += emojiData.emoji;
+    setThisMsg(messages);
+  };
+
   return (
     <Box
       sx={{
         border: "1px solid #0DF17F",
         borderRadius: "23px",
         width: { md: "700px", xs: "100%" },
-        height: "auto",
       }}
     >
       <Box
@@ -152,7 +160,7 @@ const Chat = () => {
           </Box>
         </Box> */}
         {allMsg.map((msg) => {
-          return (
+          return msg?.type === "String" ? (
             <Box
               className={
                 msg.walletAddress === myAddress
@@ -167,7 +175,6 @@ const Chat = () => {
                   border: "1px solid #0DF17F",
                   borderRadius: "15px",
                   color: "white",
-                  maxWidth: "230px",
                 }}
               >
                 {msg?.message}
@@ -175,6 +182,14 @@ const Chat = () => {
 
               <Avatar src={popIcon41} sx={{ marginLeft: "1rem" }}></Avatar>
             </Box>
+          ) : (
+            // console.log()
+            <img
+              src={msg.message.toString("base64")}
+              width={244}
+              height={255}
+              alt=""
+            />
           );
         })}
 
@@ -212,7 +227,11 @@ const Chat = () => {
           </Box>
         </Box> */}
       </div>
-      <Box mb={2} px={6}>
+
+      <Box mb={2} px={6} sx={{ position: "relative" }}>
+        <Box sx={{ position: "absolute", top: "-470px" }}>
+          {showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
+        </Box>
         <TextField
           onKeyPress={handleKeyPress}
           sx={{
@@ -252,8 +271,11 @@ const Chat = () => {
             background: theme.primary.bg,
           }}
           id="standard-name"
-          // value={amount}
-          // onChange={(e) => setamount(e.target.value)}
+          value={thisMsg}
+          onChange={(e) => {
+            setThisMsg(e.target.value);
+          }}
+          type="text"
           placeholder={"Thank you so much that very sweet of you "}
           InputProps={{
             startAdornment: (
@@ -271,19 +293,34 @@ const Chat = () => {
                       fontSize: "2.5rem",
                       color: "#0E7C54",
                     }}
+                    onClick={handlePicEmoji}
                   />
+
                   <GifBoxIcon
                     sx={{
                       fontSize: "2.5rem",
                       color: "#0E7C54",
                     }}
                   />
-                  <AttachFileIcon
-                    sx={{
-                      fontSize: "2.5rem",
-                      color: "#0E7C54",
-                    }}
-                  />
+                  <label htmlFor="as">
+                    <input
+                      type="file"
+                      name=""
+                      id="as"
+                      style={{ display: "none" }}
+                      onChange={(e) => {
+                        setFile(e.target.files[0]);
+                        setThisMsg(e.target.files[0].name);
+                      }}
+                    />
+
+                    <AttachFileIcon
+                      sx={{
+                        fontSize: "2.5rem",
+                        color: "#0E7C54",
+                      }}
+                    />
+                  </label>
                   <Box
                     sx={{
                       height: "30px",

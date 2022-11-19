@@ -63,7 +63,9 @@ export const gasEstimationForAll = async (account, fn, data) => {
   }
 };
 export const url =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:4000";
+  process.env.NODE_ENV === "production"
+    ? "https://nft-aly.herokuapp.com"
+    : "http://localhost:4000";
 let initialState = {
   provider: null,
   web3Provider: null,

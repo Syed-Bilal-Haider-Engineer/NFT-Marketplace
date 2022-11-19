@@ -280,11 +280,12 @@ function Collections() {
         >
           8SIAN Main Collection
         </Typography>
-        {/* <Button
-          onClick={() => navigate("/chat", { state: { walletAddress: "456" } })}
+
+        <Button
+          onClick={() => navigate("/chat", { state: { walletAddress: "123" } })}
         >
           Send Message
-        </Button> */}
+        </Button>
         <Typography
           sx={{
             color: theme.primary.text,
