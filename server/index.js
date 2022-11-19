@@ -13,7 +13,7 @@ import fs from "fs";
 const app = express();
 import { writeFile } from "fs";
 const __dirname = path.resolve();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const url = `mongodb+srv://bilal:151214bscs@cluster0.ouusdwa.mongodb.net/?retryWrites=true&w=majority`;
 connectDB(url);
 app.use(cors("*"));
@@ -107,7 +107,9 @@ const server = app.listen(PORT, (req, res) => {
 const io = new Server(server, {
   cors: {
     origin:
-      process.env.NODE_ENV === "production" ? "" : "http://localhost:3001",
+      process.env.NODE_ENV === "production"
+        ? "https://nft-aly.herokuapp.com"
+        : "http://localhost:3001",
     methods: ["GET", "POST"],
   },
 });
